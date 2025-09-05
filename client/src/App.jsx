@@ -22,8 +22,14 @@ import ProgressTracker from './pages/ProgressTracker';
 import DownloadNotes from './pages/DownloadNotes';
 import AccessibilitySettings from './pages/AccessibilitySettings';
 import ProfileSettings from './pages/ProfileSettings';
+
+
 import Help from './pages/Help';
 import NotFound from './pages/NotFound';
+
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Contact from './pages/Contact';
 
 
 function AppRoutes() {
@@ -35,9 +41,12 @@ function AppRoutes() {
       {!hideNav && <Header />}
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/forgot" element={<ForgotPassword />} />
+  <Route path="/signin" element={<SignIn />} />
+  <Route path="/signup" element={<SignUp />} />
+  <Route path="/forgot" element={<ForgotPassword />} />
+  <Route path="/privacy" element={<Privacy />} />
+  <Route path="/terms" element={<Terms />} />
+  <Route path="/contact" element={<Contact />} />
         <Route
           path="*"
           element={
