@@ -1,30 +1,26 @@
+const faqs = [
+  { q: 'How do I reset my password?', a: 'Go to Profile Settings > Change Password.' },
+  { q: 'How do I contact support?', a: 'Email support@crewjah.com or use the Contact page.' },
+  { q: 'How do I track my progress?', a: 'Visit the Progress Tracker page after logging in.' },
+];
+
 const Help = () => (
-  <div>
-    <h2>Help / Usage Guide</h2>
-    <div style={{marginBottom:16}}>
-      <b>Quick Tips</b>
+  <div className="edu-page edu-help">
+    <h1>Help & Support</h1>
+    <div className="edu-faq-list">
+      <h2>Frequently Asked Questions</h2>
       <ul>
-        <li>Use the Ask Anything page for instant answers and explanations.</li>
-        <li>Summarize long notes or code for key points.</li>
-        <li>Practice with quizzes and flashcards to boost retention.</li>
-        <li>Track your progress and streaks for motivation.</li>
-        <li>Use the Study Planner to stay organized and consistent.</li>
+        {faqs.map((f, i) => (
+          <li key={i} className="edu-faq-item">
+            <b>{f.q}</b>
+            <div>{f.a}</div>
+          </li>
+        ))}
       </ul>
     </div>
-    <div style={{marginBottom:16}}>
-      <b>How to Get Better Answers</b>
-      <ul>
-        <li>Be specific with your questions or topics.</li>
-        <li>Paste code or text for more accurate summaries.</li>
-        <li>Try different summary lengths or tones for clarity.</li>
-      </ul>
-    </div>
-    <div style={{marginBottom:16}}>
-      <b>Privacy & Data</b>
-      <div>We do not sell personal data. You can export or delete your data anytime.</div>
-    </div>
-    <div>
-      <a href="https://github.com/Crewjah/Crewjah/wiki" target="_blank" rel="noopener noreferrer">Detailed Docs / Wiki</a>
+    <div className="edu-help-contact">
+      <h2>Need more help?</h2>
+      <p>Contact our support team at <a href="mailto:support@crewjah.com">support@crewjah.com</a> or use the <a href="/contact">Contact</a> page.</p>
     </div>
   </div>
 );
