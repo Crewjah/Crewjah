@@ -1,12 +1,64 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Crewjah Client
 
-Currently, two official plugins are available:
+Crewjah is an open-source, modern educational platform built with React, Vite, and TailwindCSS. It empowers learners with AI-powered study tools, including note summarization, Q&A, study planning, and progress tracking.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- Modern, responsive UI with TailwindCSS
+- AI-powered study assistant
+- Summarize notes, ask questions, plan study, track progress
+- Beautiful landing page, dashboard, and educational tools
+- Open source and community-driven
 
-## Expanding the ESLint configuration
+## 📖 Project Log
+- Initial scaffold with React + Vite
+- Added routing and multiple educational pages
+- Fixed all JSX/JS errors, improved imports/exports
+- Upgraded UI to modern, branded design with TailwindCSS
+- Implemented animated hero, buttons, and responsive layout
+- Added open source documentation and contribution guidelines
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🌍 Open Source
+Crewjah is licensed under the MIT License. You are free to use, modify, and distribute this project for personal, educational, or commercial purposes. Contributions are welcome!
+
+## 🛠️ Getting Started
+1. **Clone the repository:**
+	```bash
+	git clone https://github.com/Crewjah/Crewjah.git
+	cd Crewjah/client
+	```
+2. **Install dependencies:**
+	```bash
+	npm install
+	```
+3. **Run the development server:**
+	```bash
+	npm run dev
+	```
+4. **Open in browser:**
+	Visit `http://localhost:5173` (or the port shown in your terminal)
+
+## 🤝 Contributing
+We welcome contributions from everyone! To contribute:
+- Fork the repository
+- Create a new branch for your feature or fix
+- Submit a pull request with a clear description
+- All contributions must follow the MIT license and code of conduct
+
+## 📦 Tech Stack
+- React
+- Vite
+- TailwindCSS
+- Framer Motion (for animations)
+- Heroicons (for icons)
+
+## 📜 License
+This project is licensed under the MIT License. See [LICENSE](../LICENSE) for details.
+
+## 💬 Contact & Community
+- Issues: Use the GitHub Issues tab
+- Discussions: Join our GitHub Discussions
+- Email: crewjah@gmail.com
+
+---
+Made with ❤️ by the Crewjah open source community.
