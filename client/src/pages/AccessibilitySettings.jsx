@@ -7,35 +7,28 @@ const AccessibilitySettings = () => {
   const [tts, setTts] = useState(false);
   const [contrast, setContrast] = useState(false);
   return (
-    <div>
-      <h2>Accessibility Settings</h2>
-      <div>
-        <label><input type="checkbox" checked={dark} onChange={()=>setDark(!dark)} /> Dark Mode</label>
+    <div className="edu-page edu-access">
+      <h1>Accessibility Settings</h1>
+      <div className="edu-access-controls">
+        <label>
+          <input type="checkbox" checked={dark} onChange={e => setDark(e.target.checked)} />
+          Dark Mode
+        </label>
+        <label>
+          <input type="checkbox" checked={dyslexia} onChange={e => setDyslexia(e.target.checked)} />
+          Dyslexia-friendly Font
+        </label>
+        <label>
+          Font Size:
+          <select value={fontSize} onChange={e => setFontSize(e.target.value)}>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </label>
       </div>
-      <div>
-        <label>Font Size: </label>
-        <select value={fontSize} onChange={e=>setFontSize(e.target.value)}>
-          <option value="S">Small</option>
-          <option value="M">Medium</option>
-          <option value="L">Large</option>
-        </select>
-      </div>
-      <div>
-        <label><input type="checkbox" checked={dyslexia} onChange={()=>setDyslexia(!dyslexia)} /> Dyslexia-friendly font</label>
-      </div>
-      <div>
-        <label><input type="checkbox" checked={tts} onChange={()=>setTts(!tts)} /> Text-to-Speech (TTS)</label>
-      </div>
-      <div>
-        <label><input type="checkbox" checked={contrast} onChange={()=>setContrast(!contrast)} /> High Contrast Mode</label>
-      </div>
-      <div style={{marginTop:16}}>
-        <b>Keyboard Shortcuts</b>
-        <ul>
-          <li>Tab: Navigate</li>
-          <li>Enter: Select/Submit</li>
-          <li>Esc: Close dialogs</li>
-        </ul>
+      <div className="edu-access-preview" style={{background:dark?'#222':'#f6f6f6',color:dark?'#fff':'#222',fontSize:fontSize==='small'?'14px':fontSize==='large'?'22px':'18px',fontFamily:dyslexia?'OpenDyslexic,sans-serif':'inherit',padding:24,marginTop:24}}>
+        <b>Preview:</b> The quick brown fox jumps over the lazy dog.
       </div>
     </div>
   );
