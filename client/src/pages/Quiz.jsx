@@ -1,81 +1,94 @@
 import { useState } from 'react';
 
-const quizSubjects = ['Python', 'DSA', 'Math', 'General'];
 const quizQuestions = [
   { q: 'What is 2 + 2?', options: ['3', '4', '5', '6'], answer: 1 },
   { q: 'What is the capital of France?', options: ['Berlin', 'London', 'Paris', 'Rome'], answer: 2 },
   { q: 'Which is a Python data type?', options: ['int', 'foo', 'bar', 'baz'], answer: 0 },
 ];
+
 const Quiz = () => {
-  const [subject, setSubject] = useState('Python');
-  const [difficulty, setDifficulty] = useState('Easy');
-  const [numQuestions, setNumQuestions] = useState(3);
   const [started, setStarted] = useState(false);
   const [current, setCurrent] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
 
-  const startQuiz = () => {
+  function startQuiz() {
     setStarted(true);
     setCurrent(0);
-    setAnswers([]);
+    setSelected(null);
     setScore(0);
     setShowResult(false);
-  };
-  const handleAnswer = (idx) => {
-    setAnswers([...answers, idx]);
-    if (quizQuestions[current].answer === idx) setScore(score + 1);
-    if (current + 1 < numQuestions) setCurrent(current + 1);
+  }
+
+  function handleSelect(i) {
+    setSelected(i);
+  }
+
+  function handleNext() {
+    if (selected === quizQuestions[current].answer) setScore(s => s + 1);
+    setSelected(null);
+    if (current + 1 < quizQuestions.length) setCurrent(current + 1);
     else setShowResult(true);
-  };
-  const retry = () => {
+  }
+
+  function retry() {
     setStarted(false);
-    setAnswers([]);
+    setCurrent(0);
+    setSelected(null);
     setScore(0);
     setShowResult(false);
-  };
+  }
+
   if (!started) {
     return (
-      <div>
-        <h2>Take a Quiz</h2>
-        <label>Subject: </label>
-        <select value={subject} onChange={e => setSubject(e.target.value)}>
-          {quizSubjects.map(s => <option key={s}>{s}</option>)}
-        </select>
-        <label style={{marginLeft:16}}>Difficulty: </label>
-        <select value={difficulty} onChange={e => setDifficulty(e.target.value)}>
-          <option>Easy</option><option>Medium</option><option>Hard</option>
-        </select>
-        <label style={{marginLeft:16}}>Questions: </label>
-        <select value={numQuestions} onChange={e => setNumQuestions(Number(e.target.value))}>
-          {[3,5,10].map(n => <option key={n}>{n}</option>)}
-        </select>
-        <button style={{marginLeft:16}} onClick={startQuiz}>Start Quiz</button>
+      <div className="edu-page edu-quiz">
+        <h1>Quiz</h1>
+        <p>Test your knowledge with quick quizzes!</p>
+        <button className="edu-btn edu-btn-primary" onClick={startQuiz}>Start Quiz</button>
       </div>
     );
   }
+
   if (showResult) {
     return (
-      <div>
-        <h2>Quiz Result</h2>
-        <p>Score: {score} / {numQuestions}</p>
-        <button onClick={retry}>Retry</button>
+      <div className="edu-page edu-quiz">
+        <h1>Quiz Complete!</h1>
+        <div>Your score: {score} / {quizQuestions.length}</div>
+        <button className="edu-btn" onClick={retry}>Restart</button>
       </div>
     );
   }
+
   const q = quizQuestions[current];
+
   return (
-    <div>
-      <h2>Question {current + 1} of {numQuestions}</h2>
-      <div>{q.q}</div>
-      <div>
-        {q.options.map((opt, idx) => (
-          <button key={idx} style={{display:'block',margin:'8px 0'}} onClick={() => handleAnswer(idx)}>{opt}</button>
+    <div className="edu-page edu-quiz">
+      <h1>Quiz</h1>
+      <div className="edu-quiz-q">{q.q}</div>
+      <div className="edu-quiz-options">
+        {q.options.map((opt, i) => (
+          <button
+            key={i}
+            className={`edu-btn edu-btn-option${selected === i ? ' selected' : ''}`}
+            onClick={() => handleSelect(i)}
+            disabled={selected !== null}
+          >
+            {opt}
+          </button>
         ))}
       </div>
+      {selected !== null && (
+        <div className={selected === q.answer ? 'edu-correct' : 'edu-wrong'}>
+          {selected === q.answer ? 'Correct!' : 'Incorrect.'}
+        </div>
+      )}
+      <button className="edu-btn edu-btn-primary" onClick={handleNext} disabled={selected === null} style={{marginTop:16}}>
+        {current + 1 === quizQuestions.length ? 'Finish' : 'Next'}
+      </button>
+      <div className="edu-quiz-progress">Question {current + 1} of {quizQuestions.length}</div>
     </div>
   );
-};
+}
 
 export default Quiz;
