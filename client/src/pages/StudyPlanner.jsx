@@ -1,44 +1,41 @@
-import { useState } from 'react';
-
 const StudyPlanner = () => {
+  const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
-  const [title, setTitle] = useState('');
-  const [topic, setTopic] = useState('');
-  const [due, setDue] = useState('');
-  const [duration, setDuration] = useState('');
-  const addTask = () => {
-    if (!title || !topic || !due) return;
-    setTasks([...tasks, { title, topic, due, duration, done: false }]);
-    setTitle(''); setTopic(''); setDue(''); setDuration('');
-  };
-  const markDone = idx => {
-    const newTasks = [...tasks];
-    newTasks[idx].done = !newTasks[idx].done;
-    setTasks(newTasks);
-  };
+
+  function addTask() {
+    if (!task) return;
+    setTasks([...tasks, { text: task, done: false }]);
+    setTask('');
+  }
+  function markDone(idx) {
+    setTasks(tasks.map((t, i) => i === idx ? { ...t, done: !t.done } : t));
+  }
+
   return (
-    <div>
-      <h2>Study Planner</h2>
-      <div>
-        <input placeholder="Task title" value={title} onChange={e=>setTitle(e.target.value)} />
-        <input placeholder="Topic" value={topic} onChange={e=>setTopic(e.target.value)} />
-        <input type="date" value={due} onChange={e=>setDue(e.target.value)} />
-        <input placeholder="Duration (min)" value={duration} onChange={e=>setDuration(e.target.value)} />
-        <button onClick={addTask}>Add Task</button>
+    <div className="edu-page edu-planner">
+      <h1>Study Planner</h1>
+      <div className="edu-planner-input">
+        <input
+          className="edu-input"
+          placeholder="Add a study task…"
+          value={task}
+          onChange={e => setTask(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && addTask()}
+          style={{marginRight:8}}
+        />
+        <button className="edu-btn" onClick={addTask}>Add</button>
       </div>
-      <div style={{margin:'16px 0'}}>
-        <b>Weekly View (placeholder)</b>
-        <ul>
-          {tasks.map((t,i)=>(
-            <li key={i} style={{textDecoration:t.done?'line-through':'none'}}>
-              {t.title} ({t.topic}) - Due: {t.due} {t.duration && `| ${t.duration} min`}
-              <button style={{marginLeft:8}} onClick={()=>markDone(i)}>{t.done?'Undo':'Mark done'}</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul className="edu-planner-list">
+        {tasks.length === 0 && <li className="edu-empty">No tasks yet. Add your first study goal!</li>}
+        {tasks.map((t, i) => (
+          <li key={i} className={t.done ? 'done' : ''}>
+            <input type="checkbox" checked={t.done} onChange={() => markDone(i)} />
+            <span>{t.text}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
+}
 
 export default StudyPlanner;
