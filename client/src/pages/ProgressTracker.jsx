@@ -1,28 +1,32 @@
+const mockProgress = [
+  { label: 'Python Basics', percent: 80 },
+  { label: 'Data Structures', percent: 60 },
+  { label: 'Algorithms', percent: 40 },
+];
+
 const ProgressTracker = () => {
-  // Placeholder stats
-  const stats = {
-    studyTime: 120, // minutes
-    quizzes: 5,
-    accuracy: 80, // percent
-    flashcards: 30,
-    retention: 90, // percent
-    streak: 7 // days
-  };
   return (
-    <div>
-      <h2>Progress Tracker</h2>
-      <div>Study time: {stats.studyTime} min</div>
-      <div>Quizzes completed: {stats.quizzes} (Accuracy: {stats.accuracy}%)</div>
-      <div>Flashcards reviewed: {stats.flashcards} (Retention: {stats.retention}%)</div>
-      <div>Streak: {stats.streak} days</div>
-      <div style={{marginTop:16}}>
-        <b>Charts (placeholder)</b>
-        <div style={{background:'#f6f6f6',height:80,margin:'8px 0',textAlign:'center',lineHeight:'80px'}}>Study Time Chart</div>
-        <div style={{background:'#f6f6f6',height:80,margin:'8px 0',textAlign:'center',lineHeight:'80px'}}>Quiz Accuracy Chart</div>
-        <div style={{background:'#f6f6f6',height:80,margin:'8px 0',textAlign:'center',lineHeight:'80px'}}>Flashcard Retention Chart</div>
+    <div className="edu-page edu-progress">
+      <h1>Progress Tracker</h1>
+      <div className="edu-progress-list">
+        {mockProgress.map((p, i) => (
+          <div key={i} className="edu-progress-item">
+            <div className="edu-progress-label">{p.label}</div>
+            <div className="edu-progress-bar">
+              <div className="edu-progress-bar-inner" style={{width: p.percent + '%'}}></div>
+            </div>
+            <div className="edu-progress-percent">{p.percent}%</div>
+          </div>
+        ))}
+      </div>
+      <div className="edu-progress-streak">
+        <b>Current Streak:</b> 5 days
+      </div>
+      <div className="edu-progress-achievements">
+        <b>Achievements:</b> 3 modules completed
       </div>
     </div>
   );
-};
+}
 
 export default ProgressTracker;
