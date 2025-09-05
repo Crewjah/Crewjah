@@ -1,10 +1,15 @@
 
-# Crewjah
+<div align="center">
+	<img src="client/public/crewjah-logo.png" alt="Crewjah Logo" width="120" />
+  
+	<h1>Crewjah</h1>
+	<p><b>Open Source Modern Educational Platform</b></p>
+</div>
 
-Crewjah is an open-source, modern educational platform built with React, Vite, and TailwindCSS. It empowers learners with AI-powered study tools, including note summarization, Q&A, study planning, and progress tracking.
+Crewjah is an open-source, modern educational platform built with React, Vite, and TailwindCSS. It empowers learners with AI-powered study tools: note summarization, Q&A, study planning, and progress tracking.
 
 ## 🚀 Features
-- Modern, responsive UI with TailwindCSS
+- Modern, responsive UI (TailwindCSS)
 - AI-powered study assistant
 - Summarize notes, ask questions, plan study, track progress
 - Beautiful landing page, dashboard, and educational tools
@@ -19,7 +24,7 @@ Crewjah is an open-source, modern educational platform built with React, Vite, a
 - Added open source documentation and contribution guidelines
 
 ## 🌍 Open Source
-Crewjah is licensed under the MIT License. You are free to use, modify, and distribute this project for personal, educational, or commercial purposes. Contributions are welcome!
+Crewjah is fully open source under the MIT License. You are free to use, modify, and distribute this project for personal, educational, or commercial purposes. All development, issues, and discussions are public. Contributions are welcome!
 
 ## 🛠️ Getting Started
 1. **Clone the repository:**
@@ -53,7 +58,7 @@ We welcome contributions from everyone! To contribute:
 - Heroicons (for icons)
 
 ## 📜 License
-This project is licensed under the MIT License. See [LICENSE](../LICENSE) for details.
+This project is licensed under the MIT License. See [LICENSE](client/LICENSE) for details.
 
 ## 💬 Community
 - Issues: Use the GitHub Issues tab
