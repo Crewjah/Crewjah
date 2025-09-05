@@ -1,42 +1,49 @@
 import { useState } from 'react';
 
+const mockResources = [
+  { title: 'Intro to React', url: 'https://react.dev', category: 'Web Dev' },
+  { title: 'MDN Web Docs', url: 'https://developer.mozilla.org', category: 'Web Dev' },
+  { title: 'Khan Academy Math', url: 'https://khanacademy.org', category: 'Math' },
+];
+
+const categories = ['All', 'Web Dev', 'Math'];
+
 const StudyResources = () => {
-  const [topic, setTopic] = useState('');
-  const [resources, setResources] = useState([]);
-  const [done, setDone] = useState([]);
-  const search = () => {
-    setResources([
-      { type: 'Article', url: 'https://example.com/article', title: 'Intro to ' + topic },
-      { type: 'Video', url: 'https://youtube.com/example', title: topic + ' Explained' },
-      { type: 'Docs', url: 'https://docs.example.com', title: topic + ' Docs' },
-      { type: 'Practice', url: 'https://practice.example.com', title: 'Practice ' + topic }
-    ]);
-    setDone([]);
-  };
-  const markDone = idx => setDone([...done, idx]);
+  const [search, setSearch] = useState('');
+  const [cat, setCat] = useState('All');
+  const filtered = mockResources.filter(r =>
+    (cat === 'All' || r.category === cat) &&
+    (r.title.toLowerCase().includes(search.toLowerCase()) || r.category.toLowerCase().includes(search.toLowerCase()))
+  );
+
   return (
-    <div>
-      <h2>Study Resources</h2>
-      <input placeholder="e.g., Dynamic Programming" value={topic} onChange={e=>setTopic(e.target.value)} />
-      <button onClick={search}>Find Resources</button>
-      <div style={{marginTop:16}}>
-        {resources.length === 0 && <div style={{color:'#888'}}>Try: ‘Operating Systems scheduling’ or ‘OOP basics’.</div>}
-        {['Article','Video','Docs','Practice'].map(type=>(
-          <div key={type} style={{marginBottom:8}}>
-            <b>{type}s</b>
-            <ul>
-              {resources.filter(r=>r.type===type).map((r,i)=>(
-                <li key={i} style={{textDecoration:done.includes(i)?'line-through':'none'}}>
-                  <a href={r.url} target="_blank" rel="noopener noreferrer">{r.title}</a>
-                  {!done.includes(i) && <button style={{marginLeft:8}} onClick={()=>markDone(i)}>Mark as Done</button>}
-                </li>
-              ))}
-            </ul>
+    <div className="edu-page edu-resources">
+      <h1>Study Resources</h1>
+      <div style={{marginBottom:16}}>
+        <input
+          className="edu-input"
+          placeholder="Search resources…"
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{marginRight:8}}
+        />
+        <select value={cat} onChange={e => setCat(e.target.value)} className="edu-input">
+          {categories.map(c => <option key={c}>{c}</option>)}
+        </select>
+      </div>
+      <div className="edu-resource-list">
+        {filtered.length === 0 && <div className="edu-empty">No resources found.</div>}
+        {filtered.map((r,i) => (
+          <div className="edu-resource-card" key={i}>
+            <div className="edu-resource-title">{r.title}</div>
+            <div className="edu-resource-cat">{r.category}</div>
+            <a href={r.url} target="_blank" rel="noopener noreferrer" className="edu-btn edu-btn-link">Visit</a>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default StudyResources;
+
