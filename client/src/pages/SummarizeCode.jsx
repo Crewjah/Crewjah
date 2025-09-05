@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const SummarizeCode = () => {
   const [code, setCode] = useState('');
   const [lang, setLang] = useState('python');
