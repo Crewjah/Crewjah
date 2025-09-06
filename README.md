@@ -63,5 +63,6 @@ This project is licensed under the MIT License. See [LICENSE](client/LICENSE) fo
 ## 💬 Community
 - Issues: Use the GitHub Issues tab
 - Discussions: Join our GitHub Discussions
+- Logo: ![Crewjah Logo](client/public/crewjah-logo.png)
 ---
 Made with ❤️ by the Crewjah open source community.
