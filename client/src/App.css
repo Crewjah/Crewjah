@@ -54,21 +54,7 @@
   margin-right: auto;
 
 /* Modern Educational Landing Page Styles */
-.edu-landing-bg {
-  min-height: 100vh;
-  width: 100vw;
-  background: linear-gradient(120deg, #f5f7fa 0%, #e0e7ff 60%, #c7d2fe 100%);
-  color: #22223b;
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  animation: fadein 1.2s cubic-bezier(.4,0,.2,1);
-}
-
-.edu-navbar {
-  display: flex;
+.edu-hero-main {
   justify-content: center;
   align-items: center;
   gap: 2.5rem;
