@@ -1,6 +1,6 @@
 /* Animated background for landing page */
 .animated-bg {
-  background: linear-gradient(120deg, #f5f7fa 0%, #e0e7ff 60%, #c7d2fe 100%) !important;
+  background: linear-gradient(120deg, #f5f7fa 0%, #a5b4fc 60%, #f472b6 100%) !important;
   animation: bg-move 12s ease-in-out infinite alternate;
   background-size: 200% 200%;
 }
@@ -12,10 +12,10 @@
 /* Fade-in animation for hero, buttons, footer */
 .animate-fadein {
   opacity: 0;
-  animation: fadein 1.2s cubic-bezier(.4,0,.2,1) forwards;
+  animation: fadein 1.4s cubic-bezier(.4,0,.2,1) forwards;
 }
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(40px) scale(0.98); }
+  from { opacity: 0; transform: translateY(60px) scale(0.96); }
   to { opacity: 1; transform: none; }
 }
 
@@ -31,7 +31,7 @@
 
 .crewjah-landing-bg {
   min-height: 100vh;
-  background: #f7f9fb !important;
+  background: linear-gradient(135deg, #f5f7fa 0%, #a5b4fc 60%, #f472b6 100%) !important;
   color: #181a2a;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   display: flex;
@@ -40,18 +40,20 @@
 
 
 
+
 .crewjah-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 4vw 1.2rem 4vw;
-  background: #fff;
+  background: linear-gradient(90deg, #fff 60%, #a5b4fc 100%) !important;
   box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
   border-radius: 0 0 18px 18px;
   margin-bottom: 2.5rem;
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
+}
 
 /* Modern Educational Landing Page Styles */
 .edu-hero-main {
@@ -114,7 +116,6 @@
 }
 
 .edu-hero-main {
-  }
   max-width: 900px;
   width: 100%;
   margin: 0 auto;
@@ -123,10 +124,6 @@
   border-radius: 2.2rem;
   box-shadow: 0 4px 32px 0 #6366f122;
   animation: fadein 1.2s cubic-bezier(.4,0,.2,1);
-  }
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 .edu-hero-tagline {
   font-size: 1.18rem;
@@ -159,39 +156,11 @@
   position: relative;
   overflow: hidden;
 }
-.edu-btn:after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(99,102,241,0.15);
-  border-radius: 100%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s cubic-bezier(.4,0,.2,1), height 0.4s cubic-bezier(.4,0,.2,1);
-  z-index: 0;
+.edu-hero-main {
+  /* height: 220%; */
 }
-.edu-btn:active:after {
-  width: 220%;
-  height: 220%;
-}
-.edu-btn-primary {
-  background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
-  color: #fff;
-  box-shadow: 0 4px 16px 0 #6366f144;
-  z-index: 1;
-}
-.edu-btn-primary:hover {
-  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 32px 0 #6366f155;
-}
-.edu-btn-secondary {
-  background: #fff;
-  color: #4f46e5;
-  border: 2px solid #4f46e5;
-  z-index: 1;
+.edu-hero-main {
+  /* z-index: 1; */
 }
 .edu-btn-secondary:hover {
   background: #f5f7fa;
@@ -236,21 +205,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.edu-footer-links {
-  margin-bottom: 0.5rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-}
-.edu-footer-links a {
-  color: #4f46e5;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.2rem 0.7rem;
-  border-radius: 6px;
-  transition: background 0.2s, color 0.2s;
-}
-.edu-footer-links a:hover {
+.edu-hero-main {
   text-decoration: underline;
   background: #e0e7ff;
 }
@@ -287,13 +242,7 @@
     padding: 0.5em;
   }
 }
-    min-width: 0;
-  }
-  .crewjah-hero-img {
-    width: 180px;
-    padding: 0.5em;
-  }
-}
+/* Removed stray closing braces and misplaced lines */
 
 .crewjah-footer-copy {
   font-size: 0.98em;
@@ -409,7 +358,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  /* Removed invalid property: text-fill-color */
 }
 .crewjah-tagline {
   font-size: 1.15em;
@@ -533,7 +482,7 @@
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
-  text-fill-color: transparent !important;
+  /* Removed invalid property: text-fill-color */
 }
 .tagline {
   font-size: 1.18em !important;
@@ -655,7 +604,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  /* Removed invalid property: text-fill-color */
 }
 .tagline {
   font-size: 1.18em;
@@ -685,14 +634,14 @@
   text-decoration: none;
 }
 .edu-btn-primary {
-  background: linear-gradient(90deg, #6366f1 0%, #06b6d4 100%);
+  background: linear-gradient(90deg, #6366f1 0%, #f472b6 100%);
   color: #fff;
-  box-shadow: 0 4px 16px 0 #6366f144;
+  box-shadow: 0 6px 20px 0 #f472b644;
 }
 .edu-btn-primary:hover, .edu-btn-primary:focus {
-  background: linear-gradient(90deg, #4f46e5 0%, #06b6d4 100%);
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 32px 0 #6366f155;
+  background: linear-gradient(90deg, #f472b6 0%, #6366f1 100%);
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 12px 36px 0 #f472b655;
 }
 .edu-btn-secondary {
   background: #fff;
@@ -729,7 +678,10 @@
 .edu-landing-html {
   background: linear-gradient(135deg, #f5f7fa 0%, #e0e7ff 100%) !important;
 }
+
 .landing-fadein {
+  animation: fadeIn 1.2s cubic-bezier(.4,0,.2,1) 0.7s forwards;
+}
 
 /* Educational Landing Page Styles */
 .edu-landing-bg {
@@ -783,7 +735,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
+  /* Removed invalid property: text-fill-color */
 }
 .edu-landing-desc {
   font-size: 1.15em;
