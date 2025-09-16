@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 
 const ProfileSettings = () => {
@@ -12,25 +13,23 @@ const ProfileSettings = () => {
   }
 
   return (
-    <div className="edu-page edu-profile">
-      <h1>Profile Settings</h1>
-      <div className="edu-profile-form">
-        <label htmlFor="profile-name">Name:<br />
-          <input id="profile-name" className="edu-input" value={name} onChange={e => setName(e.target.value)} aria-label="Name" />
-        </label>
-        <label htmlFor="profile-email">Email:<br />
-          <input id="profile-email" className="edu-input" value={email} onChange={e => setEmail(e.target.value)} aria-label="Email" />
-        </label>
-        <label htmlFor="profile-bio">Bio:<br />
-          <textarea id="profile-bio" className="edu-input" value={bio} onChange={e => setBio(e.target.value)} rows={3} aria-label="Bio" />
-        </label>
-        <button
-          className="edu-btn edu-btn-primary transition-all duration-300 ease-in-out bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white font-semibold py-2 px-6 rounded-lg shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          onClick={handleSave}
-        >
-          Save
-        </button>
-        {saved && <span className="edu-success" style={{marginLeft:12}}>Saved!</span>}
+    <div className="min-h-screen flex items-center justify-center bg-blue-50">
+      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-xl">
+        <h1 className="text-2xl font-bold mb-6 text-primary">Profile Settings</h1>
+        <div className="flex flex-col gap-4 mb-6">
+          <label className="font-medium">Name
+            <input className="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary" value={name} onChange={e => setName(e.target.value)} />
+          </label>
+          <label className="font-medium">Email
+            <input className="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary" value={email} onChange={e => setEmail(e.target.value)} />
+          </label>
+          <label className="font-medium">Bio
+            <textarea className="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary" value={bio} onChange={e => setBio(e.target.value)} rows={3} />
+          </label>
+        </div>
+        <button className="w-full py-2 bg-primary text-white font-bold rounded hover:bg-primaryHover transition" onClick={handleSave}>Save</button>
+        {saved && <div className="mt-4 text-green-600 text-sm">Saved!</div>}
+        <div className="mt-6 text-xs text-blue-700">Your profile is private. You can export or delete your data anytime.</div>
       </div>
     </div>
   );
