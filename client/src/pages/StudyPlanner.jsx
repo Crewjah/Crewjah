@@ -1,47 +1,60 @@
+
+import { useState } from 'react';
+
 const StudyPlanner = () => {
   const [task, setTask] = useState('');
+  const [due, setDue] = useState('');
+  const [duration, setDuration] = useState('');
   const [tasks, setTasks] = useState([]);
 
   function addTask() {
     if (!task) return;
-    setTasks([...tasks, { text: task, done: false }]);
+    setTasks([...tasks, { text: task, due, duration, done: false }]);
     setTask('');
+    setDue('');
+    setDuration('');
   }
   function markDone(idx) {
     setTasks(tasks.map((t, i) => i === idx ? { ...t, done: !t.done } : t));
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
-      <div className="w-full max-w-xl bg-white rounded-2xl shadow-2xl p-10 animate-fadein">
-        <h1 className="text-3xl font-extrabold mb-6 text-center text-blue-700">Study Planner</h1>
-        <div className="flex gap-4 mb-8">
+    <div className="min-h-screen flex items-center justify-center bg-blue-50">
+      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-xl">
+        <h1 className="text-2xl font-bold mb-6 text-primary">Study Planner</h1>
+        <div className="mb-4 flex flex-col gap-3">
           <input
-            className="flex-1 border border-blue-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary"
             placeholder="Add a study task…"
             value={task}
             onChange={e => setTask(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && addTask()}
           />
-          <button
-            className="px-6 py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold rounded-lg shadow-xl hover:from-pink-500 hover:to-blue-500 transform hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400 animate-slidein"
-            onClick={addTask}
-          >
-            Add
-          </button>
+          <input
+            type="date"
+            className="px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary"
+            value={due}
+            onChange={e => setDue(e.target.value)}
+            placeholder="Due date"
+          />
+          <input
+            type="number"
+            min="1"
+            className="px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary"
+            value={duration}
+            onChange={e => setDuration(e.target.value)}
+            placeholder="Duration (minutes)"
+          />
+          <button className="py-2 px-6 bg-primary text-white font-bold rounded hover:bg-primaryHover transition" onClick={addTask}>Add Task</button>
         </div>
-        <ul className="space-y-4">
-          {tasks.length === 0 && (
-            <li className="bg-blue-50 rounded-lg p-6 text-center text-lg text-blue-700 shadow">
-              <strong>Welcome to your Study Planner!</strong>
-              <p className="mt-2 text-base text-blue-500">Organize your learning goals and track your progress. Start by adding your first study task above.</p>
-              <span role="img" aria-label="sparkles" style={{fontSize:'2rem'}}>✨</span>
-            </li>
-          )}
+        <ul className="mt-6">
+          {tasks.length === 0 && <li className="text-gray-500">No tasks yet. Add your first study goal!</li>}
           {tasks.map((t, i) => (
-            <li key={i} className={`flex items-center gap-3 bg-blue-50 rounded-lg p-4 shadow ${t.done ? 'opacity-60' : ''}`}>
-              <input type="checkbox" checked={t.done} onChange={() => markDone(i)} className="w-5 h-5 accent-blue-500" />
-              <span className="flex-1 text-lg text-blue-900">{t.text}</span>
+            <li key={i} className={`mb-3 p-3 rounded border flex items-center gap-4 ${t.done ? 'bg-blue-100 line-through' : 'bg-white'}`}>
+              <input type="checkbox" checked={t.done} onChange={() => markDone(i)} />
+              <span className="flex-1">{t.text}</span>
+              <span className="text-xs text-gray-500">Due: {t.due || '—'}</span>
+              <span className="text-xs text-gray-500">Duration: {t.duration ? t.duration + ' min' : '—'}</span>
             </li>
           ))}
         </ul>
