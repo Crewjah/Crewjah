@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const API = 'http://localhost:5000';
 
+
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,7 +19,7 @@ const SignIn = () => {
         body: JSON.stringify({ email, password })
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Login failed');
+      if (!res.ok) throw new Error(data.error || 'Incorrect email or password.');
       localStorage.setItem('token', data.token);
       navigate('/dashboard');
     } catch (err) {
@@ -26,25 +27,26 @@ const SignIn = () => {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 via-blue-100 to-purple-200">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 animate-fadein">
-        <h2 className="text-3xl font-extrabold mb-6 text-center text-blue-700">Sign In to Crewjah</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required className="border border-blue-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
-          <input type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required className="border border-blue-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400" />
-          <button
-            type="submit"
-            className="w-full py-3 mt-2 bg-gradient-to-r from-pink-400 via-blue-400 to-purple-500 text-white font-bold rounded-lg shadow-xl hover:from-blue-400 hover:to-pink-400 transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pink-400 animate-slidein"
-          >
-            Sign In
-          </button>
+    <div className="min-h-screen flex items-center justify-center bg-blue-50">
+      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-primary">Sign In</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <label className="block">
+            <span className="text-sm font-medium">Email</span>
+            <input type="email" autoComplete="email" className="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} required />
+          </label>
+          <label className="block">
+            <span className="text-sm font-medium">Password</span>
+            <input type="password" autoComplete="current-password" className="mt-1 w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} required />
+          </label>
+          <button type="submit" className="w-full py-2 bg-primary text-white font-bold rounded hover:bg-primaryHover transition">Sign In</button>
         </form>
-        <div className="flex justify-between items-center mt-6">
-          <button onClick={() => navigate('/signup')} className="text-blue-600 hover:underline font-semibold text-base">Create account</button>
-          <button onClick={() => navigate('/forgot')} className="text-blue-600 hover:underline font-semibold text-base">Forgot password?</button>
+        <div className="flex justify-between mt-4">
+          <button className="text-primary underline" onClick={() => navigate('/signup')}>Sign Up</button>
+          <button className="text-primary underline" onClick={() => navigate('/forgot')}>Forgot password?</button>
         </div>
-        {error && <div className="mt-4 text-center text-red-500 font-semibold animate-fadein">{error}</div>}
-        <p className="mt-6 text-center text-xs text-gray-500">By signing in, you agree to our <Link to="/terms" className="underline">Terms</Link> & <Link to="/privacy" className="underline">Privacy</Link>.</p>
+        {error && <div className="mt-4 text-red-600 text-sm">{error}</div>}
+        <p className="mt-6 text-xs text-gray-500">By signing in, you agree to our <a href="/terms" className="underline">Terms</a> & <a href="/privacy" className="underline">Privacy</a>.</p>
       </div>
     </div>
   );
