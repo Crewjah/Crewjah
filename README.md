@@ -1,53 +1,75 @@
+# Crewjah
 
+>Crewjah is a modern, open-source educational platform for students and lifelong learners. It provides tools for studying, planning, tracking progress, quizzes, flashcards, and more, with a focus on privacy and accessibility.
 
-<div align="center">
-  <img src="client/public/crewjah-logo.png" alt="Crewjah Logo" width="120" />
-  <h1>Crewjah</h1>
-  <p><b>Modern Educational Platform</b></p>
-</div>
-
-Crewjah is a modern, open-source educational platform for students and lifelong learners. Built with React, Vite, TailwindCSS, and Node.js, it provides real study tools to help you learn, plan, and track your progress.
-
-## 🚀 Features
-- Modern, accessible UI (TailwindCSS)
+## Features
+- Modern, accessible UI (React + TailwindCSS)
 - AI-powered Q&A and note summarization
 - Study planner, progress tracker, quizzes, flashcards
+- Export notes and progress
 - Privacy-first: your data is never sold
-- Export notes and progress anytime
 
-## 🛠️ Getting Started
-1. **Clone the repository:**
+## Sitemap
+**Visitor (not logged in):**
+- Landing/Home (marketing)
+- Sign In
+- Sign Up
+- Forgot Password
+- Privacy • Terms • Contact
+
+**Logged-in Student:**
+- Dashboard (app home)
+- Ask Anything (Q&A)
+- Summarize Text
+- Summarize Code
+- Study Resources
+- Take a Quiz
+- Flashcards
+- Daily Challenge
+- Study Planner
+- Progress Tracker
+- Download Notes
+- Accessibility Settings
+- Profile & Settings
+- Help / Usage Guide
+
+## Project Structure
+- `client/` — React frontend (Vite, TailwindCSS)
+- `server/` — Node.js/Express backend (legacy/demo)
+- `flask_backend/` — Flask backend (legacy/demo)
+- `fastapi_backend/` — FastAPI backend (main API)
+
+## Getting Started
+
+### Frontend (client)
+1. Install dependencies:
    ```bash
-   git clone https://github.com/Crewjah/Crewjah.git
-   cd Crewjah/client
-   ```
-2. **Install dependencies:**
-   ```bash
+   cd client
    npm install
    ```
-3. **Run the development server:**
+2. Start development server:
    ```bash
    npm run dev
    ```
-4. **Open in browser:**
-   Visit `http://localhost:5173`
+3. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-## 🧑‍💻 Tech Stack
-- React
-- Vite
-- TailwindCSS
-- Node.js (Express backend)
+### FastAPI Backend (main)
+1. Install dependencies:
+   ```bash
+   cd fastapi_backend
+   pip install -r requirements.txt
+   ```
+2. Start server:
+   ```bash
+   uvicorn main:app --reload
+   ```
+3. API available at `http://localhost:8000`
 
-## 🤝 Contributing
-We welcome contributions! Please open issues or pull requests for improvements, features, or bug fixes.
+## Contributing
+Contributions are welcome! Please open issues or pull requests for improvements, features, or bug fixes.
 
-## 📜 License
-MIT License. See LICENSE for details.
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+## License
+MIT License. See [LICENSE](LICENSE) for details.
 
-## 💬 Community
-- Issues: Use the GitHub Issues tab
-- Discussions: Join our GitHub Discussions
-- Logo: ![Crewjah Logo](client/public/crewjah-logo.png)
 ---
 Made with ❤️ by the Crewjah open source community.
