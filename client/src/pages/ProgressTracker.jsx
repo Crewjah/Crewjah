@@ -1,43 +1,56 @@
 
-import { useState } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const mockProgress = [
-  { label: 'Python Basics', percent: 80 },
-  { label: 'Data Structures', percent: 60 },
-  { label: 'Algorithms', percent: 40 },
+const progressData = [
+  { label: 'Math', percent: 80 },
+  { label: 'Biology', percent: 60 },
+  { label: 'Algorithms', percent: 40 }
+];
+const streak = 5;
+const badges = [
+  { name: 'Starter', color: 'bg-yellow-400' },
+  { name: 'Streak 5', color: 'bg-green-400' }
 ];
 
-const filters = ['All', 'Python', 'DSA', 'Math'];
-
-const ProgressTracker = () => {
-  const [filter, setFilter] = useState('All');
-  const filtered = filter === 'All' ? mockProgress : mockProgress.filter(p => p.label.includes(filter));
+export default function ProgressTracker() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-50">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-xl">
-        <h1 className="text-2xl font-bold mb-6 text-primary">Progress Tracker</h1>
-        <div className="mb-4 flex gap-4 items-center">
-          <label className="font-medium">Filter:</label>
-          <select value={filter} onChange={e => setFilter(e.target.value)} className="px-2 py-1 border rounded">
-            {filters.map(f => <option key={f}>{f}</option>)}
-          </select>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-100 via-blue-50 to-purple-100 py-10">
+      <motion.div
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-xl mx-auto bg-white/90 rounded-3xl shadow-xl p-8 flex flex-col items-center"
+      >
+        <h2 className="text-3xl font-bold text-green-700 mb-2">Progress Tracker</h2>
+        <p className="text-base text-blue-700 mb-6 text-center">Track your study progress, streaks, and achievements!</p>
+        <div className="w-full mb-6">
+          <div className="font-semibold text-lg mb-2">Subject Progress</div>
+          <ul className="space-y-4">
+            {progressData.map((p, i) => (
+              <li key={i} className="flex flex-col">
+                <span className="font-bold text-green-700 mb-1">{p.label}</span>
+                <div className="w-full bg-gray-200 rounded-full h-4">
+                  <div className="h-4 rounded-full" style={{ width: `${p.percent}%` }} className="bg-green-400"></div>
+                </div>
+                <span className="text-xs text-gray-500 mt-1">{p.percent}% completed</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="mb-6">
-          {filtered.map((p, i) => (
-            <div key={i} className="mb-4">
-              <div className="font-semibold mb-1">{p.label}</div>
-              <div className="w-full bg-blue-100 rounded h-4 mb-1">
-                <div className="bg-primary h-4 rounded" style={{width: p.percent + '%'}}></div>
-              </div>
-              <div className="text-xs text-gray-500">{p.percent}% completed</div>
-            </div>
-          ))}
+        <div className="w-full mb-6 flex flex-col items-center">
+          <div className="font-semibold text-lg mb-2">Streak</div>
+          <div className="text-2xl font-bold text-green-700">🔥 {streak} days</div>
         </div>
-        <div className="mb-4 text-sm text-blue-700">Current Streak: <span className="font-bold">5 days</span></div>
-        <div className="mb-4 text-sm text-green-700">Achievements: <span className="font-bold">3 modules completed</span></div>
-        <div className="mb-4 text-sm text-gray-500">Quizzes completed: <span className="font-bold">7</span> | Flashcard retention: <span className="font-bold">85%</span></div>
-        <button className="w-full py-2 bg-primary text-white font-bold rounded hover:bg-primaryHover transition">Export Progress (PDF/CSV)</button>
-      </div>
+        <div className="w-full mb-4 flex flex-col items-center">
+          <div className="font-semibold text-lg mb-2">Badges</div>
+          <div className="flex gap-4">
+            {badges.map((b, i) => (
+              <span key={i} className={`px-4 py-2 rounded-full shadow text-white font-semibold ${b.color}`}>{b.name}</span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }
