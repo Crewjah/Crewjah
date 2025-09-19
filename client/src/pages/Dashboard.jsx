@@ -6,16 +6,13 @@ const Dashboard = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) return navigate('/signin');
-    fetch('http://localhost:5000/me', {
-      headers: { Authorization: `Bearer ${token}` }
+    fetch('http://localhost:5000/api/me', {
+      credentials: 'include'
     })
       .then(res => res.json())
       .then(data => {
         if (data.error) {
           setError(data.error);
-          localStorage.removeItem('token');
           navigate('/signin');
         } else {
           setUser(data);
@@ -23,8 +20,8 @@ const Dashboard = () => {
       })
       .catch(() => setError('Failed to load user info'));
   }, [navigate]);
-  const handleLogout = () => {
-    localStorage.removeItem('token');
+  const handleLogout = async () => {
+    await fetch('http://localhost:5000/api/logout', { method: 'POST', credentials: 'include' });
     navigate('/signin');
   };
   if (error) return <div className="min-h-screen flex items-center justify-center text-red-600">{error}</div>;
