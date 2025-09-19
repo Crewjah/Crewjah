@@ -14,18 +14,18 @@ const tips = [
 ];
 
 const Help = () => (
-  <div className="min-h-screen flex items-center justify-center bg-blue-50">
-    <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-xl">
-      <h1 className="text-2xl font-bold mb-6 text-primary">Help & Usage Guide</h1>
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-700 via-purple-200 to-cyan-200">
+    <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-xl animate-fadein">
+      <h1 className="text-3xl font-extrabold mb-6 text-blue-900 text-center">Help & Usage Guide</h1>
       <div className="mb-6">
-        <h2 className="text-lg font-bold mb-2 text-primary">Quick Tips</h2>
-        <ul className="list-disc list-inside text-gray-700 mb-4">
+        <h2 className="text-lg font-bold mb-2 text-blue-700">Quick Tips</h2>
+        <ul className="list-disc list-inside text-gray-700 mb-4 text-left">
           {tips.map((t, i) => <li key={i}>{t}</li>)}
         </ul>
       </div>
       <div className="mb-6">
-        <h2 className="text-lg font-bold mb-2 text-primary">Frequently Asked Questions</h2>
-        <ul className="list-disc list-inside text-gray-700 mb-4">
+        <h2 className="text-lg font-bold mb-2 text-blue-700">Frequently Asked Questions</h2>
+        <ul className="list-disc list-inside text-gray-700 mb-4 text-left">
           {faqs.map((f, i) => (
             <li key={i} className="mb-2">
               <b>{f.q}</b>
@@ -35,8 +35,8 @@ const Help = () => (
         </ul>
       </div>
       <div className="mb-4 text-xs text-blue-700">Privacy & data: We do not sell personal data. You can export or delete your data anytime.</div>
-      <div className="mb-4 text-xs text-gray-500">For detailed docs, visit <a href="/help">Docs</a> or <a href="https://github.com/Crewjah/Crewjah/issues" target="_blank" rel="noopener noreferrer">Report a bug</a>.</div>
-      <div className="mb-2 text-xs text-blue-700">Contact support: <a href="mailto:support@crewjah.com">support@crewjah.com</a></div>
+      <div className="mb-4 text-xs text-gray-500">For detailed docs, visit <a href="/help" className="underline text-purple-700">Docs</a> or <a href="https://github.com/Crewjah/Crewjah/issues" target="_blank" rel="noopener noreferrer" className="underline text-purple-700">Report a bug</a>.</div>
+      <div className="mb-2 text-xs text-blue-700">Contact support: <a href="mailto:support@crewjah.com" className="underline text-purple-700">support@crewjah.com</a></div>
     </div>
   </div>
 );
