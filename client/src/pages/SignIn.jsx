@@ -22,7 +22,7 @@ const SignIn = () => {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Incorrect email or password.');
-  navigate('/dashboard');
+      navigate('/dashboard'); // Redirect to dashboard on successful login
     } catch (err) {
       setError(err.message);
     }
@@ -79,4 +79,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignIn; // Exporting the SignIn component
