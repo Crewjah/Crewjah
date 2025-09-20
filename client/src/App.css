@@ -1,4 +1,4 @@
-/* Animated background for landing page */
+/* Renamed to App.custom.css to disable global overrides. No longer used. */
 .animated-bg {
   background: linear-gradient(120deg, #f5f7fa 0%, #e0e7ff 60%, #c7d2fe 100%) !important;
   animation: bg-move 12s ease-in-out infinite alternate;
@@ -31,8 +31,8 @@
 
 .crewjah-landing-bg {
   min-height: 100vh;
-  background: #f7f9fb !important;
-  color: #181a2a;
+  /* background: #f7f9fb !important; */
+  /* color: #181a2a; */
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   display: flex;
   flex-direction: column;
