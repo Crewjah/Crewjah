@@ -13,7 +13,7 @@ const badges = [
   { name: 'Streak 5', color: 'bg-green-400' }
 ];
 
-export default function ProgressTracker() {
+function ProgressTracker() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-100 via-blue-50 to-purple-100 py-10">
       <motion.div
@@ -31,7 +31,7 @@ export default function ProgressTracker() {
               <li key={i} className="flex flex-col">
                 <span className="font-bold text-green-700 mb-1">{p.label}</span>
                 <div className="w-full bg-gray-200 rounded-full h-4">
-                  <div className="h-4 rounded-full" style={{ width: `${p.percent}%` }} className="bg-green-400"></div>
+                  <div className="h-4 rounded-full bg-green-400" style={{ width: `${p.percent}%` }}></div>
                 </div>
                 <span className="text-xs text-gray-500 mt-1">{p.percent}% completed</span>
               </li>
