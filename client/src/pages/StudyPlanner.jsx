@@ -1,6 +1,4 @@
 
-import { useState } from 'react';
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -9,7 +7,7 @@ const initialTasks = [
   { date: '2025-09-21', subject: 'Biology', task: 'Flashcards: Cell structure', done: true }
 ];
 
-export default function StudyPlanner() {
+function StudyPlanner() {
   const [tasks, setTasks] = useState(initialTasks);
   const [newTask, setNewTask] = useState({ date: '', subject: '', task: '' });
 
