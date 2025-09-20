@@ -1,21 +1,12 @@
 import { Link } from 'react-router-dom';
 
 const Header = () => (
-  <header style={{padding:'16px 0',borderBottom:'1px solid #eee',marginBottom:24}}>
-    <Link to="/">
-      <img src="/vite.svg" alt="Crewjah Logo" style={{ height: 40, verticalAlign:'middle' }} />
-      <span style={{fontWeight:'bold',fontSize:24,marginLeft:8,verticalAlign:'middle'}}>Crewjah</span>
+  <header className="w-full flex items-center justify-between px-8 py-4 bg-white/80 rounded-3xl shadow-lg mb-8 z-10 relative">
+    <Link to="/" className="flex items-center gap-3">
+      <img src="/vite.svg" alt="Crewjah Logo" className="h-10" />
+      <span className="font-extrabold text-2xl text-purple-700 drop-shadow-lg">Crewjah</span>
     </Link>
-    <nav style={{float:'right'}}>
-      <Link to="/dashboard" style={{marginRight:16}}>Dashboard</Link>
-      <Link to="/ask" style={{marginRight:16}}>Ask</Link>
-      <Link to="/summarize-text" style={{marginRight:16}}>Summarize</Link>
-      <Link to="/quiz" style={{marginRight:16}}>Quiz</Link>
-      <Link to="/flashcards" style={{marginRight:16}}>Flashcards</Link>
-      <Link to="/planner" style={{marginRight:16}}>Planner</Link>
-      <Link to="/progress" style={{marginRight:16}}>Progress</Link>
-      <Link to="/help">Help</Link>
-    </nav>
+  <Link to="/signup" className="px-6 py-2 bg-purple-700 text-white rounded-xl shadow-lg hover:bg-purple-800 font-bold transition">Get Started</Link>
   </header>
 );
 
