@@ -30,6 +30,7 @@ import NotFound from './pages/NotFound';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Contact from './pages/Contact';
+import TailwindTest from './pages/TailwindTest';
 
 
 function AppRoutes() {
@@ -41,39 +42,28 @@ function AppRoutes() {
       {!hideNav && <Header />}
       <Routes>
         <Route path="/" element={<Landing />} />
-  <Route path="/signin" element={<SignIn />} />
-  <Route path="/signup" element={<SignUp />} />
-  <Route path="/forgot" element={<ForgotPassword />} />
-  <Route path="/privacy" element={<Privacy />} />
-  <Route path="/terms" element={<Terms />} />
-  <Route path="/contact" element={<Contact />} />
-        <Route
-          path="*"
-          element={
-            <div style={{display:'flex',minHeight:'70vh'}}>
-              {!hideNav && <Sidebar />}
-              <main style={{flex:1,padding:'32px 24px'}}>
-                <Routes>
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/ask" element={<AskAnything />} />
-                  <Route path="/summarize-text" element={<SummarizeText />} />
-                  <Route path="/summarize-code" element={<SummarizeCode />} />
-                  <Route path="/resources" element={<StudyResources />} />
-                  <Route path="/quiz" element={<Quiz />} />
-                  <Route path="/flashcards" element={<Flashcards />} />
-                  <Route path="/daily-challenge" element={<DailyChallenge />} />
-                  <Route path="/planner" element={<StudyPlanner />} />
-                  <Route path="/progress" element={<ProgressTracker />} />
-                  <Route path="/download-notes" element={<DownloadNotes />} />
-                  <Route path="/accessibility" element={<AccessibilitySettings />} />
-                  <Route path="/profile" element={<ProfileSettings />} />
-                  <Route path="/help" element={<Help />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-            </div>
-          }
-        />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/forgot" element={<ForgotPassword />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/ask" element={<AskAnything />} />
+        <Route path="/summarize-text" element={<SummarizeText />} />
+        <Route path="/summarize-code" element={<SummarizeCode />} />
+        <Route path="/resources" element={<StudyResources />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/flashcards" element={<Flashcards />} />
+        <Route path="/daily" element={<DailyChallenge />} />
+        <Route path="/planner" element={<StudyPlanner />} />
+        <Route path="/progress" element={<ProgressTracker />} />
+        <Route path="/download" element={<DownloadNotes />} />
+        <Route path="/accessibility" element={<AccessibilitySettings />} />
+        <Route path="/profile" element={<ProfileSettings />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/tailwind-test" element={<TailwindTest />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {!hideNav && <Footer />}
     </>
