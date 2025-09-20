@@ -4,14 +4,15 @@
   font-weight: 400;
 
   color-scheme: light;
-  color: #22223b;
-  background-color: #f5f7fa;
+  /* color: #22223b; */
+  /* background-color: #f5f7fa; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 
 a {
   font-weight: 500;
@@ -54,14 +55,14 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+  /* :root { */
+    /* color: #213547; */
+    /* background-color: #ffffff; */
+  /* } */
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
   }
 }
