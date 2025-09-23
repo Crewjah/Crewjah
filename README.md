@@ -1,75 +1,202 @@
-# Crewjah
+# Crewjah Educational Platform
 
->Crewjah is a modern, open-source educational platform for students and lifelong learners. It provides tools for studying, planning, tracking progress, quizzes, flashcards, and more, with a focus on privacy and accessibility.
+Crewjah is a modern educational platform designed to enhance learning experiences for students and lifelong learners. Built with authentic educational principles in mind, it provides a clean, professional interface focused on learning outcomes and user experience.
 
-## Features
-- Modern, accessible UI (React + TailwindCSS)
-- AI-powered Q&A and note summarization
-- Study planner, progress tracker, quizzes, flashcards
-- Export notes and progress
-- Privacy-first: your data is never sold
+## Core Features
 
-## Sitemap
-**Visitor (not logged in):**
-- Landing/Home (marketing)
-- Sign In
-- Sign Up
-- Forgot Password
-- Privacy • Terms • Contact
+### User Interface
+- Modern, responsive design built with React 18 and TailwindCSS
+- Optimized animations and smooth user interactions
+- Accessible design patterns following educational best practices
+- Mobile-first responsive layout
 
-**Logged-in Student:**
-- Dashboard (app home)
-- Ask Anything (Q&A)
-- Summarize Text
-- Summarize Code
-- Study Resources
-- Take a Quiz
-- Flashcards
-- Daily Challenge
-- Study Planner
-- Progress Tracker
-- Download Notes
-- Accessibility Settings
-- Profile & Settings
-- Help / Usage Guide
+### Educational Components
+- Interactive landing page showcasing platform benefits
+- Student dashboard for learning progress tracking
+- Clean, distraction-free interface design
+- Professional educational color scheme (blues, greens, slate)
 
-## Project Structure
-- `client/` — React frontend (Vite, TailwindCSS)
-- `server/` — Node.js/Express backend (legacy/demo)
-- `flask_backend/` — Flask backend (legacy/demo)
-- `fastapi_backend/` — FastAPI backend (main API)
+### Technical Infrastructure
+- React Single Page Application (SPA) with React Router
+- FastAPI backend for scalable API services
+- Vite build system for fast development and optimized production builds
+- Professional deployment configuration for Vercel
+
+## Application Structure
+
+### Frontend Pages
+- **Landing Page**: Platform introduction and feature overview
+- **Dashboard**: Student learning interface and progress tracking
+- **Authentication System**: User login and registration (structure ready)
+
+### Backend Services
+- **FastAPI Backend**: Main API service with modern Python async framework
+- **Environment Configuration**: Secure configuration management
+- **Database Ready**: Structured for educational data management
+
+## Project Architecture
+
+```
+crewjah/
+├── client/                 # React Frontend Application
+│   ├── src/
+│   │   ├── pages/         # Landing.jsx, Dashboard.jsx
+│   │   ├── components/    # Reusable UI components
+│   │   └── styles/        # TailwindCSS configuration
+│   ├── package.json       # Frontend dependencies
+│   └── vite.config.js     # Build configuration
+├── fastapi_backend/       # Python FastAPI Backend
+│   ├── main.py           # API routes and application logic
+│   ├── requirements.txt  # Python dependencies
+│   └── .env.example      # Environment configuration template
+├── setup.ps1             # Windows PowerShell setup script
+├── setup.sh              # Linux/Unix setup script
+├── vercel.json           # Deployment configuration
+└── package.json          # Project scripts and metadata
+```
+
+## Technology Stack
+
+### Frontend
+- **React 18.2.0**: Modern component-based UI framework
+- **Vite 7.1.5**: Fast build tool and development server
+- **TailwindCSS 3.3.3**: Utility-first CSS framework
+- **Framer Motion 12.23.15**: Smooth animations and transitions
+- **React Router DOM**: Client-side routing
+
+### Backend
+- **FastAPI**: Modern Python web framework for APIs
+- **Uvicorn**: ASGI server for production deployment
+- **Environment Variables**: Secure configuration management
+
+### Development Tools
+- **ESLint**: Code linting and style enforcement
+- **PostCSS**: CSS processing and optimization
+- **Autoprefixer**: Cross-browser CSS compatibility
 
 ## Getting Started
 
-### Frontend (client)
-1. Install dependencies:
+### Prerequisites
+- Node.js 16+ and npm
+- Python 3.8+ and pip
+- Git for version control
+
+### Quick Setup
+
+1. **Clone the Repository**
    ```bash
-   cd client
-   npm install
+   git clone https://github.com/Crewjah/Crewjah.git
+   cd Crewjah
    ```
-2. Start development server:
+
+2. **Run Setup Scripts**
+   
+   **Windows (PowerShell):**
+   ```powershell
+   .\setup.ps1
+   ```
+   
+   **Linux/macOS:**
+   ```bash
+   chmod +x setup.sh && ./setup.sh
+   ```
+
+3. **Start Development Environment**
    ```bash
    npm run dev
    ```
-3. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### FastAPI Backend (main)
-1. Install dependencies:
-   ```bash
-   cd fastapi_backend
-   pip install -r requirements.txt
-   ```
-2. Start server:
-   ```bash
-   uvicorn main:app --reload
-   ```
-3. API available at `http://localhost:8000`
+4. **Access Application**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+
+### Manual Installation
+
+**Frontend Setup:**
+```bash
+cd client
+npm install
+npm run dev
+```
+
+**Backend Setup:**
+```bash
+cd fastapi_backend
+pip install -r requirements.txt
+cp .env.example .env
+uvicorn main:app --reload
+```
+
+## Build and Deployment
+
+### Local Build
+```bash
+npm run build    # Builds the client application
+npm run start    # Serves production build locally
+```
+
+### Production Deployment
+The application is configured for deployment on Vercel with automatic builds from the GitHub repository. The `vercel.json` configuration handles:
+- React SPA routing
+- Static file optimization
+- Build process automation
+
+## Development Workflow
+
+### Code Quality
+- Authentic educational content (no fake testimonials or statistics)
+- Performance-optimized animations
+- Clean, maintainable code structure
+- Professional UI/UX design patterns
+
+### Version Control
+- Separate commits for each component
+- Descriptive commit messages
+- Clean Git history
+- Proper .gitignore configuration
+
+## Project Status
+
+### Completed Features
+- Modern React frontend with educational UI design
+- FastAPI backend structure with environment configuration
+- Responsive landing page with authentic content
+- Student dashboard with clean interface
+- Optimized build and deployment configuration
+- Professional development workflow setup
+
+### Current Development Focus
+- Educational content management system
+- User authentication and authorization
+- Learning progress tracking features
+- Interactive educational tools
 
 ## Contributing
-Contributions are welcome! Please open issues or pull requests for improvements, features, or bug fixes.
+
+We welcome contributions to improve the educational experience. Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes with authentic educational content
+4. Test your changes thoroughly
+5. Submit a pull request with clear description
+
+### Development Guidelines
+- Maintain authentic educational content
+- Follow existing code style and patterns
+- Ensure responsive design compatibility
+- Test across different devices and browsers
+- Document any new features or changes
 
 ## License
-MIT License. See [LICENSE](LICENSE) for details.
+
+MIT License. See LICENSE file for complete terms.
+
+## Support
+
+For questions about the platform or technical issues, please open an issue on GitHub or contact the development team.
 
 ---
-Made with ❤️ by the Crewjah open source community.
+
+Built with care for education ❤️
