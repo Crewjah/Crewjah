@@ -1,11 +1,26 @@
 {
-  "dependencies": {
-    "react-icons": "^5.5.0"
+  "name": "crewjah",
+  "version": "1.0.0",
+  "description": "Educational platform for students and lifelong learners",
+  "scripts": {
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd fastapi_backend && uvicorn main:app --reload\"",
+    "dev-node": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",
+    "dev-flask": "concurrently \"cd client && npm run dev\" \"cd flask_backend && python app.py\"",
+    "build": "cd client && npm run build",
+    "start": "cd client && npm run preview"
   },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.13",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.13"
-  }
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "education",
+    "learning",
+    "study",
+    "ai",
+    "flashcards",
+    "quiz"
+  ],
+  "author": "Crewjah Team",
+  "license": "MIT"
 }
