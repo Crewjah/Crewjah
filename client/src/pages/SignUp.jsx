@@ -2,8 +2,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-const API = 'http://localhost:8000';
-
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -23,18 +21,45 @@ const SignUp = () => {
       setLoading(false);
       return;
     }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      setLoading(false);
+      return;
+    }
+
+    if (!email.includes('@')) {
+      setError('Please enter a valid email address');
+      setLoading(false);
+      return;
+    }
     
     try {
-      const res = await fetch(`${API}/auth/signup`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || 'Signup failed');
-      navigate('/signin?message=Account created successfully');
+      // Simulate API delay for realistic UX
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Check if user already exists
+      const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
+      if (existingUsers.find(user => user.email === email)) {
+        throw new Error('Account with this email already exists');
+      }
+      
+      // Create new user
+      const newUser = {
+        id: Date.now().toString(),
+        email,
+        name,
+        password, // In production, this would be hashed
+        createdAt: new Date().toISOString()
+      };
+      
+      existingUsers.push(newUser);
+      localStorage.setItem('users', JSON.stringify(existingUsers));
+      
+      // Success - redirect to sign in
+      navigate('/signin?message=Account created successfully! Please sign in.');
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Failed to create account. Please try again.');
     } finally {
       setLoading(false);
     }

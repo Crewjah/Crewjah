@@ -15,30 +15,39 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // In a real app, this would fetch actual user data from your backend
-    // For now, we'll show the authentic empty state for new users
-    const fetchUserData = async () => {
-      try {
-        // TODO: Replace with actual API call
-        // const response = await fetch('/api/user/profile');
-        // const userData = await response.json();
-        // setUser(userData);
-        
-        // For now, show empty state encouraging users to sign up
-        setUser({ 
-          name: 'Welcome to Crewjah', 
-          email: '',
-          avatar: '🎓' 
-        });
-      } catch (error) {
-        setError('Unable to load user data. Please try signing in again.');
-      }
-    };
+    // Check if user is logged in
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    
+    if (!currentUser) {
+      // Redirect to sign in if not logged in
+      navigate('/signin');
+      return;
+    }
 
-    fetchUserData();
+    // Set user data from localStorage
+    setUser({
+      name: currentUser.name || 'User',
+      email: currentUser.email || '',
+      avatar: '👨‍🎓'
+    });
+
+    // Load user stats (in a real app, this would come from the backend)
+    const userStats = JSON.parse(localStorage.getItem('userStats') || '{}');
+    setStats({
+      questionsAnswered: userStats.questionsAnswered || 0,
+      studyStreak: userStats.studyStreak || 0,
+      completedQuizzes: userStats.completedQuizzes || 0,
+      studyTime: userStats.studyTime || 0
+    });
   }, [navigate]);
 
   const handleLogout = () => {
+    // Clear user session
+    localStorage.removeItem('currentUser');
+    // Optionally keep userStats for when they sign back in
+    // localStorage.removeItem('userStats');
+    
+    // Redirect to sign in
     navigate('/signin');
   };
 
