@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-const API = 'http://localhost:5000/api';
+const API = 'http://localhost:8000';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -10,93 +10,155 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    if (password !== confirm) return setError('Passwords do not match');
+    setLoading(true);
+    
+    if (password !== confirm) {
+      setError('Passwords do not match');
+      setLoading(false);
+      return;
+    }
+    
     try {
-      const res = await fetch(`${API}/signup`, {
+      const res = await fetch(`${API}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
         body: JSON.stringify({ name, email, password })
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Signup failed');
-      navigate('/signin');
+      if (!res.ok) throw new Error(data.detail || 'Signup failed');
+      navigate('/signin?message=Account created successfully');
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-300 via-teal-200 to-pink-300">
-      <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md animate-fadein border-2 border-purple-200">
-        <div className="mb-6 flex flex-col items-center">
-          <span className="text-2xl font-extrabold text-purple-700 mb-2 cursor-pointer drop-shadow" onClick={()=>navigate('/')}>Crewjah</span>
-          <h2 className="text-3xl font-extrabold mb-2 text-teal-700 text-center drop-shadow">Sign Up</h2>
-          <p className="text-base text-purple-700 text-center">Create your account to unlock all study tools and track your progress.</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4">
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-20 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-32 h-32 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-2000"></div>
+      </div>
+
+      <div className="relative bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl p-8 w-full max-w-md border border-blue-100">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <Link to="/" className="inline-flex items-center space-x-2 mb-6">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-lg font-bold">📚</span>
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-700 bg-clip-text text-transparent">
+              Crewjah
+            </span>
+          </Link>
+          <h1 className="text-3xl font-bold text-slate-800 mb-2">Create Account</h1>
+          <p className="text-slate-600">Start your learning journey today</p>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-5 mt-4">
-          <label className="block">
-            <span className="text-base font-semibold text-purple-700">Full Name</span>
+
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+            {error}
+          </div>
+        )}
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Full Name
+            </label>
             <input
               type="text"
               autoComplete="name"
-              className="mt-2 w-full px-4 py-3 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-600 bg-purple-50 text-purple-900 placeholder-purple-400"
+              className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/50 backdrop-blur-sm text-slate-800 placeholder-slate-400 transition-all duration-300"
               placeholder="Enter your full name"
               value={name}
               onChange={e => setName(e.target.value)}
               required
             />
-          </label>
-          <label className="block">
-            <span className="text-base font-semibold text-teal-700">Email</span>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Email Address
+            </label>
             <input
               type="email"
               autoComplete="email"
-              className="mt-2 w-full px-4 py-3 border border-teal-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-600 bg-teal-50 text-teal-900 placeholder-teal-400"
+              className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/50 backdrop-blur-sm text-slate-800 placeholder-slate-400 transition-all duration-300"
               placeholder="Enter your email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
             />
-          </label>
-          <label className="block">
-            <span className="text-base font-semibold text-purple-700">Password</span>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Password
+            </label>
             <input
               type="password"
               autoComplete="new-password"
-              className="mt-2 w-full px-4 py-3 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-600 bg-purple-50 text-purple-900 placeholder-purple-400"
-              placeholder="Create a password"
+              className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/50 backdrop-blur-sm text-slate-800 placeholder-slate-400 transition-all duration-300"
+              placeholder="Create a secure password"
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
             />
-          </label>
-          <label className="block">
-            <span className="text-base font-semibold text-teal-700">Confirm Password</span>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Confirm Password
+            </label>
             <input
               type="password"
               autoComplete="new-password"
-              className="mt-2 w-full px-4 py-3 border border-teal-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-600 bg-teal-50 text-teal-900 placeholder-teal-400"
+              className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white/50 backdrop-blur-sm text-slate-800 placeholder-slate-400 transition-all duration-300"
               placeholder="Confirm your password"
               value={confirm}
               onChange={e => setConfirm(e.target.value)}
               required
             />
-          </label>
+          </div>
+
           <button
             type="submit"
-            className="w-full py-3 bg-purple-700 text-white font-bold rounded shadow hover:bg-purple-800 transition"
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
           >
-            Sign Up
+            {loading ? (
+              <div className="flex items-center justify-center space-x-2">
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Creating Account...</span>
+              </div>
+            ) : (
+              'Create Account'
+            )}
           </button>
         </form>
-        <div className="flex justify-center mt-6">
-          <button className="text-teal-700 underline font-semibold hover:text-teal-900" onClick={() => navigate('/signin')}>Already have an account? Sign In</button>
+
+        {/* Sign In Link */}
+        <div className="text-center mt-6">
+          <p className="text-slate-600">
+            Already have an account?{' '}
+            <Link 
+              to="/signin" 
+              className="text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300"
+            >
+              Sign In
+            </Link>
+          </p>
         </div>
         {error && <div className="mt-6 text-red-600 text-center text-sm font-semibold">{error}</div>}
         <p className="mt-8 text-xs text-gray-500 text-center">Email verification may be required for full access.</p>

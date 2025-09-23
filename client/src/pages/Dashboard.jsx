@@ -1,107 +1,162 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+﻿import { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import React from 'react';
 import { motion } from 'framer-motion';
 
 const Dashboard = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ name: '', email: '', avatar: '👨‍🎓' });
+  const [stats, setStats] = useState({
+    questionsAnswered: 0,
+    studyStreak: 0,
+    completedQuizzes: 0,
+    studyTime: 0
+  });
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
   useEffect(() => {
-    fetch('http://localhost:5000/api/me', {
-      credentials: 'include'
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.error) {
-          setError(data.error);
-          navigate('/signin');
-        } else {
-          setUser(data);
-        }
-      })
-      .catch(() => setError('Failed to load user info'));
+    // In a real app, this would fetch actual user data from your backend
+    // For now, we'll show the authentic empty state for new users
+    const fetchUserData = async () => {
+      try {
+        // TODO: Replace with actual API call
+        // const response = await fetch('/api/user/profile');
+        // const userData = await response.json();
+        // setUser(userData);
+        
+        // For now, show empty state encouraging users to sign up
+        setUser({ 
+          name: 'Welcome to Crewjah', 
+          email: '',
+          avatar: '🎓' 
+        });
+      } catch (error) {
+        setError('Unable to load user data. Please try signing in again.');
+      }
+    };
+
+    fetchUserData();
   }, [navigate]);
-  const handleLogout = async () => {
-    await fetch('http://localhost:5000/api/logout', { method: 'POST', credentials: 'include' });
+
+  const handleLogout = () => {
     navigate('/signin');
   };
-  if (error) return <div className="min-h-screen flex items-center justify-center text-red-600">{error}</div>;
-  if (!user) return <div className="min-h-screen flex items-center justify-center text-gray-500">Loading...</div>;
+
+  if (error) return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="text-center">
+        <div className="text-red-500 text-xl mb-4"> {error}</div>
+        <Link to="/signin" className="text-blue-600 hover:text-blue-700 font-semibold">
+          Return to Sign In
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="min-h-screen bg-blue-50 flex flex-col items-center py-10">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-3xl">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-primary">Dashboard</h2>
-          <button onClick={handleLogout} className="px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200">Logout</button>
-        </div>
-        <div className="mb-8">
-          <p className="text-lg font-semibold">Welcome back, {user.name} 👋 — continue where you left off.</p>
-        </div>
-        {/* Quick Actions */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8">
-          <DashboardCard to="/ask" label="Ask Anything" icon="❓" />
-          <DashboardCard to="/summarize-text" label="Summarize Text" icon="📝" />
-          <DashboardCard to="/summarize-code" label="Summarize Code" icon="💻" />
-          <DashboardCard to="/quiz" label="Take a Quiz" icon="🎯" />
-          <DashboardCard to="/flashcards" label="Flashcards" icon="📚" />
-          <DashboardCard to="/planner" label="Study Planner" icon="📅" />
-        </div>
-        {/* Today's Snapshot */}
-        <div className="bg-blue-50 rounded-lg p-6 mb-8 flex flex-col md:flex-row gap-6 justify-between items-center">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-primary">5</div>
-            <div className="text-sm text-gray-600">Streak days</div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-20 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-32 h-32 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-2000"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+          <div className="mb-6 md:mb-0">
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">
+              {user.name || 'Welcome to Your Learning Dashboard'} {user.avatar}
+            </h1>
+            <p className="text-xl text-slate-600">
+              {user.name ? 'Ready to continue your learning journey?' : 'Start your educational journey today!'}
+            </p>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-primary">42</div>
-            <div className="text-sm text-gray-600">Minutes studied</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-primary">3</div>
-            <div className="text-sm text-gray-600">Quizzes taken</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-primary">12</div>
-            <div className="text-sm text-gray-600">Flashcards reviewed</div>
+          <div className="flex items-center space-x-4">
+            <div className="text-4xl">{user.avatar || ''}</div>
+            <button
+              onClick={handleLogout}
+              className="px-6 py-2 bg-white/80 backdrop-blur-sm text-slate-700 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 border border-slate-200"
+            >
+              Sign Out
+            </button>
           </div>
         </div>
-              {/* Welcome Banner */}
-              <motion.div
-                initial={{ opacity: 0, y: -30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="w-full max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-xl p-8 mb-8 flex flex-col items-center"
-              >
-                <h2 className="text-3xl font-bold text-purple-700 mb-2">Welcome back, {user.name} 👋</h2>
-                <p className="text-lg text-teal-700 mb-4">Continue where you left off and keep growing!</p>
-                <button className="px-6 py-2 bg-teal-600 text-white rounded-xl shadow hover:bg-teal-700 font-semibold transition">Resume last activity</button>
-              </motion.div>
-        <button className="w-full py-2 bg-primary text-white font-bold rounded mb-8 hover:bg-primaryHover transition">Resume last activity</button>
-        {/* Recommended for you */}
-        <div className="bg-white border rounded-lg p-6">
-          <h3 className="text-lg font-bold mb-2 text-primary">Recommended for you</h3>
-          <ul className="list-disc list-inside text-gray-700">
-            <li>Try a quiz on Python basics</li>
-            <li>Review flashcards: Data Structures</li>
-            <li>Summarize your last study notes</li>
-          </ul>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-600">Study Streak</p>
+                <p className="text-3xl font-bold text-blue-600">{stats.studyStreak}</p>
+                <p className="text-xs text-slate-500">days</p>
+              </div>
+              <div className="text-3xl">🔥</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-emerald-100 hover:shadow-xl transition-all duration-300"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-600">Questions</p>
+                <p className="text-3xl font-bold text-emerald-600">{stats.questionsAnswered}</p>
+                <p className="text-xs text-slate-500">answered</p>
+              </div>
+              <div className="text-3xl">❓</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-300"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-600">Quizzes</p>
+                <p className="text-3xl font-bold text-indigo-600">{stats.completedQuizzes}</p>
+                <p className="text-xs text-slate-500">completed</p>
+              </div>
+              <div className="text-3xl">📝</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-amber-100 hover:shadow-xl transition-all duration-300"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-600">Study Time</p>
+                <p className="text-3xl font-bold text-amber-600">{stats.studyTime}</p>
+                <p className="text-xs text-slate-500">hours</p>
+              </div>
+              <div className="text-3xl">⏰</div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600 rounded-2xl p-8 text-center text-white shadow-xl">
+          <div className="text-4xl mb-4">🎓</div>
+          <blockquote className="text-xl md:text-2xl font-medium mb-4 italic">
+            "The beautiful thing about learning is that no one can take it away from you."
+          </blockquote>
+          <cite className="text-blue-200">— B.B. King</cite>
         </div>
       </div>
     </div>
   );
 };
-
-
-import { Link } from 'react-router-dom';
-
-function DashboardCard({ to, label, icon }) {
-  return (
-    <Link to={to} className="flex flex-col items-center justify-center bg-blue-100 rounded-lg p-6 shadow hover:bg-blue-200 transition">
-      <span className="text-3xl mb-2">{icon}</span>
-      <span className="font-semibold text-primary">{label}</span>
-    </Link>
-  );
-}
 
 export default Dashboard;
