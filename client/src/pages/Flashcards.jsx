@@ -1,17 +1,13 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
-const sampleDecks = [
-  { title: 'Core Python', cards: [
-    { front: 'What is a list?', back: 'A mutable sequence type.' },
-    { front: 'What does len() do?', back: 'Returns the length of an object.' }
-  ] },
-  { title: 'Algorithms', cards: [
-    { front: 'Binary Search', back: 'Finds an item in sorted array in O(log n) time.' },
-    { front: 'DFS', back: 'Depth-first search for traversing graphs.' }
-  ] }
-];
+import { 
+  DeckSelector, 
+  FlashCard, 
+  CardNavigation, 
+  StudyStats, 
+  ActionButtons 
+} from '../components/flashcards';
+import { sampleDecks } from '../constants/flashcardConstants';
 
 function Flashcards() {
   const [deckIdx, setDeckIdx] = useState(0);
@@ -25,9 +21,16 @@ function Flashcards() {
     setShowBack(false);
     setCardIdx((cardIdx + 1) % deck.cards.length);
   };
+  
   const prevCard = () => {
     setShowBack(false);
     setCardIdx((cardIdx - 1 + deck.cards.length) % deck.cards.length);
+  };
+
+  const handleDeckSelect = (index) => {
+    setDeckIdx(index);
+    setCardIdx(0);
+    setShowBack(false);
   };
 
   return (
@@ -39,52 +42,43 @@ function Flashcards() {
         className="w-full max-w-xl mx-auto bg-white/90 rounded-3xl shadow-xl p-8 flex flex-col items-center"
       >
         <h2 className="text-3xl font-bold text-purple-700 mb-2">Flashcards</h2>
-        <p className="text-base text-teal-700 mb-6 text-center">Practice and remember more with spaced repetition. Flip cards to study and track your progress.</p>
-        <div className="mb-4 w-full flex gap-4 justify-center">
-          {sampleDecks.map((d, i) => (
-            <button
-              key={d.title}
-              onClick={() => { setDeckIdx(i); setCardIdx(0); setShowBack(false); }}
-              className={`px-4 py-2 rounded-xl shadow font-semibold transition ${deckIdx === i ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-700 hover:bg-purple-200'}`}
-            >
-              {d.title}
-            </button>
-          ))}
-        </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="w-full flex flex-col items-center justify-center bg-gradient-to-br from-purple-200 via-blue-100 to-pink-100 rounded-2xl shadow-lg p-8 mb-6"
-        >
-          <div className="text-lg font-bold text-purple-700 mb-2">Card {cardIdx+1} / {deck.cards.length}</div>
-          <div className="w-full flex flex-col items-center">
-            <div
-              className={`w-full max-w-xs h-32 flex items-center justify-center text-xl font-semibold rounded-xl shadow cursor-pointer bg-white border-2 border-purple-200 mb-4 transition-transform duration-300 ${showBack ? 'rotate-y-180' : ''}`}
-              onClick={() => setShowBack(!showBack)}
-            >
-              {showBack ? card.back : card.front}
-            </div>
-            <div className="flex gap-4">
-              <button onClick={prevCard} className="px-4 py-2 bg-teal-600 text-white rounded shadow hover:bg-teal-700">Prev</button>
-              <button onClick={nextCard} className="px-4 py-2 bg-purple-600 text-white rounded shadow hover:bg-purple-700">Next</button>
-              <button className="px-4 py-2 bg-yellow-500 text-white rounded shadow hover:bg-yellow-600">Know</button>
-              <button className="px-4 py-2 bg-pink-500 text-white rounded shadow hover:bg-pink-600">Don’t know</button>
-            </div>
-          </div>
-        </motion.div>
-        <div className="w-full flex flex-col items-center mb-4">
-          <div className="text-sm text-gray-600">Decks studied: <span className="font-bold text-purple-700">{sampleDecks.length}</span></div>
-          <div className="text-sm text-gray-600">Cards studied: <span className="font-bold text-teal-700">{deck.cards.length}</span></div>
-        </div>
-        <div className="flex gap-4 mt-4">
-          <button className="px-4 py-2 bg-purple-700 text-white rounded shadow hover:bg-purple-800">Auto-generate from summaries</button>
-          <button className="px-4 py-2 bg-teal-600 text-white rounded shadow hover:bg-teal-700">Export deck</button>
-        </div>
+        <p className="text-base text-teal-700 mb-6 text-center">
+          Practice and remember more with spaced repetition. Flip cards to study and track your progress.
+        </p>
+        
+        <DeckSelector
+          decks={sampleDecks}
+          selectedDeckIndex={deckIdx}
+          onDeckSelect={handleDeckSelect}
+        />
+        
+        <FlashCard
+          card={card}
+          currentIndex={cardIdx}
+          totalCards={deck.cards.length}
+          showBack={showBack}
+          onFlip={() => setShowBack(!showBack)}
+        />
+        
+        <CardNavigation
+          onPrevious={prevCard}
+          onNext={nextCard}
+          onKnow={() => {/* Handle know action */}}
+          onDontKnow={() => {/* Handle don't know action */}}
+        />
+        
+        <StudyStats
+          decksStudied={sampleDecks.length}
+          cardsStudied={deck.cards.length}
+        />
+        
+        <ActionButtons
+          onAutoGenerate={() => {/* Handle auto-generate */}}
+          onExportDeck={() => {/* Handle export */}}
+        />
       </motion.div>
     </div>
   );
 }
 
 export default Flashcards;
-
