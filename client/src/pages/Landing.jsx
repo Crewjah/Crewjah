@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+// Components
+import { TrustIndicator, FeatureCard, ProcessStep, PhilosophyCard } from '../components/landing';
+
+// Constants
+import { TRUST_INDICATORS, FEATURES, PROCESS_STEPS, PHILOSOPHY_PRINCIPLES } from '../constants/landingConstants';
+
 export default function Landing() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -30,11 +36,11 @@ export default function Landing() {
               </span>
             </div>
             
-            <div className="hidden md:flex items-center space-x-6">
-              <Link to="/signin" className="text-slate-600 hover:text-blue-600 font-medium transition-all duration-300 hover:scale-105">
+            <div className="hidden md:flex items-center space-x-4">
+              <Link to="/signin" className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2.5 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 Sign In
               </Link>
-              <Link to="/signup" className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2.5 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-shadow duration-200">
+              <Link to="/signup" className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2.5 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 Get Started
               </Link>
             </div>
@@ -75,22 +81,14 @@ export default function Landing() {
 
               {/* Trust Indicators */}
               <div className="flex flex-wrap justify-center gap-6 mb-16">
-                <div className="flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full border border-emerald-200 hover:bg-emerald-50 hover:scale-105 transition-all duration-200">
-                  <span className="text-lg">🔒</span>
-                  <span className="text-slate-700 font-medium">Privacy Protected</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full border border-blue-200 hover:bg-blue-50 hover:scale-105 transition-all duration-200">
-                  <span className="text-lg">🚫</span>
-                  <span className="text-slate-700 font-medium">Ad-Free Experience</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full border border-indigo-200 hover:bg-indigo-50 hover:scale-105 transition-all duration-200">
-                  <span className="text-lg">🎓</span>
-                  <span className="text-slate-700 font-medium">Expert Designed</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-white/80 px-4 py-2 rounded-full border border-amber-200 hover:bg-amber-50 hover:scale-105 transition-all duration-200">
-                  <span className="text-lg">🌟</span>
-                  <span className="text-slate-700 font-medium">Always Free</span>
-                </div>
+                {TRUST_INDICATORS.map((indicator, index) => (
+                  <TrustIndicator
+                    key={index}
+                    icon={indicator.icon}
+                    text={indicator.text}
+                    color={indicator.color}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -110,57 +108,16 @@ export default function Landing() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: "🤖",
-                title: "AI Assistant",
-                description: "Get instant answers to any question with our intelligent AI tutor",
-                color: "blue",
-                delay: "0ms"
-              },
-              {
-                icon: "📚",
-                title: "Smart Summaries",
-                description: "Transform complex texts into digestible, key insights",
-                color: "emerald",
-                delay: "200ms"
-              },
-              {
-                icon: "🎯",
-                title: "Interactive Quizzes",
-                description: "Test your knowledge with adaptive learning assessments",
-                color: "indigo",
-                delay: "400ms"
-              },
-              {
-                icon: "📊",
-                title: "Progress Analytics",
-                description: "Track your learning journey with detailed insights",
-                color: "amber",
-                delay: "600ms"
-              }
-            ].map((feature, index) => {
-              const colors = {
-                blue: { bg: 'bg-gradient-to-br from-white to-blue-50', border: 'border-blue-100 hover:border-blue-300', icon: 'bg-gradient-to-br from-blue-400 to-blue-600' },
-                emerald: { bg: 'bg-gradient-to-br from-white to-emerald-50', border: 'border-emerald-100 hover:border-emerald-300', icon: 'bg-gradient-to-br from-emerald-400 to-emerald-600' },
-                indigo: { bg: 'bg-gradient-to-br from-white to-indigo-50', border: 'border-indigo-100 hover:border-indigo-300', icon: 'bg-gradient-to-br from-indigo-400 to-indigo-600' },
-                amber: { bg: 'bg-gradient-to-br from-white to-amber-50', border: 'border-amber-100 hover:border-amber-300', icon: 'bg-gradient-to-br from-amber-400 to-amber-600' }
-              };
-              const colorSet = colors[feature.color];
-              
-              return (
-                <div 
-                  key={index}
-                  className={`group ${colorSet.bg} rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 border ${colorSet.border}`}
-                >
-                  <div className={`w-16 h-16 ${colorSet.icon} rounded-2xl flex items-center justify-center mb-4 group-hover:rotate-3 transition-transform duration-300`}>
-                    <span className="text-2xl">{feature.icon}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-800 mb-2">{feature.title}</h3>
-                  <p className="text-slate-600">{feature.description}</p>
-                </div>
-              );
-            })}
+            {FEATURES.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                color={feature.color}
+                delay={feature.delay}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -179,21 +136,13 @@ export default function Landing() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              {[
-                { step: "01", title: "Ask Your Question", desc: "Type any topic or question you want to learn about" },
-                { step: "02", title: "Get AI Insights", desc: "Receive comprehensive explanations with examples" },
-                { step: "03", title: "Practice & Review", desc: "Reinforce learning with quizzes and flashcards" },
-                { step: "04", title: "Track Progress", desc: "Monitor your improvement over time" }
-              ].map((item, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 rounded-2xl hover:bg-slate-100 transition-colors duration-200">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-white bg-gradient-to-br from-blue-500 to-indigo-600">
-                    {item.step}
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg text-slate-800">{item.title}</h3>
-                    <p className="text-slate-600">{item.desc}</p>
-                  </div>
-                </div>
+              {PROCESS_STEPS.map((step, index) => (
+                <ProcessStep
+                  key={index}
+                  step={step.step}
+                  title={step.title}
+                  description={step.description}
+                />
               ))}
             </div>
 
@@ -268,36 +217,14 @@ export default function Landing() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                principle: "Learn at your own pace with personalized AI guidance that adapts to your unique learning style and needs.",
-                title: "Personalized Learning",
-                category: "Individual Growth",
-                icon: "🎯"
-              },
-              {
-                principle: "Build lasting knowledge through interactive practice, immediate feedback, and progressive skill development.",
-                title: "Active Learning",
-                category: "Skill Building", 
-                icon: "�"
-              },
-              {
-                principle: "Access quality education anytime, anywhere with our commitment to keeping learning free and accessible for all.",
-                title: "Accessible Education",
-                category: "Equal Opportunity",
-                icon: "🌍"
-              }
-            ].map((approach, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                <div className="text-slate-600 mb-4 italic">"{approach.principle}"</div>
-                <div className="flex items-center space-x-3">
-                  <div className="text-2xl">{approach.icon}</div>
-                  <div>
-                    <div className="font-semibold text-slate-800">{approach.title}</div>
-                    <div className="text-sm text-slate-500">{approach.category}</div>
-                  </div>
-                </div>
-              </div>
+            {PHILOSOPHY_PRINCIPLES.map((principle, index) => (
+              <PhilosophyCard
+                key={index}
+                principle={principle.principle}
+                title={principle.title}
+                category={principle.category}
+                icon={principle.icon}
+              />
             ))}
           </div>
         </div>
@@ -323,22 +250,32 @@ export default function Landing() {
             Your Learning?
           </h2>
           <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Start your authentic learning journey with AI-powered educational tools designed for real student success.
+            Join thousands of students already learning smarter with AI-powered tools that actually work.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link 
               to="/signup" 
-              className="group bg-white text-blue-600 px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center space-x-2"
+              className="group bg-white text-blue-600 px-10 py-4 rounded-2xl font-bold text-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center space-x-3"
             >
-              <span>Get Started Now</span>
-              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span>Start Learning Free</span>
+              <svg className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 9l3 3-3 3m-6-3h9" />
               </svg>
             </Link>
-            <div className="text-blue-100 text-sm">
-              <span className="block">✓ No credit card required</span>
-              <span className="block">✓ Free forever plan</span>
+            <div className="text-blue-100 text-base space-y-1">
+              <div className="flex items-center space-x-2">
+                <span className="text-green-300">✓</span>
+                <span>No credit card required</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-green-300">✓</span>
+                <span>Always free • No hidden fees</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-yellow-300">⚡</span>
+                <span>Get started in under 30 seconds</span>
+              </div>
             </div>
           </div>
         </div>
