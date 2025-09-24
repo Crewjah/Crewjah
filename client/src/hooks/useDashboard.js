@@ -46,25 +46,6 @@ export const useUserStats = () => {
 
   const [sessionStartTime, setSessionStartTime] = useState(null);
 
-  useEffect(() => {
-    // Load existing stats
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    const userStats = JSON.parse(localStorage.getItem(`userStats_${currentUser.id}`) || '{}');
-    
-    setStats({
-      questionsAnswered: userStats.questionsAnswered || 0,
-      studyStreak: calculateStudyStreak(userStats.lastActiveDate),
-      completedQuizzes: userStats.completedQuizzes || 0,
-      studyTime: userStats.studyTime || 0
-    });
-
-    // Start session timer
-    setSessionStartTime(Date.now());
-
-    // Update last active date for streak tracking
-    updateLastActiveDate();
-  }, [updateLastActiveDate]);
-
   const calculateStudyStreak = (lastActiveDate) => {
     if (!lastActiveDate) return 0;
     
@@ -86,7 +67,18 @@ export const useUserStats = () => {
     }
   };
 
-  const updateLastActiveDate = useCallback(() => {
+  const updateStats = (newStats) => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    if (!currentUser.id) return;
+
+    setStats(prevStats => {
+      const updatedStats = { ...prevStats, ...newStats };
+      localStorage.setItem(`userStats_${currentUser.id}`, JSON.stringify(updatedStats));
+      return updatedStats;
+    });
+  };
+
+  const updateLastActiveDate = () => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     if (!currentUser.id) return;
 
@@ -104,18 +96,29 @@ export const useUserStats = () => {
         lastActiveDate: today 
       });
     }
+  };
+
+  // Load stats on component mount
+  useEffect(() => {
+    // Load existing stats
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    const userStats = JSON.parse(localStorage.getItem(`userStats_${currentUser.id}`) || '{}');
+    
+    setStats({
+      questionsAnswered: userStats.questionsAnswered || 0,
+      studyStreak: calculateStudyStreak(userStats.lastActiveDate),
+      completedQuizzes: userStats.completedQuizzes || 0,
+      studyTime: userStats.studyTime || 0
+    });
+
+    // Start session timer
+    setSessionStartTime(Date.now());
+
+    // Update last active date for streak tracking
+    updateLastActiveDate();
   }, []);
 
-  const updateStats = (newStats) => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-    if (!currentUser.id) return;
 
-    setStats(prevStats => {
-      const updatedStats = { ...prevStats, ...newStats };
-      localStorage.setItem(`userStats_${currentUser.id}`, JSON.stringify(updatedStats));
-      return updatedStats;
-    });
-  };
 
   // Auto-increment study time based on session activity
   useEffect(() => {
