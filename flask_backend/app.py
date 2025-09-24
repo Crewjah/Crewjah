@@ -8,7 +8,7 @@ CORS(app, supports_credentials=True)
 
 users = {}
 
-@app.route('/api/signup', methods=['POST'])
+@app.route('/auth/signup', methods=['POST'])
 def signup():
     data = request.json
     email = data.get('email')
@@ -22,7 +22,7 @@ def signup():
     }
     return jsonify({'message': 'Signup successful'})
 
-@app.route('/api/login', methods=['POST'])
+@app.route('/auth/login', methods=['POST'])
 def login():
     data = request.json
     email = data.get('email')
@@ -33,12 +33,12 @@ def login():
     session['user'] = email
     return jsonify({'message': 'Login successful', 'name': user['name']})
 
-@app.route('/api/logout', methods=['POST'])
+@app.route('/auth/logout', methods=['POST'])
 def logout():
     session.pop('user', None)
     return jsonify({'message': 'Logged out'})
 
-@app.route('/api/me', methods=['GET'])
+@app.route('/me', methods=['GET'])
 def me():
     email = session.get('user')
     if not email or email not in users:
@@ -46,7 +46,7 @@ def me():
     user = users[email]
     return jsonify({'name': user['name'], 'email': email})
 
-@app.route('/api/dashboard', methods=['GET'])
+@app.route('/dashboard', methods=['GET'])
 def dashboard():
     email = session.get('user')
     if not email or email not in users:
