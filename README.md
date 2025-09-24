@@ -1,53 +1,101 @@
 # Crewjah Educational Platform
 
-Crewjah is a modern educational platform designed to enhance learning experiences for students and lifelong learners. Built with authentic educational principles in mind, it provides a clean, professional interface focused on learning outcomes and user experience.
+A comprehensive educational platform built with modern web technologies, designed to provide an engaging and effective learning experience. Crewjah combines interactive learning tools, progress tracking, and AI-powered features to create a complete educational ecosystem.
 
-## Core Features
+## Overview
 
-### User Interface
-- Modern, responsive design built with React 18 and TailwindCSS
-- Optimized animations and smooth user interactions
-- Accessible design patterns following educational best practices
-- Mobile-first responsive layout
+Crewjah is a full-stack educational application that offers multiple learning modalities including quizzes, flashcards, daily challenges, and AI-powered study assistance. The platform features a clean, responsive design optimized for both desktop and mobile learning experiences.
 
-### Educational Components
-- Interactive landing page showcasing platform benefits
-- Student dashboard for learning progress tracking
-- Clean, distraction-free interface design
-- Professional educational color scheme (blues, greens, slate)
+## Key Features
 
-### Technical Infrastructure
-- React Single Page Application (SPA) with React Router
-- FastAPI backend for scalable API services
-- Vite build system for fast development and optimized production builds
-- Professional deployment configuration for Vercel
+### Learning Tools
+- **Interactive Quizzes**: Multiple-choice questions across various subjects with difficulty levels
+- **Flashcard System**: Spaced repetition learning with customizable decks
+- **Daily Challenges**: Engaging daily problems to maintain learning momentum
+- **Progress Tracking**: Comprehensive statistics and learning analytics
+- **AI Study Assistant**: Text summarization and code analysis tools
 
-## Application Structure
+### User Experience
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Modern UI**: Clean interface built with React 18 and TailwindCSS
+- **Smooth Animations**: Enhanced user interactions with Framer Motion
+- **Accessibility**: WCAG compliant design patterns
+- **Real-time Feedback**: Instant scoring and progress updates
 
-### Frontend Pages
-- **Landing Page**: Platform introduction and feature overview
-- **Dashboard**: Student learning interface and progress tracking
-- **Authentication System**: User login and registration (structure ready)
+### Technical Features
+- **Single Page Application**: Fast navigation with React Router
+- **Component Architecture**: Modular, reusable UI components
+- **State Management**: Efficient data flow and user session handling
+- **API Integration**: RESTful backend services with FastAPI
+- **Build Optimization**: Production-ready builds with Vite
 
-### Backend Services
-- **FastAPI Backend**: Main API service with modern Python async framework
-- **Environment Configuration**: Secure configuration management
-- **Database Ready**: Structured for educational data management
+## Technology Stack
 
-## Project Architecture
+### Frontend
+- **React 18.2.0**: Modern JavaScript framework with hooks
+- **React Router DOM 7.8.2**: Client-side routing and navigation
+- **TailwindCSS 3.3.3**: Utility-first CSS framework
+- **Framer Motion 12.23.15**: Animation and gesture library
+- **Vite 7.1.2**: Fast build tool and development server
+
+### Backend
+- **FastAPI 0.104.1**: High-performance Python web framework
+- **Uvicorn 0.24.0**: ASGI server for production deployment
+- **Pydantic 2.5.0**: Data validation and settings management
+- **Python-Jose**: JWT token handling for authentication
+- **Passlib**: Password hashing and security
+
+### Development Tools
+- **ESLint**: Code quality and consistency
+- **PostCSS**: CSS processing and optimization
+- **Autoprefixer**: Cross-browser CSS compatibility
+
+## Project Structure
 
 ```
 crewjah/
-├── client/                 # React Frontend Application
+├── client/                     # React Frontend Application
 │   ├── src/
-│   │   ├── pages/         # Landing.jsx, Dashboard.jsx
-│   │   ├── components/    # Reusable UI components
-│   │   └── styles/        # TailwindCSS configuration
-│   ├── package.json       # Frontend dependencies
-│   └── vite.config.js     # Build configuration
-├── fastapi_backend/       # Python FastAPI Backend
-│   ├── main.py           # API routes and application logic
-│   ├── requirements.txt  # Python dependencies
+│   │   ├── pages/             # Main application pages
+│   │   │   ├── Landing.jsx    # Marketing and feature overview
+│   │   │   ├── Dashboard.jsx  # User dashboard and stats
+│   │   │   ├── Quiz.jsx       # Interactive quiz system
+│   │   │   ├── Flashcards.jsx # Spaced repetition learning
+│   │   │   ├── DailyChallenge.jsx # Daily learning challenges
+│   │   │   ├── SignIn.jsx     # User authentication
+│   │   │   ├── SignUp.jsx     # User registration
+│   │   │   ├── StudyPlanner.jsx # Learning schedule management
+│   │   │   ├── ProgressTracker.jsx # Analytics and insights
+│   │   │   └── [Additional Pages] # Support, help, settings
+│   │   ├── components/        # Reusable UI components
+│   │   │   ├── ui/           # Core UI components (Button, Card, Input)
+│   │   │   ├── auth/         # Authentication components
+│   │   │   ├── dashboard/    # Dashboard-specific components
+│   │   │   ├── quiz/         # Quiz functionality components
+│   │   │   ├── flashcards/   # Flashcard system components
+│   │   │   └── landing/      # Landing page components
+│   │   ├── constants/        # Configuration and data
+│   │   │   ├── designSystem.js # UI design tokens
+│   │   │   ├── quizConstants.js # Quiz questions and config
+│   │   │   ├── dashboardConstants.js # Dashboard data
+│   │   │   └── [Feature Constants] # Feature-specific data
+│   │   ├── hooks/            # Custom React hooks
+│   │   ├── utils/            # Utility functions
+│   │   └── styles/           # Global styles and themes
+│   ├── package.json          # Frontend dependencies
+│   ├── vite.config.js        # Build configuration
+│   ├── tailwind.config.js    # TailwindCSS configuration
+│   └── postcss.config.js     # PostCSS configuration
+├── fastapi_backend/           # Python FastAPI Backend
+│   ├── main.py               # API routes and application logic
+│   ├── requirements.txt      # Python dependencies
+│   └── [Additional Backend Files] # Models, services, utilities
+├── flask_backend/            # Alternative Flask backend
+├── server/                   # Additional server configurations
+├── setup.ps1                # Windows setup script
+├── setup.sh                 # Unix setup script
+├── start-all.sh             # Development startup script
+└── vercel.json              # Deployment configuration
 │   └── .env.example      # Environment configuration template
 ├── setup.ps1             # Windows PowerShell setup script
 ├── setup.sh              # Linux/Unix setup script
@@ -189,14 +237,69 @@ We welcome contributions to improve the educational experience. Please:
 - Test across different devices and browsers
 - Document any new features or changes
 
+## Available Scripts
+
+### Frontend (Client)
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run preview  # Preview production build
+npm run lint     # Run ESLint for code quality
+```
+
+### Backend (FastAPI)
+```bash
+uvicorn main:app --reload    # Start development server
+uvicorn main:app --host 0.0.0.0 --port 8000    # Production server
+```
+
+## API Documentation
+
+When the FastAPI backend is running, interactive API documentation is available at:
+- **Swagger UI**: http://localhost:8000/docs
+- **ReDoc**: http://localhost:8000/redoc
+
+## Environment Configuration
+
+Create a `.env` file in the fastapi_backend directory:
+```env
+SECRET_KEY=your-secret-key-here
+DATABASE_URL=sqlite:///./crewjah.db
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+```
+
+## Browser Support
+
+- Chrome 88+
+- Firefox 85+
+- Safari 14+
+- Edge 88+
+
+## Performance Optimization
+
+The application implements several performance optimizations:
+- Code splitting with React.lazy()
+- Image lazy loading
+- CSS optimization with TailwindCSS purging
+- Bundle optimization with Vite
+- Responsive images and media queries
+
 ## License
 
 MIT License. See LICENSE file for complete terms.
 
 ## Support
 
-For questions about the platform or technical issues, please open an issue on GitHub or contact the development team.
+For questions about the platform or technical issues:
+- Open an issue on GitHub
+- Review existing documentation
+- Check the API documentation for backend queries
+
+## Acknowledgments
+
+This project uses open-source technologies and follows modern web development best practices to create an effective educational platform.
 
 ---
 
-Built with care for education ❤️
+Built with modern web technologies for effective education.
