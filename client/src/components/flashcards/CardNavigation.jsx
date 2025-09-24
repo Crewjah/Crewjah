@@ -8,33 +8,33 @@ const CardNavigation = ({
   className = '' 
 }) => {
   return (
-    <div className={`flex gap-4 ${className}`}>
+    <div className={`flex gap-2 sm:gap-4 flex-wrap justify-center ${className}`}>
       <button 
         onClick={onPrevious} 
-        className="px-4 py-2 bg-teal-600 text-white rounded shadow hover:bg-teal-700 transition-colors"
+        className="px-3 sm:px-4 py-2 sm:py-3 bg-teal-600 text-white rounded-lg shadow hover:bg-teal-700 active:scale-95 transition-all text-sm sm:text-base font-medium touch-manipulation"
       >
-        Prev
+        ← Prev
       </button>
       
       <button 
         onClick={onNext} 
-        className="px-4 py-2 bg-purple-600 text-white rounded shadow hover:bg-purple-700 transition-colors"
+        className="px-3 sm:px-4 py-2 sm:py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 active:scale-95 transition-all text-sm sm:text-base font-medium touch-manipulation"
       >
-        Next
+        Next →
       </button>
       
       <button 
         onClick={onKnow}
-        className="px-4 py-2 bg-yellow-500 text-white rounded shadow hover:bg-yellow-600 transition-colors"
+        className="px-3 sm:px-4 py-2 sm:py-3 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 active:scale-95 transition-all text-sm sm:text-base font-medium touch-manipulation"
       >
-        Know
+        ✅ Know
       </button>
       
       <button 
         onClick={onDontKnow}
-        className="px-4 py-2 bg-pink-500 text-white rounded shadow hover:bg-pink-600 transition-colors"
+        className="px-3 sm:px-4 py-2 sm:py-3 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 active:scale-95 transition-all text-sm sm:text-base font-medium touch-manipulation"
       >
-        Don't know
+        ❌ Don't Know
       </button>
     </div>
   );

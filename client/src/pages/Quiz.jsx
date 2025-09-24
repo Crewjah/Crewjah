@@ -1,8 +1,9 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { QuizSetup, QuestionCard, QuizResults, ProgressIndicator } from '../components/quiz';
 import { subjects, difficulties, questionBank } from '../constants/quizConstants';
 import { Button } from '../components/ui';
+import { useStatsTracking } from '../utils/statsTracker';
 
 const Quiz = () => {
   const [started, setStarted] = useState(false);
@@ -12,8 +13,15 @@ const Quiz = () => {
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-
+  
+  const { trackQuestionAnswered, trackQuizCompleted, startPageTracking, endPageTracking } = useStatsTracking();
   const questions = questionBank[subject];
+
+  // Track page visit for study time
+  useEffect(() => {
+    startPageTracking();
+    return () => endPageTracking();
+  }, []);
 
   function startQuiz() {
     setStarted(true);
@@ -28,10 +36,19 @@ const Quiz = () => {
   }
 
   function handleNext() {
+    // Track that user answered a question
+    trackQuestionAnswered();
+    
     if (selected === questions[current].answer) setScore(s => s + 1);
     setSelected(null);
-    if (current + 1 < questions.length) setCurrent(current + 1);
-    else setShowResult(true);
+    
+    if (current + 1 < questions.length) {
+      setCurrent(current + 1);
+    } else {
+      // Quiz completed - track it
+      trackQuizCompleted();
+      setShowResult(true);
+    }
   }
 
   function retry() {
@@ -44,8 +61,8 @@ const Quiz = () => {
 
   if (!started) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-blue-50">
-        <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-xl">
+      <div className="min-h-screen flex items-center justify-center bg-blue-50 p-4">
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-8 w-full max-w-xl">
           <QuizSetup
             selectedSubject={subject}
             selectedDifficulty={difficulty}
@@ -62,8 +79,8 @@ const Quiz = () => {
 
   if (showResult) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-blue-50">
-        <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-xl">
+      <div className="min-h-screen flex items-center justify-center bg-blue-50 p-4">
+        <div className="bg-white rounded-xl shadow-lg p-4 sm:p-8 w-full max-w-xl">
           <QuizResults
             score={score}
             totalQuestions={questions.length}
@@ -79,9 +96,9 @@ const Quiz = () => {
   const currentQuestion = questions[current];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-50">
-      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-xl">
-        <h1 className="text-2xl font-bold mb-6 text-primary">Quiz</h1>
+    <div className="min-h-screen flex items-center justify-center bg-blue-50 p-4">
+      <div className="bg-white rounded-xl shadow-lg p-4 sm:p-8 w-full max-w-xl">
+        <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-primary">Quiz</h1>
         
         <ProgressIndicator
           currentQuestion={current}

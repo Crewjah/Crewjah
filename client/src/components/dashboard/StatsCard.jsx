@@ -44,15 +44,15 @@ const StatsCard = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className={`bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg ${selectedColor.border} hover:shadow-xl transition-all duration-300 ${className}`}
+      className={`bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg ${selectedColor.border} hover:shadow-xl transition-all duration-300 ${className}`}
     >
       <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm font-medium text-slate-600">{title}</p>
-          <p className={`text-3xl font-bold ${selectedColor.text}`}>{value}</p>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs sm:text-sm font-medium text-slate-600 truncate">{title}</p>
+          <p className={`text-2xl sm:text-3xl font-bold ${selectedColor.text} leading-tight`}>{value}</p>
           <p className="text-xs text-slate-500">{unit}</p>
         </div>
-        <div className="text-3xl">{icon}</div>
+        <div className="text-2xl sm:text-3xl ml-2 flex-shrink-0">{icon}</div>
       </div>
     </motion.div>
   );

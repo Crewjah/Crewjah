@@ -11,21 +11,21 @@ const QuestionCard = ({
   
   return (
     <div className={className}>
-      <div className="mb-4 font-semibold text-lg">{q}</div>
+      <div className="mb-4 sm:mb-6 font-semibold text-base sm:text-lg leading-relaxed">{q}</div>
       
-      <div className="grid grid-cols-1 gap-3 mb-4">
+      <div className="grid grid-cols-1 gap-3 sm:gap-4 mb-4 sm:mb-6">
         {options.map((option, index) => (
           <button
             key={index}
-            className={`w-full py-3 px-4 rounded border font-medium transition-all duration-200 ${
+            className={`w-full py-3 sm:py-4 px-4 sm:px-5 rounded-lg border font-medium transition-all duration-200 text-left ${
               selected === index 
-                ? 'bg-primary text-white shadow-md' 
-                : 'bg-blue-100 text-primary hover:bg-blue-200'
-            } ${selected !== null ? 'cursor-default' : 'hover:shadow-sm'}`}
+                ? 'bg-primary text-white shadow-md transform scale-[0.98]' 
+                : 'bg-blue-100 text-primary hover:bg-blue-200 active:scale-[0.98]'
+            } ${selected !== null ? 'cursor-default' : 'hover:shadow-sm cursor-pointer touch-manipulation'}`}
             onClick={() => onSelect(index)}
             disabled={selected !== null}
           >
-            {option}
+            <span className="text-sm sm:text-base">{option}</span>
           </button>
         ))}
       </div>

@@ -27,7 +27,7 @@ const QuizResults = ({
   return (
     <div className="text-center">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Quiz Complete!</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-4 text-blue-600">🎯 Quiz Complete!</h2>
         <div className="text-gray-600 mb-4">
           {subject} - {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
         </div>

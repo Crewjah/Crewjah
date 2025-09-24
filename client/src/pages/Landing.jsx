@@ -250,7 +250,7 @@ export default function Landing() {
             Your Learning?
           </h2>
           <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl mx-auto">
-            Join thousands of students already learning smarter with AI-powered tools that actually work.
+            Experience AI-powered learning tools designed to make studying more effective and engaging.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

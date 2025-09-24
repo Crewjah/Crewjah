@@ -12,7 +12,7 @@ export const STATS_CONFIG = [
     key: 'questionsAnswered',
     title: 'Questions',
     unit: 'answered',
-    icon: '❓',
+    icon: '✅',
     color: 'emerald',
     delay: 0.2
   },
@@ -28,7 +28,7 @@ export const STATS_CONFIG = [
     key: 'studyTime',
     title: 'Study Time',
     unit: 'hours',
-    icon: '⏰',
+    icon: '📚',
     color: 'amber',
     delay: 0.4
   }

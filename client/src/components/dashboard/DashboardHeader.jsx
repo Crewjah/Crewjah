@@ -1,25 +1,17 @@
 import React from 'react';
 
-const DashboardHeader = ({ user, onLogout }) => {
+const DashboardHeader = ({ user }) => {
   return (
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-      <div className="mb-6 md:mb-0">
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mb-2">
-          {user.name || 'Welcome to Your Learning Dashboard'} {user.avatar}
+    <div className="mb-6 sm:mb-8">
+      <div className="flex items-center space-x-2 sm:space-x-3 mb-2">
+        <div className="text-xl sm:text-2xl flex-shrink-0">{user?.avatar || '👨‍🎓'}</div>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 truncate">
+          {user?.name || 'arjun'} 
         </h1>
-        <p className="text-xl text-slate-600">
-          {user.name ? 'Ready to continue your learning journey?' : 'Start your educational journey today!'}
-        </p>
       </div>
-      <div className="flex items-center space-x-4">
-        <div className="text-4xl">{user.avatar || ''}</div>
-        <button
-          onClick={onLogout}
-          className="px-6 py-2 bg-white/80 backdrop-blur-sm text-slate-700 rounded-xl hover:bg-white hover:shadow-lg transition-all duration-300 border border-slate-200"
-        >
-          Sign Out
-        </button>
-      </div>
+      <p className="text-base sm:text-xl text-slate-600">
+        Ready to continue your learning journey?
+      </p>
     </div>
   );
 };

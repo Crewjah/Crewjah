@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+
+// Components
+import { AuthLayout, FormInput, LoadingButton, ErrorMessage } from '../components/auth';
+
+// Utilities
+import { validateEmail, validatePassword } from '../utils/validation';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -25,14 +31,13 @@ const SignIn = () => {
     setSuccess('');
     setLoading(true);
 
-    if (!email.includes('@')) {
-      setError('Please enter a valid email address');
-      setLoading(false);
-      return;
-    }
-
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+    // Validate form fields
+    const emailError = validateEmail(email);
+    const passwordError = validatePassword(password);
+    
+    const firstError = emailError || passwordError;
+    if (firstError) {
+      setError(firstError);
       setLoading(false);
       return;
     }
@@ -67,72 +72,63 @@ const SignIn = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-400 via-purple-200 to-pink-300">
-      <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-md animate-fadein border-2 border-teal-200">
-        <div className="mb-6 flex flex-col items-center">
-          <span 
-            className="text-2xl font-extrabold text-teal-700 mb-2 cursor-pointer drop-shadow" 
-            onClick={() => navigate('/')}
-          >
-            Crewjah
-          </span>
-          <h2 className="text-3xl font-extrabold mb-2 text-purple-700 text-center drop-shadow">Sign In</h2>
-          <p className="text-base text-teal-700 text-center">Welcome back! Sign in to access your dashboard and study tools.</p>
-        </div>
-        <form onSubmit={handleSubmit} className="space-y-5 mt-4">
-          <label className="block">
-            <span className="text-base font-semibold text-teal-700">Email / Username</span>
-            <input
-              type="email"
-              autoComplete="email"
-              className="mt-2 w-full px-4 py-3 border border-teal-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-600 bg-teal-50 text-teal-900 placeholder-teal-400"
-              placeholder="Enter your email or username"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
-          </label>
-          <label className="block">
-            <span className="text-base font-semibold text-purple-700">Password</span>
-            <input
-              type="password"
-              autoComplete="current-password"
-              className="mt-2 w-full px-4 py-3 border border-purple-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-600 bg-purple-50 text-purple-900 placeholder-purple-400"
-              placeholder="Enter your password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              required
-            />
-          </label>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-teal-600 text-white font-bold rounded shadow hover:bg-teal-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {loading ? 'Signing In...' : 'Sign In'}
-          </button>
-        </form>
-        <div className="flex justify-between mt-6">
-          <button 
-            className="text-teal-700 underline font-semibold hover:text-teal-900" 
-            onClick={() => navigate('/forgot')}
-          >
-            Forgot Password?
-          </button>
-          <button 
-            className="text-purple-700 underline font-semibold hover:text-purple-900" 
-            onClick={() => navigate('/signup')}
-          >
-            Don't have an account? Sign Up
-          </button>
-        </div>
-        {success && <div className="mt-6 text-green-600 text-center text-sm font-semibold">{success}</div>}
-        {error && <div className="mt-6 text-red-600 text-center text-sm font-semibold">{error}</div>}
-        <p className="mt-8 text-xs text-gray-500 text-center">
-          By signing in, you agree to our <a href="/terms" className="underline">Terms</a> & <a href="/privacy" className="underline">Privacy</a>.
-        </p>
+    <AuthLayout 
+      title="Welcome Back" 
+      subtitle="Sign in to continue your learning journey"
+    >
+      {success && <div className="mb-6 text-green-600 text-center text-sm font-semibold bg-green-50 p-3 rounded-lg">{success}</div>}
+      
+      <ErrorMessage error={error} className="mb-6" />
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <FormInput
+          label="Email Address"
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          autoComplete="email"
+          required
+        />
+
+        <FormInput
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          autoComplete="current-password"
+          required
+        />
+
+        <LoadingButton
+          type="submit"
+          loading={loading}
+          loadingText="Signing In..."
+        >
+          Sign In
+        </LoadingButton>
+      </form>
+
+      <div className="flex justify-between mt-6 text-sm">
+        <Link 
+          to="/forgot" 
+          className="text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300"
+        >
+          Forgot Password?
+        </Link>
+        <Link 
+          to="/signup" 
+          className="text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300"
+        >
+          Create Account
+        </Link>
       </div>
-    </div>
+      
+      <p className="mt-8 text-xs text-gray-500 text-center">
+        By signing in, you agree to our <Link to="/terms" className="underline hover:text-gray-700">Terms</Link> & <Link to="/privacy" className="underline hover:text-gray-700">Privacy</Link>.
+      </p>
+    </AuthLayout>
   );
 };
 
