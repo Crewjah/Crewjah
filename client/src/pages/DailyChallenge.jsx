@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { MCQQuestion, ShortAnswerQuestion, ChallengeResults } from '../components/dailyChallenge';
+import { QuizSetup, QuizResults } from '../components/quiz';
 import { mcqs, shortChallenge, challengeConfig } from '../constants/dailyChallengeConstants';
 import { Button } from '../components/ui';
 import { useStatsTracking } from '../utils/statsTracker';
@@ -9,14 +10,33 @@ const DailyChallenge = () => {
   const [mcqAnswers, setMcqAnswers] = useState(Array(mcqs.length).fill(null));
   const [shortAns, setShortAns] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [started, setStarted] = useState(true); // Daily challenge starts immediately
+  const [showResult, setShowResult] = useState(false);
+  
+  // For daily challenge, we can use fixed settings or make them configurable
+  const subject = 'mixed';
+  const difficulty = 'medium';
+  const subjects = [{ value: 'mixed', label: 'Mixed Topics' }];
+  const difficulties = ['easy', 'medium', 'hard'];
+  const questions = mcqs;
+  const score = mcqAnswers.filter((a, i) => a === mcqs[i].answer).length;
+  
+  const setSubject = () => {}; // Not needed for daily challenge
+  const setDifficulty = () => {}; // Not needed for daily challenge  
+  const startQuiz = () => setStarted(true);
+  const retry = () => {
+    setMcqAnswers(Array(mcqs.length).fill(null));
+    setShortAns('');
+    setSubmitted(false);
+    setShowResult(false);
+  };
   
   const { trackQuestionAnswered, startPageTracking, endPageTracking } = useStatsTracking();
-
   // Track page visit for study time
   useEffect(() => {
     startPageTracking();
     return () => endPageTracking();
-  }, []);
+  }, [startPageTracking, endPageTracking]);
 
   function handleMcq(idx, val) {
     setMcqAnswers(ans => ans.map((a, i) => i === idx ? val : a));
@@ -30,6 +50,7 @@ const DailyChallenge = () => {
     }
     
     setSubmitted(true);
+    setShowResult(true);
   }
 
   const correctCount = mcqAnswers.filter((a, i) => a === mcqs[i].answer).length;

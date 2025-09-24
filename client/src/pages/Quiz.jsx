@@ -21,7 +21,7 @@ const Quiz = () => {
   useEffect(() => {
     startPageTracking();
     return () => endPageTracking();
-  }, []);
+  }, [startPageTracking, endPageTracking]);
 
   function startQuiz() {
     setStarted(true);

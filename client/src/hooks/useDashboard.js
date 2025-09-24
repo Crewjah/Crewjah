@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const useAuth = () => {
@@ -63,7 +63,7 @@ export const useUserStats = () => {
 
     // Update last active date for streak tracking
     updateLastActiveDate();
-  }, []);
+  }, [updateLastActiveDate]);
 
   const calculateStudyStreak = (lastActiveDate) => {
     if (!lastActiveDate) return 0;
@@ -86,7 +86,7 @@ export const useUserStats = () => {
     }
   };
 
-  const updateLastActiveDate = () => {
+  const updateLastActiveDate = useCallback(() => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
     if (!currentUser.id) return;
 
@@ -104,7 +104,7 @@ export const useUserStats = () => {
         lastActiveDate: today 
       });
     }
-  };
+  }, []);
 
   const updateStats = (newStats) => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');

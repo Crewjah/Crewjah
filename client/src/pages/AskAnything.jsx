@@ -6,7 +6,6 @@ const AskAnything = () => {
   const [answer, setAnswer] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const token = localStorage.getItem('token');
 
   async function handleAsk() {
     setLoading(true);

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
@@ -15,8 +15,7 @@ import { STATS_CONFIG, getRandomQuote } from '../constants/dashboardConstants';
 import { formatStatValue, formatStatUnit } from '../utils/statsFormatter';
 
 const Dashboard = () => {
-  const [error, setError] = useState('');
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const { stats } = useUserStats();
 
   const handleVerifyEmail = () => {
@@ -27,16 +26,7 @@ const Dashboard = () => {
   // Get a random motivational quote
   const currentQuote = getRandomQuote();
 
-  if (error) return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="text-center">
-        <div className="text-red-500 text-xl mb-4"> {error}</div>
-        <Link to="/signin" className="text-blue-600 hover:text-blue-700 font-semibold">
-          Return to Sign In
-        </Link>
-      </div>
-    </div>
-  );
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">

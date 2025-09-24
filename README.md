@@ -1,29 +1,222 @@
-# Crewjah Educational Platform
+<div align="center">
+  <img src="client/public/crewjah-logo.png" alt="Crewjah Logo" width="120" height="120" style="border-radius: 50%;">
+  
+  # 🎓 Crewjah - AI-Powered Learning Platform
+  
+  <p align="center">
+    A comprehensive, mobile-responsive educational platform that combines artificial intelligence with interactive learning tools to enhance the student experience.
+  </p>
+  
+  <p align="center">
+    <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
+    <img src="https://img.shields.io/badge/Vite-7.1.5-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+    <img src="https://img.shields.io/badge/TailwindCSS-3.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License">
+  </p>
+  
+  <p align="center">
+    <a href="#-features">Features</a> •
+    <a href="#-getting-started">Getting Started</a> •
+    <a href="#-tech-stack">Tech Stack</a> •
+    <a href="#-contributing">Contributing</a>
+  </p>
+</div>
 
-A comprehensive educational platform built with modern web technologies, designed to provide an engaging and effective learning experience. Crewjah combines interactive learning tools, progress tracking, and AI-powered features to create a complete educational ecosystem.
+---
 
-## Overview
+## 📊 Project Status
 
-Crewjah is a full-stack educational application that offers multiple learning modalities including quizzes, flashcards, daily challenges, and AI-powered study assistance. The platform features a clean, responsive design optimized for both desktop and mobile learning experiences.
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <h3>🏗️ Build Status</h3>
+        <img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=flat-square" alt="Build Status">
+      </td>
+      <td align="center">
+        <h3>📱 Mobile Ready</h3>
+        <img src="https://img.shields.io/badge/Mobile-Responsive-blue.svg?style=flat-square" alt="Mobile Ready">
+      </td>
+      <td align="center">
+        <h3>✅ Code Quality</h3>
+        <img src="https://img.shields.io/badge/ESLint-Clean-green.svg?style=flat-square" alt="Code Quality">
+      </td>
+      <td align="center">
+        <h3>🚀 Production Ready</h3>
+        <img src="https://img.shields.io/badge/Status-Ready-success.svg?style=flat-square" alt="Production Ready">
+      </td>
+    </tr>
+  </table>
+</div>
 
-## Key Features
+## ✨ Features
 
-### Learning Tools
-- **Interactive Quizzes**: Multiple-choice questions across various subjects with difficulty levels
-- **Flashcard System**: Spaced repetition learning with customizable decks
-- **Daily Challenges**: Engaging daily problems to maintain learning momentum
-- **Progress Tracking**: Comprehensive statistics and learning analytics
-- **AI Study Assistant**: Text summarization and code analysis tools
+### 🏠 **Dashboard & Analytics**
+- **Smart Statistics Tracking**: Automatic activity monitoring with formatted displays (no floating-point errors)
+- **Study Streak System**: Gamified learning with streak tracking and motivational quotes
+- **Progress Visualization**: Beautiful cards showing questions answered, quizzes completed, and study time
+- **Mobile-Responsive Design**: Optimized layouts for all screen sizes
 
-### User Experience
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Modern UI**: Clean interface built with React 18 and TailwindCSS
-- **Smooth Animations**: Enhanced user interactions with Framer Motion
-- **Accessibility**: WCAG compliant design patterns
-- **Real-time Feedback**: Instant scoring and progress updates
+### 🧠 **Interactive Learning Tools**
 
-### Technical Features
-- **Single Page Application**: Fast navigation with React Router
+#### 📝 **Quiz System**
+- Multiple subjects (Mathematics, Science, History, Geography, Literature)
+- Difficulty levels (Easy, Medium, Hard)
+- Real-time scoring and detailed results
+- Mobile-optimized question interface
+
+#### 📚 **Flashcards**
+- Interactive card-based learning
+- Swipe navigation with touch support
+- Progress tracking per session
+- Responsive design for mobile and desktop
+
+#### 🏆 **Daily Challenge**
+- Mixed-topic questions for daily practice
+- MCQ and short answer formats
+- Automatic progress tracking
+- Streak maintenance system
+
+### 🤖 **AI-Powered Features**
+- **Ask Anything**: Get instant answers to any question
+- **Text Summarization**: Summarize long texts automatically
+- **Code Summarization**: Understand code snippets quickly
+- **Study Resources**: AI-curated learning materials
+
+### 📱 **User Experience**
+- **Mobile-First Design**: Touch-optimized interactions
+- **Responsive Grids**: Adaptive layouts for all devices
+- **Smooth Animations**: Framer Motion powered transitions
+- **Modern UI**: Clean, educational-focused design
+
+### 📊 **Study Management**
+- **Study Planner**: Organize learning sessions
+- **Progress Tracker**: Monitor improvement over time
+- **Profile Settings**: Customize user experience
+- **Download Notes**: Export study materials
+
+## 📸 Screenshots
+
+<div align="center">
+  <h3>🏠 Dashboard Overview</h3>
+  <p><em>Smart statistics tracking with beautiful, mobile-responsive cards</em></p>
+  
+  <h3>📝 Interactive Quiz System</h3>
+  <p><em>Multi-subject quizzes with real-time scoring and detailed results</em></p>
+  
+  <h3>📚 Flashcard Learning</h3>
+  <p><em>Touch-optimized flashcards with progress tracking</em></p>
+  
+  <h3>📱 Mobile-First Design</h3>
+  <p><em>Seamlessly responsive across all devices</em></p>
+</div>
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Crewjah/Crewjah.git
+   cd Crewjah
+   ```
+
+2. **Install dependencies**
+   ```bash
+   # Navigate to client directory
+   cd client
+   
+   # Install packages
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:5173`
+
+### Building for Production
+
+```bash
+# Build the application
+npm run build
+
+# Preview the build
+npm run preview
+```
+
+### 🌐 Live Demo
+
+> **Development Server**: http://localhost:5173 (when running locally)
+
+<div align="center">
+  <a href="http://localhost:5173" target="_blank">
+    <img src="https://img.shields.io/badge/View-Live%20Demo-brightgreen?style=for-the-badge&logo=vercel" alt="Live Demo">
+  </a>
+</div>
+
+## 🛠️ Tech Stack
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
+        <br>React 18.2.0
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=vite" width="48" height="48" alt="Vite" />
+        <br>Vite 7.1.5
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=tailwind" width="48" height="48" alt="Tailwind" />
+        <br>Tailwind CSS
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=js" width="48" height="48" alt="JavaScript" />
+        <br>JavaScript ES6+
+      </td>
+    </tr>
+    <tr>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=nodejs" width="48" height="48" alt="Node.js" />
+        <br>Node.js
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=python" width="48" height="48" alt="Python" />
+        <br>Python (API)
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=flask" width="48" height="48" alt="Flask" />
+        <br>Flask
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=fastapi" width="48" height="48" alt="FastAPI" />
+        <br>FastAPI
+      </td>
+    </tr>
+  </table>
+</div>
+
+### Frontend Technologies
+- **React 18.2.0** - Modern React with hooks and functional components
+- **Vite 7.1.5** - Lightning-fast build tool and development server
+- **React Router 7.8.2** - Declarative client-side routing
+- **Tailwind CSS 3.3.3** - Utility-first CSS framework for rapid UI development
+- **Framer Motion 12.23.15** - Production-ready motion library for React
+- **ESLint** - Code quality and consistency enforcement
+
+### Backend Options
+- **Node.js Server** - Express.js based API server
+- **Flask Backend** - Python-based REST API
+- **FastAPI Backend** - High-performance Python API with automatic documentation
 - **Component Architecture**: Modular, reusable UI components
 - **State Management**: Efficient data flow and user session handling
 - **API Integration**: RESTful backend services with FastAPI
@@ -285,21 +478,60 @@ The application implements several performance optimizations:
 - Bundle optimization with Vite
 - Responsive images and media queries
 
-## License
+## 📄 License
 
-MIT License. See LICENSE file for complete terms.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Support
+## 📞 Support & Contact
 
-For questions about the platform or technical issues:
-- Open an issue on GitHub
-- Review existing documentation
-- Check the API documentation for backend queries
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <h3>🐛 Issues</h3>
+        <a href="https://github.com/Crewjah/Crewjah/issues">
+          <img src="https://img.shields.io/badge/GitHub-Issues-red?style=for-the-badge&logo=github" alt="GitHub Issues">
+        </a>
+      </td>
+      <td align="center">
+        <h3>💬 Discussions</h3>
+        <a href="https://github.com/Crewjah/Crewjah/discussions">
+          <img src="https://img.shields.io/badge/GitHub-Discussions-blue?style=for-the-badge&logo=github" alt="GitHub Discussions">
+        </a>
+      </td>
+      <td align="center">
+        <h3>📧 Contact</h3>
+        <a href="mailto:contact@crewjah.com">
+          <img src="https://img.shields.io/badge/Email-Contact-green?style=for-the-badge&logo=gmail" alt="Email">
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
-This project uses open-source technologies and follows modern web development best practices to create an effective educational platform.
+- React team for the amazing framework
+- Tailwind CSS for the utility-first approach
+- Framer Motion for smooth animations
+- Vite for the fast development experience
+- Open source community for continuous inspiration
 
 ---
 
-Built with modern web technologies for effective education.
+<div align="center">
+  <h3>🌟 Star this repository if you found it helpful!</h3>
+  
+  <p>
+    <strong>Built with ❤️ by the Crewjah Development Team</strong>
+  </p>
+  
+  <p>
+    <em>Empowering education through technology</em>
+  </p>
+  
+  <!-- Repository Stats -->
+  <img src="https://img.shields.io/github/last-commit/Crewjah/Crewjah?style=flat-square" alt="Last Commit">
+  <img src="https://img.shields.io/github/languages/count/Crewjah/Crewjah?style=flat-square" alt="Languages">
+  <img src="https://img.shields.io/github/repo-size/Crewjah/Crewjah?style=flat-square" alt="Repo Size">
+</div>

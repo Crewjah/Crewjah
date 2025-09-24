@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function ForgotPassword() {
 	const [email, setEmail] = useState('');
 	const [success, setSuccess] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState('');
-	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -26,7 +25,7 @@ export default function ForgotPassword() {
 			// In a real app, this would send a reset email
 			// For now, just show success message
 			setSuccess(true);
-		} catch (err) {
+		} catch {
 			setError('Failed to send reset link. Please try again.');
 		} finally {
 			setLoading(false);

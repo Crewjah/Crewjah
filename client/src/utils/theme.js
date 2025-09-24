@@ -1,4 +1,4 @@
-import { colors, typography, spacing, borderRadius, shadows } from './designSystem';
+// Design system utilities for consistent theming
 
 // Common CSS class generators
 export const buttonVariants = {
