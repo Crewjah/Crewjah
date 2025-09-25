@@ -6,22 +6,31 @@ const LoadingButton = ({
   children,
   className = '',
   variant = 'primary',
+  size = 'normal',
   ...props
 }) => {
-  const baseClass = "w-full py-3 px-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none";
+  const baseClass = "w-full font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-lg focus:outline-none focus:ring-4 focus:ring-opacity-50";
   
-  const variants = {
-    primary: "bg-gradient-to-r from-blue-500 to-indigo-600 text-white",
-    secondary: "bg-gradient-to-r from-slate-500 to-slate-600 text-white",
-    danger: "bg-gradient-to-r from-red-500 to-red-600 text-white"
+  const sizes = {
+    small: "py-2 px-3 text-sm",
+    normal: "py-3 px-4 text-base",
+    large: "py-4 px-6 text-lg"
   };
   
+  const variants = {
+    primary: "bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white focus:ring-blue-500",
+    secondary: "bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700 text-white focus:ring-slate-500",
+    danger: "bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white focus:ring-red-500",
+    success: "bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white focus:ring-green-500"
+  };
+  
+  const sizeClass = sizes[size] || sizes.normal;
   const variantClass = variants[variant] || variants.primary;
   
   return (
     <button
       disabled={loading}
-      className={`${baseClass} ${variantClass} ${className}`}
+      className={`${baseClass} ${sizeClass} ${variantClass} ${className}`}
       {...props}
     >
       {loading ? (

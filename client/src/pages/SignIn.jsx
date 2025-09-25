@@ -44,28 +44,41 @@ const SignIn = () => {
     
     try {
       // Simulate API delay for realistic UX
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1500));
       
       // Get users from localStorage
       const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
-      const user = existingUsers.find(u => u.email === email && u.password === password);
+      const user = existingUsers.find(u => 
+        u.email.toLowerCase() === email.toLowerCase() && 
+        u.password === password
+      );
       
       if (!user) {
-        throw new Error('Invalid email or password');
+        setError('Invalid email or password. Please check your credentials and try again.');
+        return;
       }
       
-      // Store current user session
+      // Store current user session with additional data
       localStorage.setItem('currentUser', JSON.stringify({
         id: user.id,
         email: user.email,
         name: user.name,
-        loginTime: new Date().toISOString()
+        avatar: user.avatar || '👨‍🎓',
+        loginTime: new Date().toISOString(),
+        lastActive: new Date().toISOString()
       }));
       
-      // Success - redirect to dashboard
-      navigate('/dashboard');
+      // Show success message briefly before redirecting
+      setSuccess('Welcome back! Redirecting to your dashboard...');
+      
+      // Success - redirect to dashboard after brief delay
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000);
+      
     } catch (err) {
-      setError(err.message || 'Failed to sign in. Please try again.');
+      console.error('Sign in error:', err);
+      setError('Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
     }

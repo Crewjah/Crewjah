@@ -9,7 +9,7 @@ const AuthLayout = ({
   showLogo = true 
 }) => {
   const backgrounds = {
-    default: "min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center py-12 px-4",
+    default: "min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8",
     colorful: "min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-400 via-purple-200 to-pink-300",
     simple: "min-h-screen bg-slate-50 flex items-center justify-center py-12 px-4"
   };
@@ -26,7 +26,7 @@ const AuthLayout = ({
         </div>
       )}
 
-      <div className={`relative ${backgroundVariant === 'colorful' ? 'bg-white rounded-3xl shadow-2xl border-2 border-teal-200 animate-fadein' : 'bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-blue-100'} p-8 w-full max-w-md`}>
+      <div className={`relative ${backgroundVariant === 'colorful' ? 'bg-white rounded-3xl shadow-2xl border-2 border-teal-200 animate-fadein' : 'bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-blue-100'} p-6 sm:p-8 w-full max-w-sm sm:max-w-md lg:max-w-lg`}>
         {/* Header */}
         {(showLogo || title) && (
           <div className="text-center mb-8">

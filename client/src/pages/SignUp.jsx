@@ -18,6 +18,7 @@ const SignUp = () => {
   const [learningGoals, setLearningGoals] = useState([]);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -79,19 +80,24 @@ const SignUp = () => {
     
     try {
       // Simulate API delay for realistic UX
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 1200));
       
       // Check if user already exists
       const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');
-      if (existingUsers.find(user => user.email === email)) {
-        throw new Error('Account with this email already exists');
+      const existingUser = existingUsers.find(user => 
+        user.email.toLowerCase() === email.toLowerCase()
+      );
+      
+      if (existingUser) {
+        setError('An account with this email already exists. Please try signing in instead.');
+        return;
       }
       
       // Create new user with complete profile
       const newUser = {
         id: Date.now().toString(),
-        email,
-        name,
+        email: email.toLowerCase(),
+        name: name.trim(),
         password, // WARNING: In production, passwords must be hashed before storage
         age: parseInt(age),
         educationLevel,
@@ -99,18 +105,32 @@ const SignUp = () => {
         bio: '', // Optional field, can be filled later
         avatar: '👨‍🎓',
         createdAt: new Date().toISOString(),
+        lastActive: new Date().toISOString(),
         profileCompleted: true,
         emailVerified: false, // Email verification status
-        verificationToken: null // For future OTP implementation
+        verificationToken: null, // For future email verification
+        stats: {
+          totalStudyTime: 0,
+          currentStreak: 0,
+          totalCourses: 0,
+          completedActivities: 0
+        }
       };
       
       existingUsers.push(newUser);
       localStorage.setItem('users', JSON.stringify(existingUsers));
       
-      // Success - redirect to sign in with verification reminder
-      navigate('/signin?message=Account created successfully! Please verify your email to secure your account.');
+      // Show success message
+      setSuccess('Account created successfully! Redirecting to sign in...');
+      
+      // Success - redirect to sign in with success message
+      setTimeout(() => {
+        navigate('/signin?message=Welcome to Crewjah! Your account has been created successfully. Please sign in to get started.');
+      }, 2000);
+      
     } catch (err) {
-      setError(err.message || 'Failed to create account. Please try again.');
+      console.error('Sign up error:', err);
+      setError('Something went wrong while creating your account. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -122,6 +142,20 @@ const SignUp = () => {
       subtitle="Start your learning journey today"
     >
       <ErrorMessage error={error} className="mb-6" />
+      {success && (
+        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+          <div className="flex items-center">
+            <div className="flex-shrink-0">
+              <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div className="ml-3">
+              <p className="text-sm font-medium text-green-800">{success}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <FormInput
