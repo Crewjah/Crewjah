@@ -1,99 +1,78 @@
 <div align="center">
-  <img src="client/public/crewjah-logo.png" alt="Crewjah Logo" width="120" height="120" style="border-radius: 50%;">
   
-  # 🎓 Crewjah - AI-Powered Learning Platform
+  # 🎓 Crewjah - Modern Learning Platform
   
   <p align="center">
-    A comprehensive, mobile-responsive educational platform that combines artificial intelligence with interactive learning tools to enhance the student experience.
+    A comprehensive, mobile-first educational platform built with React and modern web technologies. Features interactive learning tools, progress tracking, and a beautiful responsive design.
   </p>
   
   <p align="center">
     <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
-    <img src="https://img.shields.io/badge/Vite-7.1.5-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+    <img src="https://img.shields.io/badge/Vite-7.1.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
     <img src="https://img.shields.io/badge/TailwindCSS-3.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
-    <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License">
+    <img src="https://img.shields.io/badge/Framer_Motion-12.23-FF6B6B?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion">
   </p>
   
   <p align="center">
     <a href="#-features">Features</a> •
-    <a href="#-getting-started">Getting Started</a> •
+    <a href="#-quick-start">Quick Start</a> •
     <a href="#-tech-stack">Tech Stack</a> •
-    <a href="#-contributing">Contributing</a>
+    <a href="#-project-structure">Structure</a>
   </p>
 </div>
 
 ---
 
+## � Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/Crewjah/Crewjah.git
+cd Crewjah
+
+# Install dependencies and start development server
+cd client
+npm install
+npm run dev
+
+# Open http://localhost:5173 in your browser
+```
+
 ## 📊 Project Status
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <h3>🏗️ Build Status</h3>
-        <img src="https://img.shields.io/badge/Build-Passing-brightgreen.svg?style=flat-square" alt="Build Status">
-      </td>
-      <td align="center">
-        <h3>📱 Mobile Ready</h3>
-        <img src="https://img.shields.io/badge/Mobile-Responsive-blue.svg?style=flat-square" alt="Mobile Ready">
-      </td>
-      <td align="center">
-        <h3>✅ Code Quality</h3>
-        <img src="https://img.shields.io/badge/ESLint-Clean-green.svg?style=flat-square" alt="Code Quality">
-      </td>
-      <td align="center">
-        <h3>🚀 Production Ready</h3>
-        <img src="https://img.shields.io/badge/Status-Ready-success.svg?style=flat-square" alt="Production Ready">
-      </td>
-    </tr>
-  </table>
-</div>
+- ✅ **Frontend**: Fully functional React application with modern UI/UX
+- ✅ **Authentication**: Complete sign-up/sign-in system with localStorage
+- ✅ **Dashboard**: User analytics, progress tracking, and study statistics  
+- ✅ **Learning Tools**: Quiz system, flashcards, and daily challenges
+- ✅ **Mobile Responsive**: Optimized for all device sizes
+- 🔄 **Backend API**: In development (Flask/FastAPI options available)
+- 📧 **Email Verification**: Basic implementation (Phase 1 complete)
 
 ## ✨ Features
 
 ### 🏠 **Dashboard & Analytics**
-- **Smart Statistics Tracking**: Automatic activity monitoring with formatted displays (no floating-point errors)
-- **Study Streak System**: Gamified learning with streak tracking and motivational quotes
-- **Progress Visualization**: Beautiful cards showing questions answered, quizzes completed, and study time
-- **Mobile-Responsive Design**: Optimized layouts for all screen sizes
+- **Smart Statistics**: Track study time, questions answered, and progress
+- **Study Streaks**: Gamified learning with motivational quotes
+- **Beautiful UI**: Modern cards with smooth animations
+- **Mobile-First**: Fully responsive design for all devices
 
-### 🧠 **Interactive Learning Tools**
+### 🧠 **Learning Tools**
+- **📝 Quiz System**: Multiple subjects with difficulty levels and real-time scoring
+- **📚 Flashcards**: Interactive spaced-repetition learning with swipe navigation  
+- **🏆 Daily Challenge**: Mixed-topic questions to maintain learning momentum
+- **📊 Progress Tracking**: Visual progress indicators and achievement system
 
-#### 📝 **Quiz System**
-- Multiple subjects (Mathematics, Science, History, Geography, Literature)
-- Difficulty levels (Easy, Medium, Hard)
-- Real-time scoring and detailed results
-- Mobile-optimized question interface
+### 🎨 **Modern User Experience**
+- **Clean Design**: Beautiful, educational-focused interface
+- **Smooth Animations**: Framer Motion powered transitions and interactions
+- **Touch Optimized**: Perfect for mobile and tablet usage
+- **Accessibility**: Proper ARIA labels and keyboard navigation
 
-#### 📚 **Flashcards**
-- Interactive card-based learning
-- Swipe navigation with touch support
-- Progress tracking per session
-- Responsive design for mobile and desktop
-
-#### 🏆 **Daily Challenge**
-- Mixed-topic questions for daily practice
-- MCQ and short answer formats
-- Automatic progress tracking
-- Streak maintenance system
-
-### 🤖 **AI-Powered Features**
-- **Ask Anything**: Get instant answers to any question
-- **Text Summarization**: Summarize long texts automatically
-- **Code Summarization**: Understand code snippets quickly
-- **Study Resources**: AI-curated learning materials
-
-### 📱 **User Experience**
-- **Mobile-First Design**: Touch-optimized interactions
-- **Responsive Grids**: Adaptive layouts for all devices
-- **Smooth Animations**: Framer Motion powered transitions
-- **Modern UI**: Clean, educational-focused design
-
-### 📊 **Study Management**
-- **Study Planner**: Organize learning sessions
-- **Progress Tracker**: Monitor improvement over time
-- **Profile Settings**: Customize user experience
-- **Download Notes**: Export study materials
+### 🔐 **Authentication System**
+- **Secure Sign-up/Sign-in**: Form validation and localStorage management
+- **User Profiles**: Customizable learning preferences and goals
+- **Session Management**: Persistent login with automatic activity tracking
+- **Email Verification**: Basic implementation with expansion roadmap
 
 ## 📸 Screenshots
 
@@ -191,10 +170,10 @@ npm run preview
       </td>
       <td align="center" width="96">
         <img src="https://skillicons.dev/icons?i=python" width="48" height="48" alt="Python" />
-        <br>Python (API)
-      </td>
       <td align="center" width="96">
-        <img src="https://skillicons.dev/icons?i=flask" width="48" height="48" alt="Flask" />
+        <img src="https://skillicons.dev/icons?i=vite" width="48" height="48" alt="Vite" />
+        <br>Vite 7.1.2
+      </td>g src="https://skillicons.dev/icons?i=flask" width="48" height="48" alt="Flask" />
         <br>Flask
       </td>
       <td align="center" width="96">
