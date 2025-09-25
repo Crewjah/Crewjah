@@ -2,17 +2,13 @@ import { Link, useLocation } from 'react-router-dom';
 
 const links = [
   { to: '/dashboard', label: 'Dashboard' },
-  { to: '/ask', label: 'Ask Anything' },
-  { to: '/summarize-text', label: 'Summarize Text' },
-  { to: '/summarize-code', label: 'Summarize Code' },
-  { to: '/resources', label: 'Study Resources' },
-  { to: '/quiz', label: 'Quiz' },
-  { to: '/flashcards', label: 'Flashcards' },
-  { to: '/daily-challenge', label: 'Daily Challenge' },
+  { to: '/study-assistant', label: 'Study Assistant' },
+  { to: '/smart-notes', label: 'Smart Notes' },
+  { to: '/quiz', label: 'Practice Tests' },
+  { to: '/flashcard-generator', label: 'Flashcards' },
   { to: '/planner', label: 'Study Planner' },
   { to: '/progress', label: 'Progress Tracker' },
-  { to: '/download-notes', label: 'Download Notes' },
-  { to: '/accessibility', label: 'Accessibility' },
+  { to: '/resources', label: 'Study Resources' },
   { to: '/profile', label: 'Profile & Settings' },
   { to: '/help', label: 'Help' }
 ];

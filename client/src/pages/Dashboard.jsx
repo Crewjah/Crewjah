@@ -48,8 +48,8 @@ const Dashboard = () => {
             <StatsCard
               key={statConfig.key}
               title={statConfig.title}
-              value={formatStatValue(stats[statConfig.key], statConfig.key)}
-              unit={formatStatUnit(stats[statConfig.key], statConfig.unit)}
+              value={formatStatValue(statConfig.key, stats[statConfig.key])}
+              unit={formatStatUnit(statConfig.key, stats[statConfig.key])}
               icon={statConfig.icon}
               color={statConfig.color}
               delay={statConfig.delay}

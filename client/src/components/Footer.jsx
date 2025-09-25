@@ -24,9 +24,9 @@ const Footer = () => (
           </h3>
           <ul className="space-y-2">
             <li><Link to="/dashboard" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Dashboard</Link></li>
-            <li><Link to="/ask" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Ask Anything</Link></li>
-            <li><Link to="/summarize-text" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Summarize</Link></li>
-            <li><Link to="/quiz" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Quizzes</Link></li>
+            <li><Link to="/study-assistant" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Study Assistant</Link></li>
+            <li><Link to="/smart-notes" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Smart Notes</Link></li>
+            <li><Link to="/flashcard-generator" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Flashcards</Link></li>
           </ul>
         </div>
 
@@ -37,26 +37,8 @@ const Footer = () => (
           <ul className="space-y-2">
             <li><Link to="/help" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Help Center</Link></li>
             <li><Link to="/contact" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Contact</Link></li>
-            <li>
-              <a 
-                href="https://github.com/Crewjah/Crewjah/issues" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
-              >
-                Report Issue
-              </a>
-            </li>
-            <li>
-              <a 
-                href="https://github.com/Crewjah/Crewjah" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
-              >
-                Contribute
-              </a>
-            </li>
+            <li><span className="text-gray-600 text-sm">Report Issue</span></li>
+            <li><span className="text-gray-600 text-sm">Feedback</span></li>
           </ul>
         </div>
       </div>

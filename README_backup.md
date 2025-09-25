@@ -1,382 +1,193 @@
-# 🎓 Crewjah - Student Learning Platform<div align="center">
-
+<div align="center">
   
-
-A modern React-based educational platform focused on study assistance, smart note-taking, and interactive learning tools. Built with React 18, Vite, and Tailwind CSS for a smooth, responsive learning experience.  # 🎓 Crewjah - Modern Learning Platform
-
+  # 🎓 Crewjah - Modern Learning Platform
   
-
-## 🚀 Current Features  <p align="center">
-
+  <p align="center">
     A comprehensive, mobile-first educational platform built with React and modern web technologies. Features interactive learning tools, progress tracking, and a beautiful responsive design.
-
-### 📝 Study Assistant  </p>
-
-- **Interactive AI Helper**: Get subject-specific study guidance for Mathematics, Science, History, and more  
-
-- **Smart Responses**: Contextual assistance based on your selected subject  <p align="center">
-
-- **Study Planning**: Helpful tips and structured learning approaches    <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
-
+  </p>
+  
+  <p align="center">
+    <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
     <img src="https://img.shields.io/badge/Vite-7.1.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
-
-### 📚 Smart Notes    <img src="https://img.shields.io/badge/TailwindCSS-3.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
-
-- **Intelligent Processing**: Upload and analyze study materials (text, documents)    <img src="https://img.shields.io/badge/Framer_Motion-12.23-FF6B6B?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion">
-
-- **Dynamic Content Analysis**: Automatically detects content type (Math formulas, Historical events, etc.)  </p>
-
-- **Organized Output**: Generates structured notes with key points and summaries  
-
-- **Multiple Formats**: Supports various input types for flexible note creation  <p align="center">
-
+    <img src="https://img.shields.io/badge/TailwindCSS-3.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
+    <img src="https://img.shields.io/badge/Framer_Motion-12.23-FF6B6B?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion">
+  </p>
+  
+  <p align="center">
     <a href="#-features">Features</a> •
-
-### 🏠 Landing Page    <a href="#-quick-start">Quick Start</a> •
-
-- **Clean Design**: Modern, student-focused interface    <a href="#-tech-stack">Tech Stack</a> •
-
-- **Feature Showcase**: Clear presentation of available tools    <a href="#-project-structure">Structure</a>
-
-- **Responsive Layout**: Optimized for desktop, tablet, and mobile devices  </p>
-
+    <a href="#-quick-start">Quick Start</a> •
+    <a href="#-tech-stack">Tech Stack</a> •
+    <a href="#-project-structure">Structure</a>
+  </p>
 </div>
 
-### 🎯 Additional Tools
+---
 
-- **Flashcards**: Interactive learning cards (basic implementation)---
+## � Quick Start
 
-- **Practice Tests**: Quiz functionality (basic implementation)
-
-- **Progress Tracking**: Study session management## � Quick Start
-
-
-
-## 🛠️ Tech Stack```bash
-
+```bash
 # Clone the repository
+git clone https://github.com/Crewjah/Crewjah.git
+cd Crewjah
 
-### Frontendgit clone https://github.com/Crewjah/Crewjah.git
+# Install dependencies and start development server
+cd client
+npm install
+npm run dev
 
-- **React 18.2.0** - Modern JavaScript frameworkcd Crewjah
+# Open http://localhost:5173 in your browser
+```
 
-- **Vite 7.1.5** - Fast build tool and development server
+## 📊 Project Status
 
-- **Tailwind CSS 3.3.3** - Utility-first CSS framework# Install dependencies and start development server
-
-- **Framer Motion 12.23** - Smooth animations and transitionscd client
-
-- **React Router DOM** - Client-side routingnpm install
-
-- **React Icons** - Icon library for UI componentsnpm run dev
-
-
-
-### Development Tools# Open http://localhost:5173 in your browser
-
-- **ESLint** - Code quality and consistency```
-
-- **PostCSS** - CSS processing
-
-- **Autoprefixer** - Cross-browser compatibility## 📊 Project Status
-
-
-
-## 📁 Project Structure- ✅ **Frontend**: Fully functional React application with modern UI/UX
-
+- ✅ **Frontend**: Fully functional React application with modern UI/UX
 - ✅ **Authentication**: Complete sign-up/sign-in system with localStorage
+- ✅ **Dashboard**: User analytics, progress tracking, and study statistics  
+- ✅ **Learning Tools**: Quiz system, flashcards, and daily challenges
+- ✅ **Mobile Responsive**: Optimized for all device sizes
+- 🔄 **Backend API**: In development (Flask/FastAPI options available)
+- 📧 **Email Verification**: Basic implementation (Phase 1 complete)
 
-```- ✅ **Dashboard**: User analytics, progress tracking, and study statistics  
+## ✨ Features
 
-Crewjah/- ✅ **Learning Tools**: Quiz system, flashcards, and daily challenges
+### 🏠 **Dashboard & Analytics**
+- **Smart Statistics**: Track study time, questions answered, and progress
+- **Study Streaks**: Gamified learning with motivational quotes
+- **Beautiful UI**: Modern cards with smooth animations
+- **Mobile-First**: Fully responsive design for all devices
 
-├── client/- ✅ **Mobile Responsive**: Optimized for all device sizes
+### 🧠 **Learning Tools**
+- **📝 Quiz System**: Multiple subjects with difficulty levels and real-time scoring
+- **📚 Flashcards**: Interactive spaced-repetition learning with swipe navigation  
+- **🏆 Daily Challenge**: Mixed-topic questions to maintain learning momentum
+- **📊 Progress Tracking**: Visual progress indicators and achievement system
 
-│   ├── src/- 🔄 **Backend API**: In development (Flask/FastAPI options available)
-
-│   │   ├── pages/- 📧 **Email Verification**: Basic implementation (Phase 1 complete)
-
-│   │   │   ├── Landing.jsx           # Main landing page
-
-│   │   │   ├── StudyAssistant.jsx    # AI study helper## ✨ Features
-
-│   │   │   ├── SmartNotes.jsx        # Note processing tool
-
-│   │   │   ├── Flashcards.jsx        # Learning flashcards### 🏠 **Dashboard & Analytics**
-
-│   │   │   └── PracticeTests.jsx     # Quiz functionality- **Smart Statistics**: Track study time, questions answered, and progress
-
-│   │   ├── components/- **Study Streaks**: Gamified learning with motivational quotes
-
-│   │   │   ├── Footer.jsx            # Site footer- **Beautiful UI**: Modern cards with smooth animations
-
-│   │   │   └── ui/                   # Reusable UI components- **Mobile-First**: Fully responsive design for all devices
-
-│   │   ├── constants/
-
-│   │   │   └── landingConstants.js   # Landing page data### 🧠 **Learning Tools**
-
-│   │   └── App.jsx                   # Main app component- **📝 Quiz System**: Multiple subjects with difficulty levels and real-time scoring
-
-│   ├── package.json- **📚 Flashcards**: Interactive spaced-repetition learning with swipe navigation  
-
-│   ├── vite.config.js- **🏆 Daily Challenge**: Mixed-topic questions to maintain learning momentum
-
-│   └── tailwind.config.js- **📊 Progress Tracking**: Visual progress indicators and achievement system
-
-└── README.md
-
-```### 🎨 **Modern User Experience**
-
+### 🎨 **Modern User Experience**
 - **Clean Design**: Beautiful, educational-focused interface
-
-## 🚀 Getting Started- **Smooth Animations**: Framer Motion powered transitions and interactions
-
+- **Smooth Animations**: Framer Motion powered transitions and interactions
 - **Touch Optimized**: Perfect for mobile and tablet usage
+- **Accessibility**: Proper ARIA labels and keyboard navigation
 
-### Prerequisites- **Accessibility**: Proper ARIA labels and keyboard navigation
-
-- Node.js (v18 or higher)
-
-- npm or yarn package manager### 🔐 **Authentication System**
-
+### 🔐 **Authentication System**
 - **Secure Sign-up/Sign-in**: Form validation and localStorage management
-
-### Installation- **User Profiles**: Customizable learning preferences and goals
-
+- **User Profiles**: Customizable learning preferences and goals
 - **Session Management**: Persistent login with automatic activity tracking
+- **Email Verification**: Basic implementation with expansion roadmap
 
-1. **Clone the repository**- **Email Verification**: Basic implementation with expansion roadmap
+## 📸 Screenshots
 
-   ```bash
-
-   git clone <repository-url>## 📸 Screenshots
-
-   cd Crewjah
-
-   ```<div align="center">
-
+<div align="center">
   <h3>🏠 Dashboard Overview</h3>
-
-2. **Install dependencies**  <p><em>Smart statistics tracking with beautiful, mobile-responsive cards</em></p>
-
-   ```bash  
-
-   cd client  <h3>📝 Interactive Quiz System</h3>
-
-   npm install  <p><em>Multi-subject quizzes with real-time scoring and detailed results</em></p>
-
-   ```  
-
+  <p><em>Smart statistics tracking with beautiful, mobile-responsive cards</em></p>
+  
+  <h3>📝 Interactive Quiz System</h3>
+  <p><em>Multi-subject quizzes with real-time scoring and detailed results</em></p>
+  
   <h3>📚 Flashcard Learning</h3>
-
-3. **Start development server**  <p><em>Touch-optimized flashcards with progress tracking</em></p>
-
-   ```bash  
-
-   npm run dev  <h3>📱 Mobile-First Design</h3>
-
-   ```  <p><em>Seamlessly responsive across all devices</em></p>
-
+  <p><em>Touch-optimized flashcards with progress tracking</em></p>
+  
+  <h3>📱 Mobile-First Design</h3>
+  <p><em>Seamlessly responsive across all devices</em></p>
 </div>
 
-4. **Open your browser**
+## 🚀 Getting Started
 
-   Navigate to `http://localhost:5174`## 🚀 Getting Started
-
-
-
-### Available Scripts### Prerequisites
-
+### Prerequisites
 - Node.js (v18 or higher)
+- npm or yarn package manager
 
-```bash- npm or yarn package manager
+### Installation
 
-npm run dev      # Start development server
-
-npm run build    # Build for production### Installation
-
-npm run preview  # Preview production build
-
-npm run lint     # Run ESLint1. **Clone the repository**
-
-```   ```bash
-
+1. **Clone the repository**
+   ```bash
    git clone https://github.com/Crewjah/Crewjah.git
-
-## 🎯 Current Implementation Status   cd Crewjah
-
+   cd Crewjah
    ```
 
-### ✅ Completed Features
-
-- **Landing Page**: Clean, responsive design without duplicates2. **Install dependencies**
-
-- **Study Assistant**: Subject-specific AI responses with realistic content   ```bash
-
-- **Smart Notes**: Dynamic content processing based on input type   # Navigate to client directory
-
-- **Footer**: Updated with accurate navigation links   cd client
-
-- **Responsive Design**: Mobile-first approach with Tailwind CSS   
-
-- **Component Architecture**: Modular, reusable React components   # Install packages
-
+2. **Install dependencies**
+   ```bash
+   # Navigate to client directory
+   cd client
+   
+   # Install packages
    npm install
+   ```
 
-### 🔄 Basic Implementation   ```
-
-- **Flashcards**: Core functionality present, room for enhancement
-
-- **Practice Tests**: Basic quiz system, can be expanded3. **Start development server**
-
-- **Progress Tracking**: Simple localStorage-based data persistence   ```bash
-
+3. **Start development server**
+   ```bash
    npm run dev
+   ```
 
-### 📋 Known Limitations   ```
+4. **Open your browser**
+   Navigate to `http://localhost:5173`
 
-- **No Backend API**: Currently frontend-only with localStorage
+### Building for Production
 
-- **No User Authentication**: No login/signup system implemented4. **Open your browser**
-
-- **No Database**: Data is stored locally in browser   Navigate to `http://localhost:5173`
-
-- **Limited Content**: Study materials are sample/placeholder content
-
-- **No Real AI Integration**: Responses are pre-programmed, not AI-generated### Building for Production
-
-
-
-## 🔧 Recent Fixes & Improvements```bash
-
+```bash
 # Build the application
+npm run build
 
-### Bug Fixes Appliednpm run build
-
-1. **Landing Page Duplicates**: Removed duplicate navigation and CTA sections
-
-2. **Footer Links**: Updated to reflect actual available features# Preview the build
-
-3. **Study Assistant**: Enhanced with subject-specific responses instead of generic contentnpm run preview
-
-4. **Smart Notes**: Improved content analysis and note generation logic```
-
-5. **Mobile Responsiveness**: Ensured proper display across all device sizes
+# Preview the build
+npm run preview
+```
 
 ### 🌐 Live Demo
 
-### Code Quality Improvements
+> **Development Server**: http://localhost:5173 (when running locally)
 
-- Clean component structure with proper separation of concerns> **Development Server**: http://localhost:5173 (when running locally)
-
-- Consistent styling with Tailwind CSS utilities
-
-- Proper React hooks usage and state management<div align="center">
-
-- Responsive design patterns throughout the application  <a href="http://localhost:5173" target="_blank">
-
+<div align="center">
+  <a href="http://localhost:5173" target="_blank">
     <img src="https://img.shields.io/badge/View-Live%20Demo-brightgreen?style=for-the-badge&logo=vercel" alt="Live Demo">
-
-## 🌐 Live Development  </a>
-
+  </a>
 </div>
 
-When running locally:
+## 🛠️ Tech Stack
 
-- **Development Server**: http://localhost:5174## 🛠️ Tech Stack
-
-- **Hot Reload**: Automatic browser refresh on code changes
-
-- **Fast Build**: Powered by Vite for quick development cycles<div align="center">
-
+<div align="center">
   <table>
-
-## 📱 Browser Support    <tr>
-
+    <tr>
       <td align="center" width="96">
-
-- Chrome 88+        <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
-
-- Firefox 85+        <br>React 18.2.0
-
-- Safari 14+      </td>
-
-- Edge 88+      <td align="center" width="96">
-
+        <img src="https://skillicons.dev/icons?i=react" width="48" height="48" alt="React" />
+        <br>React 18.2.0
+      </td>
+      <td align="center" width="96">
         <img src="https://skillicons.dev/icons?i=vite" width="48" height="48" alt="Vite" />
-
-## 🤝 Contributing        <br>Vite 7.1.5
-
+        <br>Vite 7.1.5
       </td>
-
-This project is in active development. To contribute:      <td align="center" width="96">
-
+      <td align="center" width="96">
         <img src="https://skillicons.dev/icons?i=tailwind" width="48" height="48" alt="Tailwind" />
-
-1. Fork the repository        <br>Tailwind CSS
-
-2. Create a feature branch      </td>
-
-3. Make your changes      <td align="center" width="96">
-
-4. Test thoroughly        <img src="https://skillicons.dev/icons?i=js" width="48" height="48" alt="JavaScript" />
-
-5. Submit a pull request        <br>JavaScript ES6+
-
+        <br>Tailwind CSS
       </td>
-
-### Development Guidelines    </tr>
-
-- Follow existing code patterns and structure    <tr>
-
-- Ensure mobile responsiveness      <td align="center" width="96">
-
-- Test across different browsers        <img src="https://skillicons.dev/icons?i=nodejs" width="48" height="48" alt="Node.js" />
-
-- Keep components modular and reusable        <br>Node.js
-
-- Use meaningful commit messages      </td>
-
       <td align="center" width="96">
-
-## 📄 License        <img src="https://skillicons.dev/icons?i=python" width="48" height="48" alt="Python" />
-
+        <img src="https://skillicons.dev/icons?i=js" width="48" height="48" alt="JavaScript" />
+        <br>JavaScript ES6+
+      </td>
+    </tr>
+    <tr>
       <td align="center" width="96">
-
-This project is licensed under the MIT License.        <img src="https://skillicons.dev/icons?i=vite" width="48" height="48" alt="Vite" />
-
+        <img src="https://skillicons.dev/icons?i=nodejs" width="48" height="48" alt="Node.js" />
+        <br>Node.js
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=python" width="48" height="48" alt="Python" />
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=vite" width="48" height="48" alt="Vite" />
         <br>Vite 7.1.2
-
-## 🏗️ Future Development Plans      </td>g src="https://skillicons.dev/icons?i=flask" width="48" height="48" alt="Flask" />
-
+      </td>g src="https://skillicons.dev/icons?i=flask" width="48" height="48" alt="Flask" />
         <br>Flask
-
-- Backend API integration for data persistence      </td>
-
-- User authentication and profiles      <td align="center" width="96">
-
-- Real AI integration for study assistance        <img src="https://skillicons.dev/icons?i=fastapi" width="48" height="48" alt="FastAPI" />
-
-- Expanded content library        <br>FastAPI
-
-- Advanced progress tracking and analytics      </td>
-
-- Social features for collaborative learning    </tr>
-
+      </td>
+      <td align="center" width="96">
+        <img src="https://skillicons.dev/icons?i=fastapi" width="48" height="48" alt="FastAPI" />
+        <br>FastAPI
+      </td>
+    </tr>
   </table>
+</div>
 
----</div>
-
-
-
-<div align="center">### Frontend Technologies
-
-  <p><strong>Built with React, Vite, and Tailwind CSS</strong></p>- **React 18.2.0** - Modern React with hooks and functional components
-
-  <p><em>A student-focused learning platform for effective study assistance</em></p>- **Vite 7.1.5** - Lightning-fast build tool and development server
-
-</div>- **React Router 7.8.2** - Declarative client-side routing
+### Frontend Technologies
+- **React 18.2.0** - Modern React with hooks and functional components
+- **Vite 7.1.5** - Lightning-fast build tool and development server
+- **React Router 7.8.2** - Declarative client-side routing
 - **Tailwind CSS 3.3.3** - Utility-first CSS framework for rapid UI development
 - **Framer Motion 12.23.15** - Production-ready motion library for React
 - **ESLint** - Code quality and consistency enforcement

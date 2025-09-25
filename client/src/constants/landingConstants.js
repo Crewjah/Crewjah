@@ -24,30 +24,30 @@ export const TRUST_INDICATORS = [
 
 export const FEATURES = [
   {
-    icon: "🤖",
-    title: "AI Assistant",
-    description: "Get instant answers to any question with our intelligent AI tutor",
+    icon: "🎓",
+    title: "Study Assistant",
+    description: "Get instant help with homework, concepts, and exam preparation",
     color: "blue",
     delay: "0ms"
   },
   {
-    icon: "📚",
-    title: "Smart Summaries",
-    description: "Transform complex texts into digestible, key insights",
+    icon: "�",
+    title: "Smart Notes",
+    description: "Convert lectures and textbooks into organized study notes automatically",
     color: "emerald",
     delay: "200ms"
   },
   {
-    icon: "🎯",
-    title: "Interactive Quizzes",
-    description: "Test your knowledge with adaptive learning assessments",
+    icon: "🧠",
+    title: "Practice Tests",
+    description: "Adaptive quizzes that focus on your weak areas for better retention",
     color: "indigo",
     delay: "400ms"
   },
   {
-    icon: "📊",
-    title: "Progress Analytics",
-    description: "Track your learning journey with detailed insights",
+    icon: "�",
+    title: "Flashcard Generator",
+    description: "Auto-create flashcards from your notes and textbooks for spaced repetition",
     color: "amber",
     delay: "600ms"
   }
