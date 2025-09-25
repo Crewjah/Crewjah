@@ -113,51 +113,28 @@ export default function Landing() {
               </div>
 
               {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600">
-                <div className="flex items-center">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 mb-16">
+                <div className="flex items-center bg-white/50 px-4 py-2 rounded-full shadow-sm">
                   <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   Always Free
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center bg-white/50 px-4 py-2 rounded-full shadow-sm">
                   <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  No Credit Card Required
+                  No Credit Card
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center bg-white/50 px-4 py-2 rounded-full shadow-sm">
                   <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
-                  Get Started in 30 Seconds
+                  30 Second Setup
                 </div>
               </div>
 
-              {/* CTA Button */}
-              <div className="flex justify-center items-center mb-12">
-                <Link 
-                  to="/signup" 
-                  className="group bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
-                >
-                  <span>Start Learning</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 9l3 3-3 3m-6-3h9" />
-                  </svg>
-                </Link>
-              </div>
 
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap justify-center gap-6 mb-16">
-                {TRUST_INDICATORS.map((indicator, index) => (
-                  <TrustIndicator
-                    key={index}
-                    icon={indicator.icon}
-                    text={indicator.text}
-                    color={indicator.color}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </div>
