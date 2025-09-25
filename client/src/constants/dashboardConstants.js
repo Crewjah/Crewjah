@@ -10,7 +10,7 @@ export const STATS_CONFIG = [
   },
   {
     key: 'questionsAnswered',
-    title: 'Questions',
+    title: 'Questions Answered',
     unit: 'answered',
     icon: '✅',
     color: 'emerald',
@@ -18,7 +18,7 @@ export const STATS_CONFIG = [
   },
   {
     key: 'completedQuizzes',
-    title: 'Quizzes',
+    title: 'Completed Quizzes',
     unit: 'completed',
     icon: '📝',
     color: 'indigo',
