@@ -1,4 +1,6 @@
 
+import React from 'react';
+
 const faqs = [
   { q: 'How do I reset my password?', a: 'Go to Profile Settings > Change Password.' },
   { q: 'How do I contact support?', a: 'Email support@crewjah.com or use the Contact page.' },
