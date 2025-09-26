@@ -26,13 +26,10 @@ const Header = () => (
           </Link>
         </nav>
 
-        {/* User Menu */}
+        {/* Help Link */}
         <div className="flex items-center space-x-4">
-          <Link to="/profile" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">
-            Profile
-          </Link>
-          <Link to="/signin" className="text-purple-600 hover:text-purple-700 px-3 py-2 text-sm font-medium transition-colors">
-            Sign Out
+          <Link to="/help" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">
+            Help
           </Link>
         </div>
       </div>
