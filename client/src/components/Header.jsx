@@ -12,8 +12,8 @@ const Header = () => (
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/study-assistant" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">
-            Study Assistant
+          <Link to="/study-timer" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">
+            Study Timer
           </Link>
           <Link to="/smart-notes" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">
             Smart Notes
@@ -26,10 +26,13 @@ const Header = () => (
           </Link>
         </nav>
 
-        {/* Help Link */}
+        {/* Help Link and Dashboard */}
         <div className="flex items-center space-x-4">
           <Link to="/help" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors">
             Help
+          </Link>
+          <Link to="/dashboard" className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+            Dashboard
           </Link>
         </div>
       </div>

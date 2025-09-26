@@ -2,8 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Landing from './pages/Landing';
-import StudyAssistant from './pages/StudyAssistant';
+import LandingNew from './pages/LandingNew';
+import SignInSimple from './pages/SignInSimple';
+import SignUpSimple from './pages/SignUpSimple';
+import DashboardSimple from './pages/DashboardSimple';
+import StudyTimer from './pages/StudyTimer';
 import SmartNotes from './pages/SmartNotes';
 import Flashcards from './pages/Flashcards';
 import SimpleProgress from './pages/SimpleProgress';
@@ -12,15 +15,18 @@ import NotFound from './pages/NotFound';
 
 function AppRoutes() {
   const location = useLocation();
-  const noNav = ['/'];
+  const noNav = ['/', '/signin', '/signup', '/dashboard'];
   const hideNav = noNav.includes(location.pathname);
   
   return (
     <>
       {!hideNav && <Header />}
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/study-assistant" element={<StudyAssistant />} />
+        <Route path="/" element={<LandingNew />} />
+        <Route path="/signin" element={<SignInSimple />} />
+        <Route path="/signup" element={<SignUpSimple />} />
+        <Route path="/dashboard" element={<DashboardSimple />} />
+        <Route path="/study-timer" element={<StudyTimer />} />
         <Route path="/smart-notes" element={<SmartNotes />} />
         <Route path="/flashcards" element={<Flashcards />} />
         <Route path="/progress" element={<SimpleProgress />} />
