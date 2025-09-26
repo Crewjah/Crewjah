@@ -8,8 +8,8 @@ const Footer = () => (
         {/* Brand */}
         <div className="col-span-1 md:col-span-2">
           <div className="flex items-center space-x-2 mb-4">
-            <span className="text-2xl font-bold text-purple-700">🎓</span>
             <span className="text-xl font-bold text-gray-900">Crewjah</span>
+            <span className="text-sm text-purple-700 font-medium">Learning Platform</span>
           </div>
           <p className="text-gray-600 text-sm max-w-md">
             Empowering students and lifelong learners with AI-powered educational tools. 
@@ -51,7 +51,7 @@ const Footer = () => (
             <Link to="/terms" className="hover:text-gray-900 transition-colors">Terms of Service</Link>
           </div>
           <p className="mt-4 md:mt-0 text-sm text-gray-500">
-            © {new Date().getFullYear()} Crewjah. Made with ❤️ for learners everywhere.
+            © {new Date().getFullYear()} Crewjah. Professional learning platform for students.
           </p>
         </div>
       </div>

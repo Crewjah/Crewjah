@@ -1,29 +1,17 @@
-<div align="center">
-  
-  # 🎓 Crewjah - Modern Learning Platform
-  
-  <p align="center">
-    A comprehensive, mobile-first educational platform built with React and modern web technologies. Features interactive learning tools, progress tracking, and a beautiful responsive design.
-  </p>
-  
-  <p align="center">
-    <img src="https://img.shields.io/badge/React-18.2.0-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React">
-    <img src="https://img.shields.io/badge/Vite-7.1.2-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
-    <img src="https://img.shields.io/badge/TailwindCSS-3.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind">
-    <img src="https://img.shields.io/badge/Framer_Motion-12.23-FF6B6B?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion">
-  </p>
-  
-  <p align="center">
-    <a href="#-features">Features</a> •
-    <a href="#-quick-start">Quick Start</a> •
-    <a href="#-tech-stack">Tech Stack</a> •
-    <a href="#-project-structure">Structure</a>
-  </p>
-</div>
+# Crewjah - Educational Learning Platform
+
+A professional, mobile-first educational platform built with React and modern web technologies. Features interactive learning tools, study assistance, and progress tracking with a clean, educational-focused design.
+
+## Technology Stack
+
+![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7.1.2-646CFF?style=flat&logo=vite&logoColor=white)  
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3.3-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.23-FF6B6B?style=flat&logo=framer&logoColor=white)
 
 ---
 
-## � Quick Start
+## Quick Start
 
 ```bash
 # Clone the repository
@@ -38,7 +26,7 @@ npm run dev
 # Open http://localhost:5173 in your browser
 ```
 
-## 📊 Project Status
+## Project Status
 
 - ✅ **Frontend**: Fully functional React application with modern UI/UX
 - ✅ **Authentication**: Complete sign-up/sign-in system with localStorage
@@ -48,7 +36,7 @@ npm run dev
 - 🔄 **Backend API**: In development (Flask/FastAPI options available)
 - 📧 **Email Verification**: Basic implementation (Phase 1 complete)
 
-## ✨ Features
+## Features
 
 ### 🏠 **Dashboard & Analytics**
 - **Smart Statistics**: Track study time, questions answered, and progress
@@ -90,7 +78,7 @@ npm run dev
   <p><em>Seamlessly responsive across all devices</em></p>
 </div>
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -131,7 +119,7 @@ npm run build
 npm run preview
 ```
 
-### 🌐 Live Demo
+### Live Demo
 
 > **Development Server**: http://localhost:5173 (when running locally)
 
@@ -141,7 +129,7 @@ npm run preview
   </a>
 </div>
 
-## 🛠️ Tech Stack
+## Technical Architecture
 
 <div align="center">
   <table>
@@ -457,7 +445,7 @@ The application implements several performance optimizations:
 - Bundle optimization with Vite
 - Responsive images and media queries
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 

@@ -1,22 +1,22 @@
 // Landing page configuration data
 export const TRUST_INDICATORS = [
   {
-    icon: "🔒",
+    icon: "✓",
     text: "Privacy Protected",
     color: "emerald"
   },
   {
-    icon: "🚫",
+    icon: "✓",
     text: "Ad-Free Experience",
     color: "blue"
   },
   {
-    icon: "🎓",
+    icon: "✓",
     text: "Expert Designed",
     color: "indigo"
   },
   {
-    icon: "🌟",
+    icon: "✓",
     text: "Always Free",
     color: "amber"
   }
@@ -24,28 +24,28 @@ export const TRUST_INDICATORS = [
 
 export const FEATURES = [
   {
-    icon: "🎓",
+    icon: "SA",
     title: "Study Assistant",
     description: "Get subject-specific help with Mathematics, Science, History, and more",
     color: "blue",
     delay: "0ms"
   },
   {
-    icon: "📝",
+    icon: "SN",
     title: "Smart Notes",
     description: "Upload and analyze study materials to create organized, structured notes",
     color: "emerald",
     delay: "200ms"
   },
   {
-    icon: "📚",
+    icon: "FC",
     title: "Study Flashcards",
     description: "Interactive flashcards for effective learning and memory retention",
     color: "indigo",
     delay: "400ms"
   },
   {
-    icon: "📊",
+    icon: "PT",
     title: "Progress Tracking",
     description: "Track your study sessions and monitor your learning progress over time",
     color: "amber",
