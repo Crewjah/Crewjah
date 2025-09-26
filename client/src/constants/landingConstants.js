@@ -26,28 +26,28 @@ export const FEATURES = [
   {
     icon: "🎓",
     title: "Study Assistant",
-    description: "Get instant help with homework, concepts, and exam preparation",
+    description: "Get subject-specific help with Mathematics, Science, History, and more",
     color: "blue",
     delay: "0ms"
   },
   {
-    icon: "�",
+    icon: "📝",
     title: "Smart Notes",
-    description: "Convert lectures and textbooks into organized study notes automatically",
+    description: "Upload and analyze study materials to create organized, structured notes",
     color: "emerald",
     delay: "200ms"
   },
   {
-    icon: "🧠",
-    title: "Practice Tests",
-    description: "Adaptive quizzes that focus on your weak areas for better retention",
+    icon: "📚",
+    title: "Study Flashcards",
+    description: "Interactive flashcards for effective learning and memory retention",
     color: "indigo",
     delay: "400ms"
   },
   {
-    icon: "�",
-    title: "Flashcard Generator",
-    description: "Auto-create flashcards from your notes and textbooks for spaced repetition",
+    icon: "📊",
+    title: "Progress Tracking",
+    description: "Track your study sessions and monitor your learning progress over time",
     color: "amber",
     delay: "600ms"
   }

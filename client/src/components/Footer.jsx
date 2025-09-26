@@ -23,10 +23,10 @@ const Footer = () => (
             Platform
           </h3>
           <ul className="space-y-2">
-            <li><Link to="/dashboard" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Dashboard</Link></li>
             <li><Link to="/study-assistant" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Study Assistant</Link></li>
             <li><Link to="/smart-notes" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Smart Notes</Link></li>
-            <li><Link to="/flashcard-generator" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Flashcards</Link></li>
+            <li><Link to="/flashcards" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Flashcards</Link></li>
+            <li><Link to="/progress" className="text-gray-600 hover:text-gray-900 text-sm transition-colors">Study Progress</Link></li>
           </ul>
         </div>
 
