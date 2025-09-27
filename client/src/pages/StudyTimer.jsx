@@ -10,6 +10,9 @@ const StudyTimer = () => {
   const [totalStudyTime, setTotalStudyTime] = useState(0);
   const [currentSubject, setCurrentSubject] = useState('');
   const [studyLog, setStudyLog] = useState([]);
+  const [customSubjects, setCustomSubjects] = useState([]);
+  const [newSubject, setNewSubject] = useState('');
+  const [showAddSubject, setShowAddSubject] = useState(false);
   const intervalRef = useRef(null);
   const audioRef = useRef(null);
 
@@ -19,10 +22,19 @@ const StudyTimer = () => {
     longBreak: { duration: 15 * 60, label: 'Long Break', color: 'purple', icon: FaCoffee }
   };
 
-  const subjects = [
+  // Default suggested subjects
+  const suggestedSubjects = [
     'Mathematics', 'Science', 'History', 'Literature', 'Languages', 
     'Physics', 'Chemistry', 'Biology', 'Computer Science', 'Art'
   ];
+
+  // Load custom subjects from localStorage on component mount
+  useEffect(() => {
+    const savedSubjects = localStorage.getItem('customSubjects');
+    if (savedSubjects) {
+      setCustomSubjects(JSON.parse(savedSubjects));
+    }
+  }, []);
 
   useEffect(() => {
     if (isRunning && timeLeft > 0) {
@@ -103,6 +115,30 @@ const StudyTimer = () => {
     setTimeLeft(modes[newMode].duration);
   };
 
+  const addCustomSubject = () => {
+    if (newSubject.trim() && !customSubjects.includes(newSubject.trim())) {
+      const updatedSubjects = [...customSubjects, newSubject.trim()];
+      setCustomSubjects(updatedSubjects);
+      localStorage.setItem('customSubjects', JSON.stringify(updatedSubjects));
+      setNewSubject('');
+      setShowAddSubject(false);
+      setCurrentSubject(newSubject.trim());
+    }
+  };
+
+  const removeCustomSubject = (subjectToRemove) => {
+    const updatedSubjects = customSubjects.filter(subject => subject !== subjectToRemove);
+    setCustomSubjects(updatedSubjects);
+    localStorage.setItem('customSubjects', JSON.stringify(updatedSubjects));
+    if (currentSubject === subjectToRemove) {
+      setCurrentSubject('');
+    }
+  };
+
+  const getAllSubjects = () => {
+    return [...customSubjects, ...suggestedSubjects.filter(s => !customSubjects.includes(s))];
+  };
+
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -161,19 +197,88 @@ const StudyTimer = () => {
             {/* Subject Selector (only for work mode) */}
             {mode === 'work' && (
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  What are you studying?
-                </label>
+                <div className="flex justify-between items-center mb-2">
+                  <label className="block text-sm font-medium text-white">
+                    What are you studying?
+                  </label>
+                  <button
+                    onClick={() => setShowAddSubject(!showAddSubject)}
+                    className="text-sm text-blue-300 hover:text-blue-200 font-medium"
+                  >
+                    {showAddSubject ? 'Cancel' : '+ Add Subject'}
+                  </button>
+                </div>
+
+                {/* Add New Subject Form */}
+                {showAddSubject && (
+                  <div className="mb-4 p-4 bg-white/10 backdrop-blur-md rounded-lg border border-white/20">
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={newSubject}
+                        onChange={(e) => setNewSubject(e.target.value)}
+                        placeholder="Enter subject name..."
+                        className="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                        onKeyPress={(e) => e.key === 'Enter' && addCustomSubject()}
+                      />
+                      <button
+                        onClick={addCustomSubject}
+                        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Subject Selector */}
                 <select
                   value={currentSubject}
                   onChange={(e) => setCurrentSubject(e.target.value)}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
                 >
                   <option value="">Select a subject...</option>
-                  {subjects.map(subject => (
-                    <option key={subject} value={subject}>{subject}</option>
-                  ))}
+                  
+                  {/* Custom Subjects */}
+                  {customSubjects.length > 0 && (
+                    <optgroup label="Your Subjects">
+                      {customSubjects.map(subject => (
+                        <option key={subject} value={subject}>{subject}</option>
+                      ))}
+                    </optgroup>
+                  )}
+                  
+                  {/* Suggested Subjects */}
+                  <optgroup label="Suggested Subjects">
+                    {suggestedSubjects.filter(s => !customSubjects.includes(s)).map(subject => (
+                      <option key={subject} value={subject}>{subject}</option>
+                    ))}
+                  </optgroup>
                 </select>
+
+                {/* Manage Custom Subjects */}
+                {customSubjects.length > 0 && (
+                  <div className="mt-3">
+                    <p className="text-sm text-white/70 mb-2">Your custom subjects:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {customSubjects.map(subject => (
+                        <div
+                          key={subject}
+                          className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20"
+                        >
+                          <span className="text-sm text-white">{subject}</span>
+                          <button
+                            onClick={() => removeCustomSubject(subject)}
+                            className="text-red-300 hover:text-red-200 text-xs ml-1"
+                            title="Remove subject"
+                          >
+                            ×
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
