@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaClock, FaBook, FaChartLine, FaSignOutAlt, FaUser, FaCalendarAlt, FaGraduationCap, FaBrain, FaRocket, FaStar } from 'react-icons/fa';
+import { FaClock, FaBook, FaChartLine, FaSignOutAlt, FaUser, FaCalendarAlt, FaGraduationCap, FaBrain, FaRocket, FaStar, FaRobot, FaTrophy, FaUsers, FaBookOpen } from 'react-icons/fa';
 
 export default function Dashboard() {
   const [user, setUser] = useState({ name: '', email: '' });
@@ -42,32 +42,49 @@ export default function Dashboard() {
 
   const quickActions = [
     {
-      title: 'Study Timer',
-      description: 'Start a focused study session',
-      link: '/study-timer',
-      icon: FaClock,
-      color: 'blue'
+      title: '🤖 AI Study Buddy',
+      description: 'Get instant help with homework & concepts',
+      link: '/ai-buddy',
+      icon: FaRobot,
+      color: 'blue',
+      isNew: true
     },
     {
-      title: 'Smart Notes',
-      description: 'Upload and organize your notes',
-      link: '/smart-notes',
-      icon: FaBook,
+      title: '🏆 Study Rewards',
+      description: 'Earn badges, streaks & unlock achievements',
+      link: '/rewards',
+      icon: FaTrophy,
+      color: 'yellow',
+      isNew: true
+    },
+    {
+      title: '👥 Study Groups',
+      description: 'Join groups, compete & study together',
+      link: '/study-groups',
+      icon: FaUsers,
+      color: 'purple',
+      isNew: true
+    },
+    {
+      title: '⏰ Study Timer',
+      description: 'Focus with Pomodoro technique',
+      link: '/study-timer',
+      icon: FaClock,
       color: 'green'
     },
     {
-      title: 'Flashcards',
-      description: 'Practice with interactive flashcards',
-      link: '/flashcards',
+      title: '📝 Smart Notes',
+      description: 'Upload and organize your notes',
+      link: '/smart-notes',
       icon: FaBook,
-      color: 'purple'
+      color: 'indigo'
     },
     {
-      title: 'Progress',
-      description: 'View your learning progress',
-      link: '/progress',
-      icon: FaChartLine,
-      color: 'yellow'
+      title: '🎴 Flashcards',
+      description: 'Practice with interactive flashcards',
+      link: '/flashcards',
+      icon: FaBookOpen,
+      color: 'pink'
     }
   ];
 
@@ -169,20 +186,33 @@ export default function Dashboard() {
 
         {/* Quick Actions */}
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="text-2xl font-bold text-white mb-6">🚀 Study Tools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {quickActions.map((action, index) => (
-              <Link
+              <motion.div
                 key={index}
-                to={action.link}
-                className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className="relative"
               >
-                <div className={`p-3 bg-${action.color}-100 rounded-lg w-fit mb-4 group-hover:scale-110 transition-transform`}>
-                  <action.icon className={`text-${action.color}-600 text-2xl`} />
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{action.title}</h3>
-                <p className="text-gray-600 text-sm">{action.description}</p>
-              </Link>
+                <Link
+                  to={action.link}
+                  className="block backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all group"
+                >
+                  {action.isNew && (
+                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+                      ✨ NEW
+                    </div>
+                  )}
+                  <div className="flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl mb-4 group-hover:scale-110 transition-transform">
+                    <action.icon className="text-white text-2xl" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">{action.title}</h3>
+                  <p className="text-white/70 text-sm">{action.description}</p>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>

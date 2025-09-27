@@ -178,18 +178,25 @@ const SmartNotes = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 py-8">
-      <div className="max-w-6xl mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 relative overflow-hidden py-8">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent mb-4">
             Smart Notes
           </h1>
-          <p className="text-gray-600 text-lg">
+          <p className="text-white/80 text-lg">
             Transform lectures, textbooks, and study materials into organized, memorable notes
           </p>
         </motion.div>
@@ -200,18 +207,18 @@ const SmartNotes = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+              className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl overflow-hidden"
             >
               {/* Tab Navigation */}
-              <div className="flex border-b">
+              <div className="flex border-b border-white/20">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex-1 px-6 py-4 flex items-center justify-center gap-2 font-medium transition-colors ${
                       activeTab === tab.id
-                        ? 'bg-green-50 text-green-600 border-b-2 border-green-500'
-                        : 'text-gray-600 hover:bg-gray-50'
+                        ? 'bg-white/20 text-white border-b-2 border-purple-400'
+                        : 'text-white/60 hover:bg-white/10 hover:text-white'
                     }`}
                   >
                     <tab.icon className="text-sm" />
@@ -321,23 +328,23 @@ const SmartNotes = () => {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6"
+              className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-6"
             >
-              <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                <FaBrain className="text-green-500" />
+              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <FaBrain className="text-purple-400" />
                 Note Templates
               </h3>
               <div className="space-y-3">
                 {noteTemplates.map((template, index) => (
                   <div
                     key={index}
-                    className={`p-4 rounded-xl border-2 cursor-pointer hover:shadow-md transition-all ${template.color}`}
+                    className="p-4 rounded-xl border border-white/20 bg-white/5 cursor-pointer hover:bg-white/10 hover:shadow-lg transition-all backdrop-blur-sm"
                   >
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{template.icon}</span>
                       <div>
-                        <h4 className="font-medium text-gray-800">{template.title}</h4>
-                        <p className="text-sm text-gray-600 mt-1">{template.description}</p>
+                        <h4 className="font-medium text-white">{template.title}</h4>
+                        <p className="text-sm text-white/70 mt-1">{template.description}</p>
                       </div>
                     </div>
                   </div>

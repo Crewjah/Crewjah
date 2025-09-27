@@ -10,6 +10,9 @@ import StudyTimer from './pages/StudyTimer';
 import SmartNotes from './pages/SmartNotes';
 import Flashcards from './pages/Flashcards';
 import SimpleProgress from './pages/SimpleProgress';
+import StudyRewards from './pages/StudyRewards';
+import AIStudyBuddy from './pages/AIStudyBuddy';
+import StudyGroups from './pages/StudyGroups';
 import Help from './pages/Help';
 import NotFound from './pages/NotFound';
 
@@ -30,6 +33,9 @@ function AppRoutes() {
         <Route path="/smart-notes" element={<SmartNotes />} />
         <Route path="/flashcards" element={<Flashcards />} />
         <Route path="/progress" element={<SimpleProgress />} />
+        <Route path="/rewards" element={<StudyRewards />} />
+        <Route path="/ai-buddy" element={<AIStudyBuddy />} />
+        <Route path="/study-groups" element={<StudyGroups />} />
         <Route path="/help" element={<Help />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
