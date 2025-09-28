@@ -1,16 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaRobot, FaPaperPlane, FaLightbulb, FaBook, FaCalculator, FaGraduationCap } from 'react-icons/fa';
+import { FaBook, FaCalculator, FaFlask, FaPen, FaRobot, FaLightbulb, FaGraduationCap, FaPaperPlane } from 'react-icons/fa';
 
 const AIStudyBuddy = () => {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      type: 'ai',
-      content: "Hi! I'm your AI Study Buddy! 🤖 I can help you with:\n\n📚 Explain difficult concepts\n✨ Solve math problems step-by-step\n📝 Review your notes\n🧠 Create quiz questions\n💡 Give study tips\n\nWhat would you like to study today?",
-      timestamp: new Date()
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);

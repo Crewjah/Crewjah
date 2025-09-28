@@ -1,36 +1,81 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaFire, FaStar, FaTrophy, FaGem, FaCrown, FaRocket } from 'react-icons/fa';
+import { FaFire, FaStar, FaTrophy, FaClock } from 'react-icons/fa';
 
 const StudyRewards = () => {
   const [userStats, setUserStats] = useState({
-    currentStreak: 7,
-    longestStreak: 15,
-    totalPoints: 2450,
-    level: 5,
-    studyMinutes: 1240,
-    badges: ['first-day', 'week-warrior', 'quiz-master', 'note-taker']
+    currentStreak: 0,
+    totalPoints: 0,
+    level: 1,
+    studyMinutes: 0,
+    badges: []
   });
 
-  const [dailyGoal, setDailyGoal] = useState(30); // minutes
-  const [todayStudied, setTodayStudied] = useState(25); // minutes
+  const [dailyGoal, setDailyGoal] = useState(30);
+  const [todayStudied, setTodayStudied] = useState(0);
 
-  const badges = {
-    'first-day': { name: 'First Steps', icon: '🎯', color: 'bg-blue-500', earned: true },
-    'week-warrior': { name: 'Week Warrior', icon: '⚡', color: 'bg-purple-500', earned: true },
-    'quiz-master': { name: 'Quiz Master', icon: '🧠', color: 'bg-green-500', earned: true },
-    'note-taker': { name: 'Note Taker', icon: '📝', color: 'bg-yellow-500', earned: true },
-    'streak-legend': { name: 'Streak Legend', icon: '🔥', color: 'bg-red-500', earned: false },
-    'time-master': { name: 'Time Master', icon: '⏰', color: 'bg-indigo-500', earned: false },
-    'knowledge-king': { name: 'Knowledge King', icon: '👑', color: 'bg-gold-500', earned: false }
+  useEffect(() => {
+    // Load real data from localStorage
+    const studySessions = JSON.parse(localStorage.getItem('studySessions') || '[]');
+    const totalMinutes = studySessions.reduce((acc, session) => acc + (session.duration || 0), 0);
+    const points = Math.floor(totalMinutes / 10); // 1 point per 10 minutes
+    const level = Math.floor(points / 100) + 1; // Level up every 100 points
+    
+    setUserStats({
+      currentStreak: calculateStreak(studySessions),
+      totalPoints: points,
+      level: level,
+      studyMinutes: totalMinutes,
+      badges: calculateBadges(studySessions, totalMinutes)
+    });
+
+    // Today's study time
+    const today = new Date().toDateString();
+    const todaySessions = studySessions.filter(session => 
+      new Date(session.date).toDateString() === today
+    );
+    const todayTotal = todaySessions.reduce((acc, session) => acc + (session.duration || 0), 0);
+    setTodayStudied(todayTotal);
+  }, []);
+
+  const calculateStreak = (sessions) => {
+    if (sessions.length === 0) return 0;
+    
+    const dates = [...new Set(sessions.map(s => new Date(s.date).toDateString()))];
+    dates.sort((a, b) => new Date(b) - new Date(a));
+    
+    let streak = 0;
+    const today = new Date().toDateString();
+    
+    for (let i = 0; i < dates.length; i++) {
+      const expectedDate = new Date();
+      expectedDate.setDate(expectedDate.getDate() - i);
+      
+      if (dates[i] === expectedDate.toDateString()) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+    
+    return streak;
   };
 
-  const achievements = [
-    { name: 'Study 7 days straight', points: 100, progress: userStats.currentStreak, target: 7, completed: true },
-    { name: 'Complete 50 quiz questions', points: 200, progress: 45, target: 50, completed: false },
-    { name: 'Study for 1000 minutes', points: 300, progress: userStats.studyMinutes, target: 1000, completed: true },
-    { name: 'Reach Level 10', points: 500, progress: userStats.level, target: 10, completed: false }
-  ];
+  const calculateBadges = (sessions, totalMinutes) => {
+    const badges = [];
+    if (sessions.length >= 1) badges.push('first-session');
+    if (sessions.length >= 5) badges.push('dedicated');
+    if (totalMinutes >= 60) badges.push('hour-master');
+    if (totalMinutes >= 300) badges.push('time-champion');
+    return badges;
+  };
+
+  const badgeInfo = {
+    'first-session': { name: 'First Session', description: 'Completed your first study session' },
+    'dedicated': { name: 'Dedicated Learner', description: 'Completed 5 study sessions' },
+    'hour-master': { name: 'Hour Master', description: 'Studied for 1 hour total' },
+    'time-champion': { name: 'Time Champion', description: 'Studied for 5 hours total' }
+  };
 
   const levelProgress = ((userStats.totalPoints % 500) / 500) * 100;
   const nextLevelPoints = 500 - (userStats.totalPoints % 500);
@@ -52,10 +97,10 @@ const StudyRewards = () => {
           className="text-center mb-8"
         >
           <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent mb-4">
-            🏆 Study Rewards
+            Study Progress
           </h1>
           <p className="text-white/80 text-lg">
-            Keep studying daily to unlock amazing rewards and achievements!
+            Track your study habits and earn achievements
           </p>
         </motion.div>
 
