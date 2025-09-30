@@ -24,36 +24,50 @@ const AIStudyBuddy = () => {
   }, [messages]);
 
   const generateAIResponse = (userMessage) => {
-    const responses = {
-      // Math help
-      'math': "I'd be happy to help you with math! 🧮\n\nPlease share your specific problem, and I'll solve it step-by-step:\n\n1️⃣ I'll break down the problem\n2️⃣ Show you each step\n3️⃣ Explain the reasoning\n4️⃣ Give you similar practice problems\n\nWhat math topic are you working on?",
-      
-      // Study tips
-      'study tips': "Here are some proven study techniques! 📚✨\n\n🎯 **Active Recall**: Test yourself instead of just re-reading\n⏰ **Pomodoro Technique**: 25min study + 5min break\n🔄 **Spaced Repetition**: Review material at increasing intervals\n📝 **Feynman Technique**: Explain concepts in simple words\n🎨 **Mind Maps**: Visual connections between ideas\n\nWhich subject are you studying? I can give more specific tips!",
-      
-      // Concept explanation
-      'explain': "I love explaining concepts! 🎓\n\nTo give you the best explanation, please tell me:\n\n📖 What specific topic or concept?\n🎯 What's your current level (beginner/intermediate/advanced)?\n❓ What part is confusing you most?\n\nI'll break it down into simple, easy-to-understand steps with examples!",
-      
-      // Quiz creation
-      'quiz': "Great idea! Creating quiz questions helps reinforce learning! 🧠✨\n\nI can create:\n\n❓ Multiple choice questions\n✍️ Short answer questions\n🤔 True/false questions\n💭 Essay prompts\n🔍 Fill-in-the-blank\n\nJust tell me:\n📚 What subject/topic?\n📊 How many questions?\n⚡ Difficulty level?\n\nLet's make studying fun and effective!",
-      
-      // Default helpful response
-      'default': "I'm here to help you succeed! 🌟\n\nI can assist with:\n\n📚 **Subject Help**: Math, Science, History, English, etc.\n🧠 **Study Strategies**: Personalized tips for your learning style\n📝 **Homework Support**: Step-by-step problem solving\n⏰ **Time Management**: Creating study schedules\n🎯 **Exam Prep**: Practice questions and review techniques\n\nWhat specific challenge are you facing? The more details you give me, the better I can help you! 💪"
-    };
-
     const lowerMessage = userMessage.toLowerCase();
     
-    if (lowerMessage.includes('math') || lowerMessage.includes('solve') || lowerMessage.includes('problem')) {
-      return responses.math;
-    } else if (lowerMessage.includes('study tips') || lowerMessage.includes('how to study')) {
-      return responses['study tips'];
-    } else if (lowerMessage.includes('explain') || lowerMessage.includes('concept')) {
-      return responses.explain;
-    } else if (lowerMessage.includes('quiz') || lowerMessage.includes('question')) {
-      return responses.quiz;
-    } else {
-      return responses.default;
+    // AI/Technology questions
+    if (lowerMessage.includes('what is ai') || lowerMessage.includes('artificial intelligence')) {
+      return "Artificial Intelligence (AI) refers to computer systems that can perform tasks typically requiring human intelligence.\n\nKey concepts:\n• Machine Learning: Systems that improve through experience\n• Natural Language Processing: Understanding human language\n• Pattern Recognition: Identifying trends in data\n• Problem Solving: Finding solutions to complex challenges\n\nIn education, AI helps personalize learning, provide instant feedback, and adapt to individual student needs.";
     }
+    
+    // Personal questions
+    if (lowerMessage.includes('what is me') || lowerMessage.includes('who am i')) {
+      return "I can see you're asking philosophical questions! As your study buddy, I'm here to help you learn and grow academically.\n\nFor self-reflection in your studies, consider:\n• What subjects interest you most?\n• What are your learning goals?\n• What study methods work best for you?\n• What challenges do you want to overcome?\n\nTell me about a specific subject you're working on, and I'll provide targeted help!";
+    }
+    
+    // General "what is this" questions
+    if (lowerMessage.includes('what is this') || lowerMessage.includes('what is that')) {
+      return "I'm your AI Study Buddy - a learning assistant designed to help you with your studies.\n\nI can help you with:\n• Subject-specific questions and explanations\n• Study strategies and techniques\n• Homework problems and solutions\n• Exam preparation and review\n• Creating study materials\n\nTo get the most helpful response, try asking specific questions like:\n'Explain photosynthesis' or 'Help me solve this algebra problem: 2x + 5 = 15'";
+    }
+    
+    // Math help
+    if (lowerMessage.includes('math') || lowerMessage.includes('solve') || lowerMessage.includes('algebra') || lowerMessage.includes('calculus') || lowerMessage.includes('geometry')) {
+      return "I'd be happy to help you with mathematics!\n\nPlease share your specific problem, and I'll provide:\n1. Step-by-step solution\n2. Clear explanations for each step\n3. Key concepts involved\n4. Similar practice problems\n\nFor example, if you have '2x + 5 = 15', I'll show you how to isolate x and explain the reasoning behind each step.";
+    }
+    
+    // Science questions
+    if (lowerMessage.includes('science') || lowerMessage.includes('physics') || lowerMessage.includes('chemistry') || lowerMessage.includes('biology')) {
+      return "Science questions are great for understanding our world!\n\nI can help explain:\n• Scientific concepts and principles\n• Laboratory procedures and safety\n• Problem-solving in physics and chemistry\n• Biological processes and systems\n\nWhat specific science topic would you like to explore? The more details you provide, the better I can tailor my explanation to your level.";
+    }
+    
+    // Study tips
+    if (lowerMessage.includes('study tips') || lowerMessage.includes('how to study') || lowerMessage.includes('learning')) {
+      return "Here are evidence-based study techniques:\n\n**Active Learning Methods:**\n• Active Recall: Test yourself instead of re-reading\n• Spaced Repetition: Review material at increasing intervals\n• Feynman Technique: Explain concepts in simple terms\n\n**Time Management:**\n• Pomodoro Technique: 25-minute focused sessions\n• Time blocking: Dedicated study periods\n• Regular breaks to maintain concentration\n\n**Memory Techniques:**\n• Create visual associations\n• Use mnemonics for lists\n• Connect new information to existing knowledge\n\nWhat subject are you studying? I can provide more specific strategies.";
+    }
+    
+    // Concept explanation requests
+    if (lowerMessage.includes('explain') || lowerMessage.includes('concept') || lowerMessage.includes('understand')) {
+      return "I'd be happy to explain any concept!\n\nTo provide the best explanation, please tell me:\n• What specific topic or concept?\n• Your current level (beginner, intermediate, advanced)\n• What aspect is most confusing?\n\nI'll break it down into clear, manageable steps with relevant examples and real-world applications.";
+    }
+    
+    // Quiz and practice
+    if (lowerMessage.includes('quiz') || lowerMessage.includes('practice') || lowerMessage.includes('test') || lowerMessage.includes('exam')) {
+      return "Practice is essential for mastering any subject!\n\nI can help create:\n• Multiple choice questions\n• Short answer prompts\n• Problem-solving exercises\n• Key concept reviews\n• Study guides\n\nJust specify:\n• Subject and topic\n• Number of questions\n• Difficulty level\n• Question format preference\n\nThis will help reinforce your learning and identify areas that need more attention.";
+    }
+    
+    // Default helpful response
+    return "I'm here to support your learning journey!\n\nI can assist with:\n• **Subject Help**: Math, Science, History, English, and more\n• **Study Strategies**: Personalized techniques for effective learning\n• **Problem Solving**: Step-by-step guidance\n• **Exam Preparation**: Practice questions and review methods\n• **Concept Explanation**: Breaking down complex topics\n\nTo get started, try asking something specific like:\n'Explain the water cycle' or 'Help me solve 3x - 7 = 14'\n\nWhat would you like to learn about today?";
   };
 
   const handleSendMessage = async () => {
@@ -223,7 +237,7 @@ const AIStudyBuddy = () => {
             </motion.button>
           </div>
           <div className="mt-2 text-xs text-white/50 text-center">
-            💡 Pro tip: Be specific about your questions for the best help!
+            Pro tip: Be specific about your questions for the best help!
           </div>
         </motion.div>
       </div>
