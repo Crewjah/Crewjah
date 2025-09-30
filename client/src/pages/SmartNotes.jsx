@@ -20,25 +20,25 @@ const SmartNotes = () => {
     {
       title: 'Cornell Notes',
       description: 'Organized with cues, notes, and summary sections',
-      icon: '📝',
+      icon: 'CN',
       color: 'bg-blue-50 border-blue-200'
     },
     {
       title: 'Mind Map',
       description: 'Visual connections between concepts',
-      icon: '🧠',
+      icon: 'MM',
       color: 'bg-purple-50 border-purple-200'
     },
     {
       title: 'Outline Format',
       description: 'Structured hierarchical notes',
-      icon: '📋',
+      icon: 'OF',
       color: 'bg-green-50 border-green-200'
     },
     {
       title: 'Flashcard Set',
       description: 'Key terms and definitions for memorization',
-      icon: '🎯',
+      icon: 'FC',
       color: 'bg-orange-50 border-orange-200'
     }
   ];

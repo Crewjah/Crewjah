@@ -4,7 +4,7 @@ export const STATS_CONFIG = [
     key: 'studyStreak',
     title: 'Study Streak',
     unit: 'days',
-    icon: '🔥',
+    icon: 'ST',
     color: 'blue',
     delay: 0.1
   },
@@ -12,7 +12,7 @@ export const STATS_CONFIG = [
     key: 'questionsAnswered',
     title: 'Questions Answered',
     unit: 'answered',
-    icon: '✅',
+    icon: 'QA',
     color: 'emerald',
     delay: 0.2
   },
@@ -20,7 +20,7 @@ export const STATS_CONFIG = [
     key: 'completedQuizzes',
     title: 'Completed Quizzes',
     unit: 'completed',
-    icon: '📝',
+    icon: 'CQ',
     color: 'indigo',
     delay: 0.3
   },
@@ -28,7 +28,7 @@ export const STATS_CONFIG = [
     key: 'studyTime',
     title: 'Study Time',
     unit: 'hours',
-    icon: '📚',
+    icon: 'ST',
     color: 'amber',
     delay: 0.4
   }

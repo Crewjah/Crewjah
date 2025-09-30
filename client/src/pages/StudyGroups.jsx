@@ -9,24 +9,24 @@ const StudyGroups = () => {
   const myGroups = [
     {
       id: 1,
-      name: "JavaScript Ninjas 🥷",
-      subject: "Programming",
+      name: "Programming Study Group",
+      subject: "Computer Science",
       members: 24,
       level: "Intermediate",
       streak: 12,
       isOwner: true,
-      recentActivity: "Sarah shared new notes on React Hooks",
+      recentActivity: "Group completed React fundamentals chapter",
       nextSession: "Tomorrow 7 PM"
     },
     {
       id: 2,
-      name: "Math Masters Club 📐",
+      name: "Mathematics Study Circle",
       subject: "Mathematics",
       members: 18,
       level: "Advanced", 
       streak: 8,
       isOwner: false,
-      recentActivity: "Alex solved 5 calculus problems",
+      recentActivity: "Group worked on calculus practice problems",
       nextSession: "Friday 6 PM"
     }
   ];
@@ -34,18 +34,18 @@ const StudyGroups = () => {
   const discoverGroups = [
     {
       id: 3,
-      name: "Physics Warriors ⚡",
+      name: "Physics Study Group",
       subject: "Physics",
       members: 32,
       level: "Beginner",
-      description: "Learn physics concepts together with fun experiments!",
+      description: "Learn physics concepts together with practical applications",
       tags: ["mechanics", "electricity", "waves"],
       rating: 4.8,
       isPublic: true
     },
     {
       id: 4,
-      name: "Chemistry Lab Crew 🧪",
+      name: "Chemistry Lab Group",
       subject: "Chemistry",
       members: 28,
       level: "Intermediate",
@@ -56,18 +56,18 @@ const StudyGroups = () => {
     },
     {
       id: 5,
-      name: "History Detectives 🕵️",
+      name: "History Study Circle",
       subject: "History",
       members: 15,
       level: "All Levels",
       description: "Explore historical events and their impact on today's world",
-      tags: ["world-war", "ancient", "modern"],
+      tags: ["world-history", "ancient", "modern"],
       rating: 4.7,
       isPublic: true
     },
     {
       id: 6,
-      name: "English Literature Circle 📚",
+      name: "Literature Study Group",
       subject: "English Literature",
       members: 22,
       level: "Advanced",
@@ -79,24 +79,24 @@ const StudyGroups = () => {
   ];
 
   const leaderboard = [
-    { name: "Emma Wilson", subject: "Computer Science", points: 2850, streak: 23, badge: "🥇" },
-    { name: "Alex Chen", subject: "Mathematics", points: 2720, streak: 19, badge: "🥈" },
-    { name: "Sofia Garcia", subject: "Biology", points: 2650, streak: 17, badge: "🥉" },
-    { name: "You", subject: "JavaScript", points: 2450, streak: 12, badge: "🔥" },
-    { name: "Marcus Johnson", subject: "Physics", points: 2380, streak: 15, badge: "⭐" }
+    { name: "Student A", subject: "Computer Science", points: 2850, streak: 23, badge: "🥇" },
+    { name: "Student B", subject: "Mathematics", points: 2720, streak: 19, badge: "🥈" },
+    { name: "Student C", subject: "Biology", points: 2650, streak: 17, badge: "🥉" },
+    { name: "You", subject: "Study Group Member", points: 2450, streak: 12, badge: "🔥" },
+    { name: "Student D", subject: "Physics", points: 2380, streak: 15, badge: "⭐" }
   ];
 
   const challenges = [
     {
-      title: "30-Day Study Streak",
-      description: "Study with your group every day for 30 days",
-      reward: "500 XP + Golden Badge",
+      title: "Consistent Study Habit",
+      description: "Study with your group consistently for 30 days",
+      reward: "500 XP + Achievement Badge",
       progress: 12,
       target: 30,
       participants: 156
     },
     {
-      title: "Knowledge Sharing Champion",
+      title: "Knowledge Sharing",
       description: "Help 10 group members with their questions",
       reward: "300 XP + Helper Badge", 
       progress: 7,
@@ -104,7 +104,7 @@ const StudyGroups = () => {
       participants: 89
     },
     {
-      title: "Group Quiz Master",
+      title: "Group Quiz Leader",
       description: "Create and share 5 quiz sets with your group",
       reward: "400 XP + Quiz Master Badge",
       progress: 3,
@@ -182,9 +182,9 @@ const StudyGroups = () => {
                     <div>
                       <h3 className="text-xl font-bold text-white mb-1">{group.name}</h3>
                       <div className="flex items-center gap-4 text-sm text-white/70">
-                        <span>📚 {group.subject}</span>
-                        <span>👥 {group.members} members</span>
-                        <span>⭐ {group.level}</span>
+                        <span>{group.subject}</span>
+                        <span>{group.members} members</span>
+                        <span>{group.level}</span>
                       </div>
                     </div>
                     {group.isOwner && <FaCrown className="text-yellow-500" />}
@@ -241,9 +241,9 @@ const StudyGroups = () => {
                   <div className="mb-4">
                     <h3 className="text-lg font-bold text-white mb-2">{group.name}</h3>
                     <div className="flex items-center gap-4 text-sm text-white/70 mb-3">
-                      <span>📚 {group.subject}</span>
-                      <span>👥 {group.members}</span>
-                      <span>⭐ {group.level}</span>
+                      <span>{group.subject}</span>
+                      <span>{group.members} members</span>
+                      <span>{group.level}</span>
                     </div>
                     <p className="text-white/80 text-sm mb-3">{group.description}</p>
                     

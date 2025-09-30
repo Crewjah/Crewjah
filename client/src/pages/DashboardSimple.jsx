@@ -42,7 +42,7 @@ export default function Dashboard() {
 
   const quickActions = [
     {
-      title: '🤖 AI Study Buddy',
+      title: 'AI Study Buddy',
       description: 'Get instant help with homework & concepts',
       link: '/ai-buddy',
       icon: FaRobot,
@@ -50,7 +50,7 @@ export default function Dashboard() {
       isNew: true
     },
     {
-      title: '🏆 Study Rewards',
+      title: 'Study Rewards',
       description: 'Earn badges, streaks & unlock achievements',
       link: '/rewards',
       icon: FaTrophy,
@@ -58,7 +58,7 @@ export default function Dashboard() {
       isNew: true
     },
     {
-      title: '👥 Study Groups',
+      title: 'Study Groups',
       description: 'Join groups, compete & study together',
       link: '/study-groups',
       icon: FaUsers,
@@ -66,21 +66,21 @@ export default function Dashboard() {
       isNew: true
     },
     {
-      title: '⏰ Study Timer',
+      title: 'Study Timer',
       description: 'Focus with Pomodoro technique',
       link: '/study-timer',
       icon: FaClock,
       color: 'green'
     },
     {
-      title: '📝 Smart Notes',
+      title: 'Smart Notes',
       description: 'Upload and organize your notes',
       link: '/smart-notes',
       icon: FaBook,
       color: 'indigo'
     },
     {
-      title: '🎴 Flashcards',
+      title: 'Flashcards',
       description: 'Practice with interactive flashcards',
       link: '/flashcards',
       icon: FaBookOpen,
@@ -203,7 +203,7 @@ export default function Dashboard() {
                 >
                   {action.isNew && (
                     <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
-                      ✨ NEW
+                      NEW
                     </div>
                   )}
                   <div className="flex items-center justify-center w-12 h-12 bg-white/20 rounded-xl mb-4 group-hover:scale-110 transition-transform">
